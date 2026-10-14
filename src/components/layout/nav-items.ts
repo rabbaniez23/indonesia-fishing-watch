@@ -6,8 +6,10 @@ import {
   FileDown,
   LayoutDashboard,
   Map as MapIcon,
+  Satellite,
   Settings,
   Ship,
+  Workflow,
   type LucideIcon,
 } from "lucide-react";
 
@@ -28,6 +30,8 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/vessels", label: "Kapal", title: "Kapal", icon: Ship, group: "main" },
   { href: "/ports", label: "Pelabuhan", title: "Pelabuhan", icon: Anchor, group: "main" },
   { href: "/analysis", label: "Analisis", title: "Analisis", icon: ChartLine, group: "main" },
+  { href: "/viirs", label: "VIIRS", title: "VIIRS · Deteksi kapal malam", icon: Satellite, group: "main" },
+  { href: "/preprocessing-viirs", label: "Preprocessing VIIRS", title: "Preprocessing VIIRS", icon: Workflow, group: "main" },
   { href: "/findings", label: "Temuan", title: "Temuan", icon: ClipboardList, group: "main" },
   { href: "/reports", label: "Laporan", title: "Laporan", icon: FileDown, group: "main" },
   { href: "/data-status", label: "Tentang data", title: "Tentang data", icon: Database, group: "footer" },

@@ -1,4 +1,8 @@
+# build_viirs_summary.py
 numpy>=1.24
 pandas>=2.0
 shapely>=2.0
 pyshp>=2.3
+# build_viirs_stats.py
+scipy>=1.11
+statsmodels>=0.14

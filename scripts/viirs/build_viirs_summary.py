@@ -185,7 +185,7 @@ def main():
                    "dataset": "EOG VIIRS Boat Detection (VBD)"},
         "dateRange": {"start": date_min.strftime("%Y-%m-%d"), "end": date_max.strftime("%Y-%m-%d")},
         "filters": ["Waktu, koordinat, dan radiansi valid", "QF_Detect = 1", "Land_Mask != 1 (bukan daratan)",
-                    "EEZ = Indonesian Exclusive Economic Zone", "Di dalam poligon 11 WPP-RI (shp&shx)"],
+                    "EEZ = Indonesian Exclusive Economic Zone", "Di dalam poligon 11 WPP-RI"],
         "classes": {"low": {"label": "Rendah", "rule": "Rad_DNB < 10"},
                     "medium": {"label": "Sedang", "rule": "10 <= Rad_DNB <= 400"},
                     "high": {"label": "Tinggi", "rule": "Rad_DNB > 400"}},
