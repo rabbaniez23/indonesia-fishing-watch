@@ -4,6 +4,8 @@ Implementasi dari `../PRD_Pemantauan_Maritim_Indonesia.md` dan `../Design_System
 Nama aplikasi **Indonesia Fishing Watch** (sejak 14 Okt 2026; sebelumnya nama kerja "Pantau Laut"). Data aktivitas berasal
 dari Global Fishing Watch; aplikasi ini tidak berafiliasi dengan Global Fishing Watch.
 
+**Deploy online gratis (laptop Linux + Tailscale Funnel):** lihat [deploy/README.md](deploy/README.md).
+
 ## Status tahapan
 
 | Tahap | Isi | Status |

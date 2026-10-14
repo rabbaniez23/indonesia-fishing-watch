@@ -31,9 +31,19 @@ export function isSameOrigin(request: NextRequest): boolean {
   if (!origin) return false;
   const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
   try {
-    return new URL(origin).host === host;
+    const originHost = new URL(origin).host;
+    return originHost === host || originHost === publicHost();
   } catch {
     return false;
+  }
+}
+
+/** Host publik dari APP_BASE_URL (mis. di balik tunnel HTTPS yang mengubah header Host). */
+function publicHost(): string | null {
+  try {
+    return process.env.APP_BASE_URL ? new URL(process.env.APP_BASE_URL).host : null;
+  } catch {
+    return null;
   }
 }
 

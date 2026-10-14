@@ -1,0 +1,14 @@
+# Worker pengambil data GFW (systemd --user). Wajib jalan agar Ringkasan/Peta/Analisis terisi.
+# Pasang: cp deploy/ifw-worker.service ~/.config/systemd/user/ && systemctl --user enable --now ifw-worker
+[Unit]
+Description=Indonesia Fishing Watch - worker GFW
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/apps/indonesia-fishing-watch
+ExecStart=/bin/bash -c '. %h/.nvm/nvm.sh && exec npm run worker'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

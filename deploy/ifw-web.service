@@ -1,0 +1,15 @@
+# Layanan web Indonesia Fishing Watch (systemd --user). Node dari nvm (~/.nvm, versi default).
+# Pasang: cp deploy/ifw-web.service ~/.config/systemd/user/ && systemctl --user enable --now ifw-web
+[Unit]
+Description=Indonesia Fishing Watch - web (Next.js)
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/apps/indonesia-fishing-watch
+Environment=NODE_ENV=production
+ExecStart=/bin/bash -c '. %h/.nvm/nvm.sh && exec npm run start -- --hostname 127.0.0.1 --port 3000'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
