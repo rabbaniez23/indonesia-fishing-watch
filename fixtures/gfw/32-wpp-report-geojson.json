@@ -1,0 +1,104 @@
+{
+  "capturedAt": "2026-10-13T15:40:05.710Z",
+  "wpp": "712",
+  "request": {
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-fishing-effort:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "DAILY"
+      ],
+      [
+        "spatial-aggregation",
+        "true"
+      ],
+      [
+        "date-range",
+        "2026-09-28,2026-10-05"
+      ]
+    ],
+    "body": "geojson WPP (lihat data/wpp)"
+  },
+  "attempts": [
+    {
+      "ok": true,
+      "label": "objek FeatureCollection",
+      "status": 200,
+      "json": {
+        "total": 1,
+        "limit": null,
+        "offset": null,
+        "nextOffset": null,
+        "metadata": {},
+        "entries": [
+          {
+            "public-global-fishing-effort:v4.0": [
+              {
+                "date": "2026-09-28",
+                "flag": "IDN",
+                "hours": 879.4372222222224,
+                "vesselIDs": 76
+              },
+              {
+                "date": "2026-10-01",
+                "flag": "IDN",
+                "hours": 652.2580555555558,
+                "vesselIDs": 50
+              },
+              {
+                "date": "2026-09-29",
+                "flag": "IDN",
+                "hours": 693.9563888888888,
+                "vesselIDs": 70
+              },
+              {
+                "date": "2026-09-29",
+                "flag": "",
+                "hours": 0.1,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-10-03",
+                "flag": "IDN",
+                "hours": 607.3844444444444,
+                "vesselIDs": 70
+              },
+              {
+                "date": "2026-10-04",
+                "flag": "IDN",
+                "hours": 721.4850000000002,
+                "vesselIDs": 94
+              },
+              {
+                "date": "2026-10-02",
+                "flag": "IDN",
+                "hours": 596.3591666666667,
+                "vesselIDs": 53
+              },
+              {
+                "date": "2026-09-30",
+                "flag": "IDN",
+                "hours": 531.1324999999995,
+                "vesselIDs": 57
+              }
+            ]
+          }
+        ]
+      },
+      "xDatasets": "public-global-fishing-effort:v4.0",
+      "totalHours": 4682.112777777778
+    }
+  ]
+}

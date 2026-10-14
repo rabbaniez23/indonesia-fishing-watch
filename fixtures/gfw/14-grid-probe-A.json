@@ -1,0 +1,125 @@
+{
+  "capturedAt": "2026-10-13T11:23:59.173Z",
+  "request": {
+    "method": "POST",
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-presence:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "ENTIRE"
+      ],
+      [
+        "spatial-resolution",
+        "LOW"
+      ],
+      [
+        "spatial-aggregation",
+        "false"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ]
+    ],
+    "body": {
+      "geojson": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    112.76,
+                    -7.19
+                  ],
+                  [
+                    112.79,
+                    -7.19
+                  ],
+                  [
+                    112.79,
+                    -7.16
+                  ],
+                  [
+                    112.76,
+                    -7.16
+                  ],
+                  [
+                    112.76,
+                    -7.19
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-presence:v4.0",
+      "x-ratelimit-daily-remaining-requests": "49964",
+      "x-ratelimit-monthly-remaining-requests": "1499964"
+    },
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-presence:v4.0": [
+            {
+              "date": "2026-09-26,2026-10-03",
+              "flag": "IDN",
+              "hours": 17,
+              "lat": -7.2,
+              "lon": 112.8,
+              "vesselIDs": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cells": [
+    "-7.2,112.8"
+  ],
+  "expect": {
+    "sudut-barat-daya": [
+      -7.2,
+      112.7
+    ],
+    "titik-tengah": [
+      -7.2,
+      112.8
+    ],
+    "sudut-timur-laut": [
+      -7.1,
+      112.8
+    ]
+  },
+  "matches": [
+    "titik-tengah"
+  ]
+}

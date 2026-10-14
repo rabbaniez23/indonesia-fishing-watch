@@ -1,0 +1,33 @@
+{
+  "capturedAt": "2026-10-13T12:02:11.883Z",
+  "request": {
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        0
+      ],
+      [
+        "limit",
+        1
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "timeFilterMode": "__CEK__"
+    }
+  },
+  "error": {
+    "code": "INVALID_REQUEST",
+    "status": 422,
+    "detail": "Unprocessable Entity — timeFilterMode — timeFilterMode must be one of the following values: OVERLAP, START-DATE"
+  }
+}

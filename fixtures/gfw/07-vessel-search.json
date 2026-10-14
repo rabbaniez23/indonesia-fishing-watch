@@ -1,0 +1,210 @@
+{
+  "capturedAt": "2026-10-13T09:24:30.817Z",
+  "request": {
+    "method": "GET",
+    "path": "/v3/vessels/search",
+    "query": [
+      [
+        "query",
+        "525400107"
+      ],
+      [
+        "datasets[0]",
+        "public-global-vessel-identity:latest"
+      ],
+      [
+        "limit",
+        5
+      ]
+    ],
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-vessel-identity:v4.0",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "limit": 5,
+      "since": null,
+      "total": 2,
+      "entries": [
+        {
+          "dataset": "public-global-vessel-identity:v4.0",
+          "registryInfoTotalRecords": 0,
+          "registryInfo": [],
+          "registryOwners": [],
+          "combinedSourcesInfo": [
+            {
+              "vesselId": "63a7bd79e-e6b9-2e92-a0fe-aa3a290992b0",
+              "geartypes": [
+                {
+                  "name": "INCONCLUSIVE",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2019,
+                  "yearTo": 2020
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "FISHING",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2019,
+                  "yearTo": 2020
+                }
+              ]
+            },
+            {
+              "vesselId": "c01a77e7b-bb72-d278-b2dd-d0193120f10d",
+              "geartypes": [
+                {
+                  "name": "FISHING",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2025,
+                  "yearTo": 2026
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "FISHING",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2025,
+                  "yearTo": 2026
+                }
+              ]
+            },
+            {
+              "vesselId": "95e0b0762-20ed-25af-491e-238c8ad9e52d",
+              "geartypes": [
+                {
+                  "name": "INCONCLUSIVE",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2019,
+                  "yearTo": 2020
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "FISHING",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2019,
+                  "yearTo": 2020
+                }
+              ]
+            }
+          ],
+          "selfReportedInfo": [
+            {
+              "id": "c01a77e7b-bb72-d278-b2dd-d0193120f10d",
+              "ssvid": "525701947",
+              "shipname": "NAILA",
+              "nShipname": "NAILA",
+              "flag": "IDN",
+              "callsign": null,
+              "imo": null,
+              "messagesCounter": 3476,
+              "positionsCounter": 1356,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "SEVERAL_FIELDS",
+              "transmissionDateFrom": "2025-01-13T02:13:33Z",
+              "transmissionDateTo": "2026-09-22T19:49:38Z"
+            },
+            {
+              "id": "95e0b0762-20ed-25af-491e-238c8ad9e52d",
+              "ssvid": "525400107",
+              "shipname": "NAILA",
+              "nShipname": "NAILA",
+              "flag": "IDN",
+              "callsign": "YDA6259",
+              "imo": null,
+              "messagesCounter": 13429,
+              "positionsCounter": 3896,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "SEVERAL_FIELDS",
+              "transmissionDateFrom": "2019-08-03T02:59:56Z",
+              "transmissionDateTo": "2020-09-09T16:04:03Z"
+            },
+            {
+              "id": "63a7bd79e-e6b9-2e92-a0fe-aa3a290992b0",
+              "ssvid": "525400107",
+              "shipname": "NAILA",
+              "nShipname": "NAILA",
+              "flag": "IDN",
+              "callsign": null,
+              "imo": null,
+              "messagesCounter": 30073,
+              "positionsCounter": 7759,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "SEVERAL_FIELDS",
+              "transmissionDateFrom": "2019-10-22T03:13:10Z",
+              "transmissionDateTo": "2020-07-20T06:27:03Z"
+            }
+          ]
+        },
+        {
+          "dataset": "public-global-vessel-identity:v4.0",
+          "registryInfoTotalRecords": 0,
+          "registryInfo": [],
+          "registryOwners": [],
+          "combinedSourcesInfo": [
+            {
+              "vesselId": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+              "geartypes": [
+                {
+                  "name": "INCONCLUSIVE",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2020,
+                  "yearTo": 2026
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "FISHING",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2020,
+                  "yearTo": 2026
+                }
+              ]
+            }
+          ],
+          "selfReportedInfo": [
+            {
+              "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+              "ssvid": "525400107",
+              "shipname": "TB NAILA",
+              "nShipname": "TBNAILA",
+              "flag": "IDN",
+              "callsign": "YDA6259",
+              "imo": null,
+              "messagesCounter": 1651147,
+              "positionsCounter": 270151,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "NO_MATCH",
+              "transmissionDateFrom": "2020-09-29T08:50:10Z",
+              "transmissionDateTo": "2026-10-10T23:31:40Z"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "query": "525400107",
+        "normalizedQuery": "525400107",
+        "didYouMean": {
+          "shipname": {}
+        }
+      }
+    }
+  }
+}

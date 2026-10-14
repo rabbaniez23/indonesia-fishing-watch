@@ -1,0 +1,330 @@
+{
+  "capturedAt": "2026-10-13T11:48:53.501Z",
+  "request": {
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        0
+      ],
+      [
+        "limit",
+        3
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-07-05",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "vessels": [
+        "11934d1ee-edef-e207-c667-11ce3ae21cfa"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-port-visits-events:v4.0"
+        ],
+        "vessels": [
+          "11934d1ee-edef-e207-c667-11ce3ae21cfa"
+        ],
+        "dateRange": {
+          "from": "2026-07-05",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": "lihat region-eez-8492.geojson"
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 3,
+      "offset": 0,
+      "nextOffset": 3,
+      "total": 5,
+      "entries": [
+        {
+          "start": "2026-07-20T03:15:09.000Z",
+          "end": "2026-07-22T13:39:36.000Z",
+          "id": "d3f62d4020f9958b7fbadfc3ec5d5c43",
+          "type": "port_visit",
+          "position": {
+            "lat": -6.713,
+            "lon": 111.9138
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "APFIC",
+              "ACAP",
+              "WCPFC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            111.91383252342888,
+            -6.7129903821720545,
+            111.88440417404999,
+            -6.764388412503413
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 6,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+            "name": "TB NAILA",
+            "ssvid": "525400107",
+            "flag": "IDN",
+            "type": "fishing",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "bf5641df3897b8c1db4f89be65268514",
+            "confidence": "4",
+            "durationHrs": 58.4075,
+            "startAnchorage": {
+              "anchorageId": "2e77a8fb",
+              "atDock": false,
+              "distanceFromShoreKm": "6",
+              "flag": "IDN",
+              "id": "idn-tuban",
+              "lat": -6.7129903821720545,
+              "lon": 111.91383252342888,
+              "name": "TUBAN",
+              "topDestination": "TUBAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e77a8fb",
+              "atDock": false,
+              "distanceFromShoreKm": "6",
+              "flag": "IDN",
+              "id": "idn-tuban",
+              "lat": -6.7129903821720545,
+              "lon": 111.91383252342888,
+              "name": "TUBAN",
+              "topDestination": "TUBAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e77a7c1",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tuban",
+              "lat": -6.764388412503413,
+              "lon": 111.88440417404999,
+              "name": "TUBAN",
+              "topDestination": "TUBAN"
+            }
+          }
+        },
+        {
+          "start": "2026-07-28T13:20:08.000Z",
+          "end": "2026-07-29T09:37:56.000Z",
+          "id": "3a72ccb8f3b5a4d9fb6d0a0f5744fad3",
+          "type": "port_visit",
+          "position": {
+            "lat": -3.3814,
+            "lon": 114.5039
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "NACA",
+              "WCPFC",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            114.50385390036224,
+            -3.381398932105165,
+            114.565014770165,
+            -3.2120163585875683
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 1,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+            "name": "TB NAILA",
+            "ssvid": "525400107",
+            "flag": "IDN",
+            "type": "fishing",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "85495412170d93383edc72c2c7daebef",
+            "confidence": "4",
+            "durationHrs": 20.296666666666667,
+            "startAnchorage": {
+              "anchorageId": "2de41f97",
+              "atDock": true,
+              "distanceFromShoreKm": "1",
+              "flag": "IDN",
+              "id": "idn-banjarmasin",
+              "lat": -3.381398932105165,
+              "lon": 114.50385390036224,
+              "name": "BANJARMASIN",
+              "topDestination": "BANJARMASIN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2de41f97",
+              "atDock": true,
+              "distanceFromShoreKm": "1",
+              "flag": "IDN",
+              "id": "idn-banjarmasin",
+              "lat": -3.381398932105165,
+              "lon": 114.50385390036224,
+              "name": "BANJARMASIN",
+              "topDestination": "BANJARMASIN"
+            },
+            "endAnchorage": {
+              "anchorageId": "2de43daf",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-banjarmasin",
+              "lat": -3.2120163585875683,
+              "lon": 114.565014770165,
+              "name": "BANJARMASIN",
+              "topDestination": "BANJARMASIN"
+            }
+          }
+        },
+        {
+          "start": "2026-08-11T21:25:33.000Z",
+          "end": "2026-08-18T20:20:54.000Z",
+          "id": "f2847264ef07ffed606185a0ac2940a2",
+          "type": "port_visit",
+          "position": {
+            "lat": -2.7592,
+            "lon": 111.7218
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "NACA",
+              "SEAFDEC",
+              "APFIC",
+              "WCPFC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            111.7218050203586,
+            -2.759224677517264,
+            111.81238898434427,
+            -2.6598417908831946
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+            "name": "TB NAILA",
+            "ssvid": "525400107",
+            "flag": "IDN",
+            "type": "fishing",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "41698bed03016ed8fff52241de12ceaf",
+            "confidence": "4",
+            "durationHrs": 166.9225,
+            "startAnchorage": {
+              "anchorageId": "2e08fa51",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-kumaianchorage",
+              "lat": -2.759224677517264,
+              "lon": 111.7218050203586,
+              "name": "KUMAI ANCHORAGE",
+              "topDestination": "KUMAI"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e08fa51",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-kumaianchorage",
+              "lat": -2.759224677517264,
+              "lon": 111.7218050203586,
+              "name": "KUMAI ANCHORAGE",
+              "topDestination": "KUMAI"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e08f67d",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-kumaianchorage",
+              "lat": -2.6598417908831946,
+              "lon": 111.81238898434427,
+              "name": null,
+              "topDestination": "KUMAI"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

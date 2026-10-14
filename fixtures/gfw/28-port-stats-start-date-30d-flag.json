@@ -1,0 +1,195 @@
+{
+  "capturedAt": "2026-10-13T12:02:47.035Z",
+  "request": {
+    "path": "/v3/events/stats",
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-09-08",
+      "endDate": "2026-10-08",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "timeseriesInterval": "DAY",
+      "timeFilterMode": "START-DATE",
+      "groupBy": "FLAG",
+      "includes": [
+        "TOTAL_COUNT",
+        "EVENTS_GROUPED"
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "numEvents": 54235,
+      "numFlags": 98,
+      "numVessels": 13296,
+      "flags": [
+        "IDN",
+        "CHN",
+        "",
+        "PAN",
+        "MYS",
+        "SGP",
+        "MHL",
+        "LBR",
+        "BTN",
+        "BRB",
+        "AUS",
+        "HKG",
+        "STP",
+        "VCT",
+        "VNM",
+        "USA",
+        "BGD",
+        "KHM",
+        "BHS",
+        "KIR",
+        "CYP",
+        "TUV",
+        "LBY",
+        "MLT",
+        "CHL",
+        "GRC",
+        "FRA",
+        "MNG",
+        "PRT",
+        "GBR",
+        "VUT",
+        "SMR",
+        "VGB",
+        "LUX",
+        "JPN",
+        "THA",
+        "LIE",
+        "DEU",
+        "KOR",
+        "NIU",
+        "NGA",
+        "TWN",
+        "BEL",
+        "BLZ",
+        "ATG",
+        "NOR",
+        "PLW",
+        "ESP",
+        "CYM",
+        "ITA",
+        "JAM",
+        "SWE",
+        "NZL",
+        "SLE",
+        "FRO",
+        "NLD",
+        "FSM",
+        "PHL",
+        "TZA",
+        "COK",
+        "DNK",
+        "GIB",
+        "KNA",
+        "ISL",
+        "SYC",
+        "WLF",
+        "NCL",
+        "PAK",
+        "MLI",
+        "SOM",
+        "ALB",
+        "POL",
+        "DMA",
+        "HRV",
+        "CAF",
+        "FJI",
+        "SAU",
+        "AUT",
+        "COM",
+        "BFA",
+        "GNB",
+        "IND",
+        "QAT",
+        "IRQ",
+        "MAR",
+        "CUB",
+        "PCN",
+        "RUS",
+        "CAN",
+        "PSE",
+        "ERI",
+        "CHE",
+        "BES",
+        "NRU",
+        "MNP",
+        "HUN",
+        "REU",
+        "GUY"
+      ],
+      "groups": [
+        {
+          "name": "IDN",
+          "value": 47741
+        },
+        {
+          "name": "SGP",
+          "value": 2751
+        },
+        {
+          "name": "",
+          "value": 732
+        },
+        {
+          "name": "PAN",
+          "value": 634
+        },
+        {
+          "name": "LBR",
+          "value": 339
+        },
+        {
+          "name": "CHN",
+          "value": 235
+        },
+        {
+          "name": "MYS",
+          "value": 210
+        },
+        {
+          "name": "HKG",
+          "value": 187
+        },
+        {
+          "name": "MHL",
+          "value": 185
+        },
+        {
+          "name": "AUS",
+          "value": 102
+        },
+        {
+          "name": "VNM",
+          "value": 90
+        },
+        {
+          "name": "GBR",
+          "value": 72
+        },
+        {
+          "name": "BHS",
+          "value": 60
+        },
+        {
+          "name": "USA",
+          "value": 52
+        },
+        {
+          "name": "KOR",
+          "value": 45
+        }
+      ],
+      "_groupsLength": 98
+    }
+  }
+}

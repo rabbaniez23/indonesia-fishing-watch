@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — Design System Indonesia Fishing Watch v1.0 (§3, §5, §13).
+ * Tema light saja pada MVP; tidak ada dark dashboard.
+ */
+:root {
+  color-scheme: light;
+
+  /* Foundation & brand (§3.1) */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #eff5ef;
+  --color-ink: #172b22;
+  --color-ink-muted: #52645a;
+  --color-border: #dde6df;
+  --color-border-control: #7d9184;
+  --color-primary: #166534;
+  --color-primary-hover: #14532d;
+  --color-primary-soft: #eaf5eb;
+  --color-accent-lime: #b7e34b;
+  --color-accent-lime-ink: #23370a;
+  --color-inverse: #ffffff;
+
+  /* Status semantik (§3.2): teks / background / border */
+  --color-success: #166534;
+  --color-success-bg: #edf7ed;
+  --color-success-border: #b9ddbd;
+  --color-info: #1d4ed8;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+  --color-warning: #854d0e;
+  --color-warning-bg: #fff8e6;
+  --color-warning-border: #ebcf8f;
+  --color-error: #b91c1c;
+  --color-error-bg: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-neutral: #52645a;
+  --color-neutral-bg: #f2f5f2;
+  --color-neutral-border: #dde6df;
+
+  /* Palette data (§3.3) */
+  --color-data-fishing: #166534;
+  --color-data-presence: #0f766e;
+  --color-data-sar: #a16207;
+  --color-data-port: #1d4ed8;
+  --color-region-selected: #166534;
+  --color-region-other: #66796d;
+  --color-data-unknown: #64748b;
+  --color-data-compare: #52645a;
+  /* Garis periode pembanding di grafik: #52645A (DS) gagal validasi pemisahan terhadap warna metrik
+     (ΔE normal 6,8–14,3 < 15). #929292 lolos untuk ketiga metrik (ΔE ≥ 16,1; CVD ≥ 11,9; kontras ≥ 3:1). */
+  --color-chart-compare: #929292;
+  --color-chart-grid: #e6ece7;
+  --ramp-fishing-1: #edf6ee;
+  --ramp-fishing-2: #cde9d1;
+  --ramp-fishing-3: #9bd3a6;
+  --ramp-fishing-4: #53ac6c;
+  --ramp-fishing-5: #278345;
+  --ramp-fishing-6: #166534;
+
+  /* Radius, spacing, shadow (§5) */
+  --radius-input: 8px;
+  --radius-button: 12px;
+  --radius-nav: 10px;
+  --radius-card: 16px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --sidebar-expanded: 232px;
+  --sidebar-collapsed: 72px;
+  --topbar-height: 64px;
+  --shadow-card: 0 1px 2px rgba(23, 43, 34, 0.04);
+  --shadow-overlay: 0 12px 32px rgba(23, 43, 34, 0.12);
+
+  /* Glassmorphism (revisi visual 13 Okt 2026). Opasitas dijaga agar teks muted tetap ≥ 4,5:1 di atas latar
+     tergelap. Latar halaman putih polos (permintaan pengguna); kaca tetap terasa di atas peta & konten yang di-scroll. Fallback solid bila blur tidak didukung / transparansi dikurangi. */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-edge: rgba(22, 101, 52, 0.1);
+  --glass-blur: 18px;
+  --shadow-glass:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 0 0 1px var(--glass-edge), 0 12px 32px -14px rgba(15, 61, 46, 0.22),
+    0 2px 6px rgba(15, 61, 46, 0.05);
+  --shadow-glass-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(22, 101, 52, 0.22), 0 18px 40px -16px rgba(15, 61, 46, 0.3),
+    0 2px 6px rgba(15, 61, 46, 0.06);
+}
+
+/* Tailwind memetakan ke semantic variables — tidak memakai warna acak per halaman. */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-surface-subtle: var(--color-surface-subtle);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-border: var(--color-border);
+  --color-border-control: var(--color-border-control);
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-lime: var(--color-accent-lime);
+  --color-lime-ink: var(--color-accent-lime-ink);
+  --color-inverse: var(--color-inverse);
+
+  --color-success: var(--color-success);
+  --color-success-bg: var(--color-success-bg);
+  --color-success-border: var(--color-success-border);
+  --color-info: var(--color-info);
+  --color-info-bg: var(--color-info-bg);
+  --color-info-border: var(--color-info-border);
+  --color-warning: var(--color-warning);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-warning-border: var(--color-warning-border);
+  --color-error: var(--color-error);
+  --color-error-bg: var(--color-error-bg);
+  --color-error-border: var(--color-error-border);
+  --color-neutral: var(--color-neutral);
+  --color-neutral-bg: var(--color-neutral-bg);
+  --color-neutral-border: var(--color-neutral-border);
+
+  --color-data-fishing: var(--color-data-fishing);
+  --color-data-presence: var(--color-data-presence);
+  --color-data-sar: var(--color-data-sar);
+  --color-data-port: var(--color-data-port);
+  --color-chart-compare: var(--color-chart-compare);
+  --color-chart-grid: var(--color-chart-grid);
+
+  --radius-input: var(--radius-input);
+  --radius-button: var(--radius-button);
+  --radius-nav: var(--radius-nav);
+  --radius-card: var(--radius-card);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-overlay: var(--shadow-overlay);
+
+  /* Typography tokens (§4): ukuran / line-height */
+  --text-page-title: 28px;
+  --text-page-title--line-height: 36px;
+  --text-section-title: 18px;
+  --text-section-title--line-height: 26px;
+  --text-card-title: 15px;
+  --text-card-title--line-height: 22px;
+  --text-body: 14px;
+  --text-body--line-height: 22px;
+  --text-caption: 12px;
+  --text-caption--line-height: 18px;
+  --text-metric: 32px;
+  --text-metric--line-height: 40px;
+  --text-metric-mobile: 28px;
+  --text-metric-mobile--line-height: 36px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/* Permukaan kaca: kartu & panel. */
+@utility glass {
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Kaca lebih pekat: navigasi, overlay di atas peta, dialog, tooltip. */
+@utility glass-strong {
+  background-color: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border-color: var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Elemen kaca interaktif (kartu tautan): sedikit terangkat saat hover/fokus. */
+@utility glass-hover {
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease,
+    background-color 160ms ease;
+  &:hover,
+  &:focus-visible {
+    background-color: var(--glass-bg-strong);
+    box-shadow: var(--shadow-glass-hover);
+    transform: translateY(-2px);
+  }
+}
+
+/* Fallback: tanpa dukungan blur, transparansi dikurangi, mode kontras tinggi, atau cetak → permukaan solid. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass-bg: #ffffff;
+    --glass-bg-strong: #ffffff;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-bg: #ffffff;
+    --glass-bg-strong: #ffffff;
+  }
+}
+@media (forced-colors: active) {
+  .glass,
+  .glass-strong {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+  }
+}
+@media print {
+  .glass,
+  .glass-strong {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    border-color: #dde6df !important;
+  }
+}
+
+/* Fokus terlihat: outline primary 2px offset 2px (§7.1) */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tooltip hover peta (MapLibre Popup) mengikuti token DS; tidak menangkap klik ke sel di bawahnya. */
+.ifw-map-tooltip {
+  pointer-events: none;
+}
+.ifw-map-tooltip .maplibregl-popup-content {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-input);
+  box-shadow: var(--shadow-overlay);
+  color: var(--color-ink);
+  font: 12px/18px var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  padding: 6px 10px;
+}
+.ifw-map-tooltip .maplibregl-popup-content span {
+  color: var(--color-ink-muted);
+}

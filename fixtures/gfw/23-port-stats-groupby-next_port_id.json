@@ -1,0 +1,29 @@
+{
+  "capturedAt": "2026-10-13T12:02:10.348Z",
+  "request": {
+    "path": "/v3/events/stats",
+    "query": [],
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "start-date": "2026-09-26",
+      "end-date": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "timeseriesInterval": "DAY",
+      "groupBy": "NEXT_PORT_ID",
+      "includes": [
+        "TOTAL_COUNT",
+        "EVENTS_GROUPED"
+      ]
+    }
+  },
+  "error": {
+    "code": "INVALID_REQUEST",
+    "status": 422,
+    "detail": "Unprocessable Entity — property — property start-date should not exist — property — property end-date should not exist"
+  }
+}

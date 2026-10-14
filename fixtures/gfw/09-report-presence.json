@@ -1,0 +1,152 @@
+{
+  "capturedAt": "2026-10-13T09:24:33.247Z",
+  "request": {
+    "method": "GET",
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-presence:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "ENTIRE"
+      ],
+      [
+        "spatial-resolution",
+        "LOW"
+      ],
+      [
+        "spatial-aggregation",
+        "false"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ],
+      [
+        "region-dataset",
+        "public-eez-areas"
+      ],
+      [
+        "region-id",
+        8492
+      ]
+    ],
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-presence:v4.0",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-presence:v4.0": {
+            "_arrayLength": 91729,
+            "sample": [
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 2,
+                "lat": -8.6,
+                "lon": 136,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "MYS",
+                "hours": 1,
+                "lat": 1.3,
+                "lon": 102.2,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "PAN",
+                "hours": 1,
+                "lat": -10.4,
+                "lon": 115.5,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "MYS",
+                "hours": 2,
+                "lat": -0.9,
+                "lon": 117.9,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "HKG",
+                "hours": 1,
+                "lat": -3.6,
+                "lon": 131.8,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "JAM",
+                "hours": 1,
+                "lat": 5.1,
+                "lon": 106.6,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 1,
+                "lat": 3.4,
+                "lon": 105.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "PAN",
+                "hours": 1,
+                "lat": -4.5,
+                "lon": 107.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "SGP",
+                "hours": 1,
+                "lat": -1.3,
+                "lon": 117.2,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "PAN",
+                "hours": 2,
+                "lat": -4,
+                "lon": 107.5,
+                "vesselIDs": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

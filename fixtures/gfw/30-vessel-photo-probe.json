@@ -1,0 +1,66 @@
+{
+  "capturedAt": "2026-10-13T15:04:53.056Z",
+  "queries": [
+    "LONG XING",
+    "FU YUAN YU",
+    "SHIN JI",
+    "BAHARI",
+    "MINA",
+    "SAMUDERA"
+  ],
+  "entries": 270,
+  "withRegistryTotal": 23,
+  "withRegistryInfo": 23,
+  "withExtra": 1,
+  "keys": {
+    "registrySource": 1,
+    "iuuStatus": 1,
+    "hasComplianceInfo": 1,
+    "images": 1,
+    "operator": 1,
+    "builtYear": 1,
+    "depthM": 1
+  },
+  "samples": [
+    {
+      "query": "FU YUAN YU",
+      "name": "FU YUAN YU 8648",
+      "flag": "CHN",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    }
+  ]
+}

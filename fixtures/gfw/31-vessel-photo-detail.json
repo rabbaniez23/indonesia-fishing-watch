@@ -1,0 +1,254 @@
+{
+  "capturedAt": "2026-10-13T15:05:57.289Z",
+  "results": [
+    {
+      "vessel": {
+        "id": "887bb3da8-8483-970b-a58b-0949bd7e70bd",
+        "name": "FU YUAN YU 8648",
+        "flag": "CHN"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "6b7bc3e62-22c3-5577-48e1-aebc7e33b672",
+        "name": "SILVER SEA3",
+        "flag": "THA"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        },
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        },
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "f3813e33b-bb91-ea9b-c092-380a3bd07b00",
+        "name": "THUNDER",
+        "flag": "MDA"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": {
+            "value": 1984,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "dee48f891-19cf-92f6-c2a4-4be103dc22c6",
+        "name": "MORNING LORD",
+        "flag": "USA"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "23d698c3d-df05-2d06-8571-05a492631eba",
+        "name": "MIRA",
+        "flag": "COM"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        },
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        },
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "62b382355-5071-e045-cf75-59a0fbf8b621",
+        "name": "VIKING",
+        "flag": "UKR"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "vessel": {
+        "id": "c4a086598-8c89-6882-4780-1538dd654a17",
+        "name": "JAVA INSIGNIA",
+        "flag": "IDN"
+      },
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        },
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    }
+  ]
+}

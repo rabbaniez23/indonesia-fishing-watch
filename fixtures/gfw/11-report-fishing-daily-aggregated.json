@@ -1,0 +1,159 @@
+{
+  "capturedAt": "2026-10-13T10:58:23.945Z",
+  "request": {
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-fishing-effort:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "spatial-aggregation",
+        "true"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ],
+      [
+        "region-dataset",
+        "public-eez-areas"
+      ],
+      [
+        "region-id",
+        8492
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "DAILY"
+      ]
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-fishing-effort:v4.0",
+      "x-ratelimit-daily-remaining-requests": "49969",
+      "x-ratelimit-monthly-remaining-requests": "1499969"
+    },
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-fishing-effort:v4.0": {
+            "_arrayLength": 37,
+            "sample": [
+              {
+                "date": "2026-10-02",
+                "flag": "CHN",
+                "hours": 39.53333333333334,
+                "vesselIDs": 5
+              },
+              {
+                "date": "2026-09-28",
+                "flag": "",
+                "hours": 9.89388888888889,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-30",
+                "flag": "CHN",
+                "hours": 3.8286111111111114,
+                "vesselIDs": 2
+              },
+              {
+                "date": "2026-09-30",
+                "flag": "MYS",
+                "hours": 5.636666666666667,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-10-02",
+                "flag": "MYS",
+                "hours": 23.255277777777778,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-27",
+                "flag": "",
+                "hours": 23.14111111111111,
+                "vesselIDs": 3
+              },
+              {
+                "date": "2026-09-28",
+                "flag": "LBY",
+                "hours": 0.3055555555555555,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-27",
+                "flag": "SYC",
+                "hours": 1.6711111111111112,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-27",
+                "flag": "IDN",
+                "hours": 1985.097777777778,
+                "vesselIDs": 165
+              },
+              {
+                "date": "2026-09-28",
+                "flag": "IDN",
+                "hours": 2151.232500000002,
+                "vesselIDs": 168
+              },
+              {
+                "date": "2026-10-01",
+                "flag": "IDN",
+                "hours": 2130.3177777777805,
+                "vesselIDs": 156
+              },
+              {
+                "date": "2026-09-26",
+                "flag": "IDN",
+                "hours": 2179.890555555557,
+                "vesselIDs": 183
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "stats": {
+    "datasetKey": "public-global-fishing-effort:v4.0",
+    "rows": 37,
+    "fields": [
+      "date",
+      "flag",
+      "hours",
+      "vesselIDs"
+    ],
+    "rowsWithLatLon": 0,
+    "distinctVesselId": 0,
+    "distinctDates": [
+      "2026-10-02",
+      "2026-09-28",
+      "2026-09-30",
+      "2026-09-27",
+      "2026-10-01",
+      "2026-09-26",
+      "2026-09-29"
+    ],
+    "sumHours": 14430.406111111128
+  }
+}

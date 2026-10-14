@@ -1,0 +1,152 @@
+{
+  "capturedAt": "2026-10-13T09:24:31.875Z",
+  "request": {
+    "method": "GET",
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-fishing-effort:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "ENTIRE"
+      ],
+      [
+        "spatial-resolution",
+        "LOW"
+      ],
+      [
+        "spatial-aggregation",
+        "false"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ],
+      [
+        "region-dataset",
+        "public-eez-areas"
+      ],
+      [
+        "region-id",
+        8492
+      ]
+    ],
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-fishing-effort:v4.0",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-fishing-effort:v4.0": {
+            "_arrayLength": 1331,
+            "sample": [
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 0.35,
+                "lat": -5.9,
+                "lon": 110.9,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 2.1369444444444445,
+                "lat": -5.2,
+                "lon": 121.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 1.544722222222222,
+                "lat": -6.6,
+                "lon": 103.8,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 4.545833333333333,
+                "lat": -0.4,
+                "lon": 137,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 8.831666666666667,
+                "lat": 5.4,
+                "lon": 97.8,
+                "vesselIDs": 3
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 0.3672222222222222,
+                "lat": -4.9,
+                "lon": 112.1,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 2.187777777777778,
+                "lat": -12.1,
+                "lon": 115.3,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 65.73722222222224,
+                "lat": 3,
+                "lon": 100.3,
+                "vesselIDs": 12
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 2.375277777777778,
+                "lat": -6,
+                "lon": 105.7,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "flag": "IDN",
+                "hours": 24.8525,
+                "lat": 3.2,
+                "lon": 100.1,
+                "vesselIDs": 3
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

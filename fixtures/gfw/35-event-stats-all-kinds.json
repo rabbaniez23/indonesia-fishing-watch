@@ -1,0 +1,93 @@
+{
+  "capturedAt": "2026-10-14T02:45:30.176Z",
+  "start": "2026-09-28",
+  "end": "2026-10-05",
+  "region": "public-eez-areas/8492",
+  "fishing": {
+    "status": 200,
+    "keys": [
+      "numEvents",
+      "numFlags",
+      "numVessels",
+      "flags"
+    ],
+    "body": {
+      "numEvents": 1564,
+      "numFlags": 11,
+      "numVessels": 533,
+      "flags": {
+        "_arrayLength": 11,
+        "sample": [
+          "",
+          "MYS",
+          "IDN"
+        ]
+      }
+    }
+  },
+  "port_visit": {
+    "status": 200,
+    "keys": [
+      "numEvents",
+      "numFlags",
+      "numVessels",
+      "flags"
+    ],
+    "body": {
+      "numEvents": 19481,
+      "numFlags": 95,
+      "numVessels": 10919,
+      "flags": {
+        "_arrayLength": 95,
+        "sample": [
+          "IDN",
+          "SGP",
+          "LBR"
+        ]
+      }
+    }
+  },
+  "encounter": {
+    "status": 200,
+    "keys": [
+      "numEvents",
+      "numFlags",
+      "numVessels",
+      "flags"
+    ],
+    "body": {
+      "numEvents": 16,
+      "numFlags": 2,
+      "numVessels": 25,
+      "flags": {
+        "_arrayLength": 2,
+        "sample": [
+          "IDN",
+          "CHN"
+        ]
+      }
+    }
+  },
+  "loitering": {
+    "status": 200,
+    "keys": [
+      "numEvents",
+      "numFlags",
+      "numVessels",
+      "flags"
+    ],
+    "body": {
+      "numEvents": 7084,
+      "numFlags": 72,
+      "numVessels": 4308,
+      "flags": {
+        "_arrayLength": 72,
+        "sample": [
+          "LBR",
+          "",
+          "BLZ"
+        ]
+      }
+    }
+  }
+}

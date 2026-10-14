@@ -1,0 +1,303 @@
+{
+  "capturedAt": "2026-10-13T09:24:26.539Z",
+  "request": {
+    "method": "POST",
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        0
+      ],
+      [
+        "limit",
+        3
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-encounters-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-encounters-events:v4.0"
+        ],
+        "dateRange": {
+          "from": "2026-09-26",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": "lihat region-eez-8492.geojson",
+          "bytes": 526849,
+          "sha256": "4287d368b9cb1713aa28039a092172956e1041517a3a85738bed14ed53241f0c"
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 3,
+      "offset": 0,
+      "nextOffset": 3,
+      "total": 22,
+      "entries": [
+        {
+          "start": "2026-09-26T04:10:00.000Z",
+          "end": "2026-09-26T06:50:00.000Z",
+          "id": "85cac03f1383bcddbe4002317e19e5bd.1",
+          "type": "encounter",
+          "position": {
+            "lat": -0.1173,
+            "lon": 108.3176
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "SEAFDEC",
+              "IWC",
+              "ACAP",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            108.31764095508841,
+            -0.11730958903898328,
+            108.31764095508841,
+            -0.11730958903898328
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 41,
+            "endDistanceFromShoreKm": 41,
+            "startDistanceFromPortKm": 83.876609,
+            "endDistanceFromPortKm": 83.876609
+          },
+          "vessel": {
+            "id": "1a28932e4-4470-d5c1-cf3f-81ed6ffc8fcb",
+            "name": "FBI 01",
+            "ssvid": "525090909",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "encounter": {
+            "vessel": {
+              "id": "6170fcb63-3b21-67cc-6a0c-7211c079af38",
+              "flag": "IDN",
+              "name": "SURYA JAYA SAMPURNA",
+              "type": "fishing",
+              "ssvid": "525700009",
+              "publicAuthorizations": [
+                {
+                  "hasPubliclyListedAuthorization": "pending",
+                  "rfmo": "WCPFC"
+                }
+              ]
+            },
+            "medianDistanceKilometers": 0.262,
+            "medianSpeedKnots": 0.03,
+            "type": "fishing-fishing",
+            "potentialRisk": false,
+            "mainVesselPublicAuthorizationStatus": "pending_info",
+            "encounteredVesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-26T04:10:00.000Z",
+          "end": "2026-09-26T06:50:00.000Z",
+          "id": "85cac03f1383bcddbe4002317e19e5bd.2",
+          "type": "encounter",
+          "position": {
+            "lat": -0.1173,
+            "lon": 108.3176
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "APFIC",
+              "ACAP",
+              "SEAFDEC",
+              "IWC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            108.31764095508841,
+            -0.11730958903898328,
+            108.31764095508841,
+            -0.11730958903898328
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 41,
+            "endDistanceFromShoreKm": 41,
+            "startDistanceFromPortKm": 83.876609,
+            "endDistanceFromPortKm": 83.876609
+          },
+          "vessel": {
+            "id": "6170fcb63-3b21-67cc-6a0c-7211c079af38",
+            "name": "SURYA JAYA SAMPURNA",
+            "ssvid": "525700009",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "encounter": {
+            "vessel": {
+              "id": "1a28932e4-4470-d5c1-cf3f-81ed6ffc8fcb",
+              "flag": "IDN",
+              "name": "FBI 01",
+              "type": "fishing",
+              "ssvid": "525090909",
+              "publicAuthorizations": [
+                {
+                  "hasPubliclyListedAuthorization": "pending",
+                  "rfmo": "WCPFC"
+                }
+              ]
+            },
+            "medianDistanceKilometers": 0.262,
+            "medianSpeedKnots": 0.03,
+            "type": "fishing-fishing",
+            "potentialRisk": false,
+            "mainVesselPublicAuthorizationStatus": "pending_info",
+            "encounteredVesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-26T05:10:00.000Z",
+          "end": "2026-09-26T07:30:00.000Z",
+          "id": "7f6810d8919f4e5c05f81932ab87629a.2",
+          "type": "encounter",
+          "position": {
+            "lat": -0.1137,
+            "lon": 108.3184
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "IWC",
+              "ACAP",
+              "SEAFDEC",
+              "WCPFC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            108.31840156743247,
+            -0.11369416466847564,
+            108.31840156743247,
+            -0.11369416466847564
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 40,
+            "endDistanceFromShoreKm": 40,
+            "startDistanceFromPortKm": 83.603461,
+            "endDistanceFromPortKm": 83.603461
+          },
+          "vessel": {
+            "id": "6170fcb63-3b21-67cc-6a0c-7211c079af38",
+            "name": "SURYA JAYA SAMPURNA",
+            "ssvid": "525700009",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "encounter": {
+            "vessel": {
+              "id": "0956c924e-e695-14a5-d10d-760386ffeb84",
+              "flag": "IDN",
+              "name": "CHARLY MEGAH UTAMA",
+              "type": "fishing",
+              "ssvid": "525101278",
+              "publicAuthorizations": [
+                {
+                  "hasPubliclyListedAuthorization": "pending",
+                  "rfmo": "WCPFC"
+                }
+              ]
+            },
+            "medianDistanceKilometers": 0.379,
+            "medianSpeedKnots": 0.027,
+            "type": "fishing-fishing",
+            "potentialRisk": false,
+            "mainVesselPublicAuthorizationStatus": "pending_info",
+            "encounteredVesselPublicAuthorizationStatus": "pending_info"
+          }
+        }
+      ]
+    }
+  }
+}

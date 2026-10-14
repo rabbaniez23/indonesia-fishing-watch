@@ -1,0 +1,75 @@
+{
+  "capturedAt": "2026-10-13T15:40:09.072Z",
+  "wpp": "712",
+  "request": {
+    "datasets": [
+      "public-global-port-visits-events:latest"
+    ],
+    "startDate": "2026-09-28",
+    "endDate": "2026-10-05",
+    "geometry": "poligon WPP",
+    "timeseriesInterval": "DAY",
+    "includes": [
+      "TOTAL_COUNT"
+    ]
+  },
+  "result": {
+    "status": 200,
+    "body": {
+      "numEvents": 3810,
+      "numFlags": 49,
+      "numVessels": 2910,
+      "flags": [
+        "IDN",
+        "LBR",
+        "LBY",
+        "MHL",
+        "",
+        "PAN",
+        "SGP",
+        "PRT",
+        "MYS",
+        "GBR",
+        "BLZ",
+        "MLT",
+        "VNM",
+        "GNB",
+        "BHS",
+        "HKG",
+        "CHN",
+        "NZL",
+        "SYC",
+        "STP",
+        "FRA",
+        "CYP",
+        "KOR",
+        "SOM",
+        "POL",
+        "TWN",
+        "TUV",
+        "KIR",
+        "ALB",
+        "BRB",
+        "JAM",
+        "PCN",
+        "JPN",
+        "BES",
+        "COM",
+        "AUS",
+        "VUT",
+        "MOZ",
+        "MNP",
+        "SAU",
+        "ATG",
+        "BGD",
+        "PLW",
+        "ITA",
+        "DNK",
+        "USA",
+        "PHL",
+        "NIU",
+        "GAB"
+      ]
+    }
+  }
+}

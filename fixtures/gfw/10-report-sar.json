@@ -1,0 +1,152 @@
+{
+  "capturedAt": "2026-10-13T09:24:33.592Z",
+  "request": {
+    "method": "GET",
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-sar-presence:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "group-by",
+        "FLAG"
+      ],
+      [
+        "temporal-resolution",
+        "ENTIRE"
+      ],
+      [
+        "spatial-resolution",
+        "LOW"
+      ],
+      [
+        "spatial-aggregation",
+        "false"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ],
+      [
+        "region-dataset",
+        "public-eez-areas"
+      ],
+      [
+        "region-id",
+        8492
+      ]
+    ],
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-sar-presence:v4.0",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-sar-presence:v4.0": {
+            "_arrayLength": 2543,
+            "sample": [
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "",
+                "lat": 2.8,
+                "lon": 100.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 2,
+                "flag": "",
+                "lat": -3.4,
+                "lon": 107.3,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "",
+                "lat": -5.6,
+                "lon": 105.3,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "",
+                "lat": -5.2,
+                "lon": 108.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 2,
+                "flag": "",
+                "lat": 1,
+                "lon": 98.7,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "CYP",
+                "lat": 5.7,
+                "lon": 94.4,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "",
+                "lat": -2.6,
+                "lon": 132.7,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "",
+                "lat": -5.6,
+                "lon": 119,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "IDN",
+                "lat": 1.6,
+                "lon": 102.3,
+                "vesselIDs": 1
+              },
+              {
+                "date": "2026-09-26,2026-10-03",
+                "detections": 1,
+                "flag": "TUR",
+                "lat": 3.9,
+                "lon": 99.6,
+                "vesselIDs": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

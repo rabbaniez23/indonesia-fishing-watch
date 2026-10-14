@@ -1,0 +1,234 @@
+{
+  "capturedAt": "2026-10-13T15:05:22.127Z",
+  "queries": [
+    "STS-50",
+    "SILVER SEA 2",
+    "ANDREY DOLGOV",
+    "THUNDER",
+    "VIKING",
+    "ATLANTIC WIND",
+    "HAI LUNG",
+    "TAI HONG"
+  ],
+  "entries": 314,
+  "withRegistryTotal": 36,
+  "withRegistryInfo": 36,
+  "withExtra": 6,
+  "keys": {
+    "registrySource": 6,
+    "iuuStatus": 6,
+    "hasComplianceInfo": 6,
+    "images": 6,
+    "operator": 6,
+    "builtYear": 6,
+    "depthM": 6
+  },
+  "samples": [
+    {
+      "query": "SILVER SEA 2",
+      "name": "SILVER SEA3",
+      "flag": "THA",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "query": "THUNDER",
+      "name": "THUNDER",
+      "flag": "MDA",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": {
+            "value": 1984,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "query": "THUNDER",
+      "name": "MORNING LORD",
+      "flag": "USA",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "query": "VIKING",
+      "name": "MIRA",
+      "flag": "COM",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    },
+    {
+      "query": "VIKING",
+      "name": "VIKING",
+      "flag": "UKR",
+      "registryKeys": [
+        "id",
+        "sourceCode",
+        "ssvid",
+        "flag",
+        "shipname",
+        "nShipname",
+        "callsign",
+        "imo",
+        "latestVesselInfo",
+        "transmissionDateFrom",
+        "transmissionDateTo",
+        "geartypes",
+        "lengthM",
+        "tonnageGt",
+        "vesselInfoReference",
+        "extraFields"
+      ],
+      "extraFields": [
+        {
+          "registrySource": "TMT",
+          "iuuStatus": {
+            "value": null,
+            "dateFrom": null,
+            "dateFromMask": null,
+            "dateTo": null,
+            "dateToMask": null
+          },
+          "hasComplianceInfo": null,
+          "images": [],
+          "operator": null,
+          "builtYear": null,
+          "depthM": null
+        }
+      ]
+    }
+  ]
+}

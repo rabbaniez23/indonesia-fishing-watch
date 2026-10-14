@@ -1,0 +1,490 @@
+{
+  "capturedAt": "2026-10-13T15:40:07.951Z",
+  "wpp": "712",
+  "request": {
+    "datasets": [
+      "public-global-port-visits-events:latest"
+    ],
+    "startDate": "2026-09-28",
+    "endDate": "2026-10-05",
+    "geometry": "poligon WPP"
+  },
+  "result": {
+    "status": 201,
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-port-visits-events:v4.0"
+        ],
+        "dateRange": {
+          "from": "2026-09-28",
+          "to": "2026-10-05"
+        },
+        "geometry": {
+          "_omitted": "poligon WPP dikirim sendiri"
+        }
+      },
+      "limit": 5,
+      "offset": 0,
+      "nextOffset": 5,
+      "total": 3810,
+      "entries": [
+        {
+          "start": "2015-06-01T07:24:21.000Z",
+          "end": "2026-09-29T14:17:43.000Z",
+          "id": "21263931a256177a12f6c0bf5189b5e5",
+          "type": "port_visit",
+          "position": {
+            "lat": -7.1131,
+            "lon": 112.6597
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "ACAP",
+              "WCPFC",
+              "SEAFDEC",
+              "IWC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            112.65972734365842,
+            -7.113059734858632,
+            112.65972734365842,
+            -7.113059734858632
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "da8e26f9c-cfce-0fd3-8e0d-8c4d3be445df",
+            "name": null,
+            "ssvid": "525015943",
+            "flag": "IDN",
+            "type": "cargo",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "5f5217e3f970ebe0107f746bba2b2a3f",
+            "confidence": "3",
+            "durationHrs": 99318.88944444444,
+            "startAnchorage": {
+              "anchorageId": "2dd800d3",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-gresik",
+              "lat": -7.113059734858632,
+              "lon": 112.65972734365842,
+              "name": "GRESIK",
+              "topDestination": "SURABAYA"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2dd800d3",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-gresik",
+              "lat": -7.113059734858632,
+              "lon": 112.65972734365842,
+              "name": "GRESIK",
+              "topDestination": "SURABAYA"
+            },
+            "endAnchorage": {
+              "anchorageId": "2dd800d3",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-gresik",
+              "lat": -7.113059734858632,
+              "lon": 112.65972734365842,
+              "name": "GRESIK",
+              "topDestination": "SURABAYA"
+            }
+          }
+        },
+        {
+          "start": "2016-06-16T04:03:35.000Z",
+          "end": "2026-10-03T12:48:29.000Z",
+          "id": "885fe7dba0d31f12eeb402ec0e5969c9",
+          "type": "port_visit",
+          "position": {
+            "lat": -5.9604,
+            "lon": 106.131
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "WCPFC",
+              "SEAFDEC",
+              "ACAP",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            106.13101790180463,
+            -5.960411553029135,
+            106.13101790180463,
+            -5.960411553029135
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "3bcad260c-cc35-7991-12e6-1462ba6c4790",
+            "name": null,
+            "ssvid": "525021407",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "7711ab063595c1eee4524f47bb12c982",
+            "confidence": "2",
+            "durationHrs": 90272.74833333334,
+            "startAnchorage": {
+              "anchorageId": "2e4192e7",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-cilegon",
+              "lat": -5.960411553029135,
+              "lon": 106.13101790180463,
+              "name": "CILEGON",
+              "topDestination": "CILEGON"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e4192e7",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-cilegon",
+              "lat": -5.960411553029135,
+              "lon": 106.13101790180463,
+              "name": "CILEGON",
+              "topDestination": "CILEGON"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e4192e7",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-cilegon",
+              "lat": -5.960411553029135,
+              "lon": 106.13101790180463,
+              "name": "CILEGON",
+              "topDestination": "CILEGON"
+            }
+          }
+        },
+        {
+          "start": "2017-03-27T10:35:55.000Z",
+          "end": "2026-10-09T08:44:04.000Z",
+          "id": "b0008f0e7a437965b4efa1126a95dc24",
+          "type": "port_visit",
+          "position": {
+            "lat": -6.8584,
+            "lon": 112.427
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "ACAP",
+              "APFIC",
+              "IWC",
+              "WCPFC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            112.42695464822158,
+            -6.858416629476132,
+            112.42695464822158,
+            -6.858416629476132
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "bacb0f37c-c761-bcfe-7137-9c37c92c7a83",
+            "name": null,
+            "ssvid": "525005316",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "818ac8108a2a357661f83ac6d150cdc5",
+            "confidence": "4",
+            "durationHrs": 83590.13583333333,
+            "startAnchorage": {
+              "anchorageId": "2e77c2cb",
+              "atDock": false,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-lamongan",
+              "lat": -6.858416629476132,
+              "lon": 112.42695464822158,
+              "name": "LAMONGAN",
+              "topDestination": "LAMONGAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e77c2cb",
+              "atDock": false,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-lamongan",
+              "lat": -6.858416629476132,
+              "lon": 112.42695464822158,
+              "name": "LAMONGAN",
+              "topDestination": "LAMONGAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e77c2cb",
+              "atDock": false,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-lamongan",
+              "lat": -6.858416629476132,
+              "lon": 112.42695464822158,
+              "name": "LAMONGAN",
+              "topDestination": "LAMONGAN"
+            }
+          }
+        },
+        {
+          "start": "2019-07-23T15:31:51.000Z",
+          "end": "2026-10-09T21:49:25.000Z",
+          "id": "6be8e45f0c9a908f43fac9b36d261f41",
+          "type": "port_visit",
+          "position": {
+            "lat": -6.9789,
+            "lon": 112.7008
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "ACAP",
+              "IWC",
+              "WCPFC",
+              "SEAFDEC",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            112.70080054565555,
+            -6.978880383809516,
+            112.72952318202812,
+            -7.199383899803591
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 5,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "e2b53e3fb-baa0-abc1-68e0-169362a67a7d",
+            "name": "TB BUGANDA",
+            "ssvid": "525004271",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "c7a655986a4f4ef11dad60c288c4cc52",
+            "confidence": "3",
+            "durationHrs": 63246.29277777778,
+            "startAnchorage": {
+              "anchorageId": "2dd80925",
+              "atDock": false,
+              "distanceFromShoreKm": "5",
+              "flag": "IDN",
+              "id": "idn-surabaya",
+              "lat": -6.978880383809516,
+              "lon": 112.70080054565555,
+              "name": null,
+              "topDestination": "SURABAYA"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2dd80925",
+              "atDock": false,
+              "distanceFromShoreKm": "5",
+              "flag": "IDN",
+              "id": "idn-surabaya",
+              "lat": -6.978880383809516,
+              "lon": 112.70080054565555,
+              "name": null,
+              "topDestination": "SURABAYA"
+            },
+            "endAnchorage": {
+              "anchorageId": "2dd7f8bb",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-surabaya",
+              "lat": -7.199383899803591,
+              "lon": 112.72952318202812,
+              "name": "SURABAYA",
+              "topDestination": "SURABAYA"
+            }
+          }
+        },
+        {
+          "start": "2019-09-22T03:00:50.000Z",
+          "end": "2026-10-04T13:51:38.000Z",
+          "id": "085429c4c762aabe5f2d17af31d0f5a7",
+          "type": "port_visit",
+          "position": {
+            "lat": -6.0794,
+            "lon": 106.8915
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "APFIC",
+              "WCPFC",
+              "ACAP",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            106.8814593291453,
+            -6.1011245231710465,
+            106.89731915356278,
+            -6.074414229828808
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 3,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "c7ff2e210-0489-f046-e6cb-4070b8058e57",
+            "name": "SPOB GRAHA DUA DUA",
+            "ssvid": "525500098",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "300622cf7788e2ef6a42f5f2728ac173",
+            "confidence": "2",
+            "durationHrs": 61666.846666666665,
+            "startAnchorage": {
+              "anchorageId": "2e6a1fa5",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.1011245231710465,
+              "lon": 106.8814593291453,
+              "name": "JAKARTA",
+              "topDestination": "JAKARTA"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e6a1f6d",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.07939855006435,
+              "lon": 106.89145688165722,
+              "name": "JAKARTA",
+              "topDestination": "TANJUNG PRIUK"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e6a1f69",
+              "atDock": false,
+              "distanceFromShoreKm": "3",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.074414229828808,
+              "lon": 106.89731915356278,
+              "name": "JAKARTA",
+              "topDestination": "JAKARTA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

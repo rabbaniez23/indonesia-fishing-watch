@@ -1,0 +1,296 @@
+{
+  "capturedAt": "2026-10-13T10:58:25.578Z",
+  "request": {
+    "path": "/v3/4wings/report",
+    "query": [
+      [
+        "datasets[0]",
+        "public-global-fishing-effort:latest"
+      ],
+      [
+        "format",
+        "JSON"
+      ],
+      [
+        "spatial-aggregation",
+        "true"
+      ],
+      [
+        "date-range",
+        "2026-09-26,2026-10-03"
+      ],
+      [
+        "region-dataset",
+        "public-eez-areas"
+      ],
+      [
+        "region-id",
+        8492
+      ],
+      [
+        "group-by",
+        "VESSEL_ID"
+      ],
+      [
+        "temporal-resolution",
+        "ENTIRE"
+      ]
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-fishing-effort:v4.0",
+      "x-ratelimit-daily-remaining-requests": "49969",
+      "x-ratelimit-monthly-remaining-requests": "1499969"
+    },
+    "body": {
+      "total": 1,
+      "limit": null,
+      "offset": null,
+      "nextOffset": null,
+      "metadata": {},
+      "entries": [
+        {
+          "public-global-fishing-effort:v4.0": {
+            "_arrayLength": 487,
+            "sample": [
+              {
+                "callsign": "YD5318",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-27T03:00:00Z",
+                "exitTimestamp": "2026-09-27T04:00:00Z",
+                "firstTransmissionDate": "2022-09-26T15:57:04Z",
+                "flag": "IDN",
+                "geartype": "TRAWLERS",
+                "hours": 0.8097222222222222,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-08T09:07:18Z",
+                "mmsi": "525301486",
+                "shipName": "MPAX-02",
+                "vesselId": "b5712fd66-628c-ab77-3f97-81f78b40ad6e",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "10200",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T23:00:00Z",
+                "exitTimestamp": "2026-09-26T23:00:00Z",
+                "firstTransmissionDate": "2025-06-12T06:21:08Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 0.3336111111111111,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-10T05:13:48Z",
+                "mmsi": "525860898",
+                "shipName": "KM JAMAIN",
+                "vesselId": "e0a2fe473-38d9-c921-aaca-ab6730e17721",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "J",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T00:00:00Z",
+                "exitTimestamp": "2026-10-02T23:00:00Z",
+                "firstTransmissionDate": "2026-05-27T18:36:45Z",
+                "flag": "IDN",
+                "geartype": "FISHING",
+                "hours": 79.78861111111111,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-10T23:48:26Z",
+                "mmsi": "525865320",
+                "shipName": "KM UNITED 1",
+                "vesselId": "bcb044e37-7fbb-92a2-a14b-d1d6dc78629c",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-29T05:00:00Z",
+                "exitTimestamp": "2026-09-29T19:00:00Z",
+                "firstTransmissionDate": "2021-10-11T10:21:50Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 13.224166666666667,
+                "imo": "",
+                "lastTransmissionDate": "2026-09-29T20:10:29Z",
+                "mmsi": "525201812",
+                "shipName": "SETIA BHAKTI G",
+                "vesselId": "7006c046d-d4ea-9082-967f-97018364b1f7",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "YDZO3",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-28T10:00:00Z",
+                "exitTimestamp": "2026-10-02T23:00:00Z",
+                "firstTransmissionDate": "2025-06-24T03:01:23Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 1.588888888888889,
+                "imo": "1109425",
+                "lastTransmissionDate": "2026-10-10T23:59:53Z",
+                "mmsi": "525901290",
+                "shipName": "TETAP JAYA 1",
+                "vesselId": "527bc919a-abf0-9f0c-9e5b-a6860d0f3c83",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-10-01T22:00:00Z",
+                "exitTimestamp": "2026-10-01T23:00:00Z",
+                "firstTransmissionDate": "2022-01-06T02:16:51Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 0.08361111111111111,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-02T00:03:51Z",
+                "mmsi": "525301037",
+                "shipName": "PERMATA AYU SYAUQY",
+                "vesselId": "1f4fabc44-4db1-9a68-a1e4-cc2dca5ebe58",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "YEE4004",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T00:00:00Z",
+                "exitTimestamp": "2026-10-02T12:00:00Z",
+                "firstTransmissionDate": "2026-04-06T11:28:31Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 14.161666666666669,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-02T21:56:24Z",
+                "mmsi": "525301879",
+                "shipName": "EKA SARI 02",
+                "vesselId": "485d2aa29-9375-a5ca-b260-f1e591eabcac",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T00:00:00Z",
+                "exitTimestamp": "2026-10-02T22:00:00Z",
+                "firstTransmissionDate": "2023-10-29T05:40:43Z",
+                "flag": "IDN",
+                "geartype": "TRAWLERS",
+                "hours": 131.155,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-10T19:18:50Z",
+                "mmsi": "525120633",
+                "shipName": "KM ELANG LAUT 999",
+                "vesselId": "7a1dbad01-1c97-7e39-f73f-4a895f26057e",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "YDC4082",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T00:00:00Z",
+                "exitTimestamp": "2026-10-01T22:00:00Z",
+                "firstTransmissionDate": "2025-06-25T04:41:22Z",
+                "flag": "IDN",
+                "geartype": "SET_LONGLINES",
+                "hours": 3.922222222222222,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-09T05:46:50Z",
+                "mmsi": "525101125",
+                "shipName": "MP SRIWIJAYA 3",
+                "vesselId": "ace71aeb5-5bd2-ec76-1eb5-fdaa4b9b34a0",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-26T00:00:00Z",
+                "exitTimestamp": "2026-09-26T02:00:00Z",
+                "firstTransmissionDate": "2025-09-06T16:15:08Z",
+                "flag": "IDN",
+                "geartype": "FISHING",
+                "hours": 2.355555555555556,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-06T12:38:38Z",
+                "mmsi": "525009560",
+                "shipName": "KINGS SILIWANGI",
+                "vesselId": "f2a18a473-389b-087d-6889-f4730055c506",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-27T07:00:00Z",
+                "exitTimestamp": "2026-09-28T13:00:00Z",
+                "firstTransmissionDate": "2025-07-04T08:19:11Z",
+                "flag": "IDN",
+                "geartype": "POLE_AND_LINE",
+                "hours": 4.448611111111112,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-10T14:18:22Z",
+                "mmsi": "525004628",
+                "shipName": "KM.WAFA JAYA C",
+                "vesselId": "e75ee0e84-41c9-5a3a-2617-0c2f6006f4f7",
+                "vesselType": "FISHING"
+              },
+              {
+                "callsign": "YEB5574",
+                "dataset": "public-global-vessel-identity:v4.0",
+                "date": "2026-09-26,2026-10-03",
+                "entryTimestamp": "2026-09-29T08:00:00Z",
+                "exitTimestamp": "2026-10-02T10:00:00Z",
+                "firstTransmissionDate": "2024-09-14T12:38:36Z",
+                "flag": "IDN",
+                "geartype": "INCONCLUSIVE",
+                "hours": 22.604444444444443,
+                "imo": "",
+                "lastTransmissionDate": "2026-10-10T23:59:47Z",
+                "mmsi": "525701639",
+                "shipName": "BANDAR NELAYAN 161",
+                "vesselId": "436befe19-9cd2-0051-e5a3-038913740f9f",
+                "vesselType": "FISHING"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "stats": {
+    "datasetKey": "public-global-fishing-effort:v4.0",
+    "rows": 487,
+    "fields": [
+      "callsign",
+      "dataset",
+      "date",
+      "entryTimestamp",
+      "exitTimestamp",
+      "firstTransmissionDate",
+      "flag",
+      "geartype",
+      "hours",
+      "imo",
+      "lastTransmissionDate",
+      "mmsi",
+      "shipName",
+      "vesselId",
+      "vesselType"
+    ],
+    "rowsWithLatLon": 0,
+    "distinctVesselId": 487,
+    "distinctDates": [
+      "2026-09-26,2026-10-03"
+    ],
+    "sumHours": 14430.406111111106
+  }
+}

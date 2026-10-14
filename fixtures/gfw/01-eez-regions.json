@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-13T09:24:14.754Z",
+  "request": {
+    "method": "GET",
+    "path": "/v3/datasets/public-eez-areas/context-layers",
+    "query": [],
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-eez-areas",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "_arrayLength": 286,
+      "entriesMentioningIDN": [
+        {
+          "label": "Indonesian Exclusive Economic Zone",
+          "id": 8492,
+          "iso3": "IDN",
+          "isoSov1": "IDN",
+          "isoSov2": null,
+          "isoSov3": null,
+          "territory1": "Indonesia"
+        }
+      ],
+      "sample": [
+        {
+          "label": "Jordanian Exclusive Economic Zone",
+          "id": 8491,
+          "iso3": "JOR",
+          "isoSov1": "JOR",
+          "isoSov2": null,
+          "isoSov3": null,
+          "territory1": "Jordan"
+        },
+        {
+          "label": "Uruguayan Exclusive Economic Zone",
+          "id": 8467,
+          "iso3": "URY",
+          "isoSov1": "URY",
+          "isoSov2": null,
+          "isoSov3": null,
+          "territory1": "Uruguay"
+        },
+        {
+          "label": "Latvian Exclusive Economic Zone",
+          "id": 5683,
+          "iso3": "LVA",
+          "isoSov1": "LVA",
+          "isoSov2": null,
+          "isoSov3": null,
+          "territory1": "Latvia"
+        }
+      ]
+    }
+  }
+}

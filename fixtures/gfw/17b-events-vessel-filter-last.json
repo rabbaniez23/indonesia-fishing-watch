@@ -1,0 +1,126 @@
+{
+  "capturedAt": "2026-10-13T11:48:51.490Z",
+  "request": {
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        26
+      ],
+      [
+        "limit",
+        2
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-fishing-events:latest"
+      ],
+      "startDate": "2026-07-05",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "vessels": [
+        "11934d1ee-edef-e207-c667-11ce3ae21cfa"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-fishing-events:v4.0"
+        ],
+        "vessels": [
+          "11934d1ee-edef-e207-c667-11ce3ae21cfa"
+        ],
+        "dateRange": {
+          "from": "2026-07-05",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": "lihat region-eez-8492.geojson"
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 2,
+      "offset": 26,
+      "nextOffset": null,
+      "total": 27,
+      "entries": [
+        {
+          "start": "2026-09-30T01:53:32.000Z",
+          "end": "2026-10-01T23:52:33.000Z",
+          "id": "fdc43858739b84b811ba14997a16ed2f",
+          "type": "fishing",
+          "position": {
+            "lat": -6.273,
+            "lon": 110.8377
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "ACAP",
+              "WCPFC",
+              "APFIC",
+              "IWC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            110.01758,
+            -6.51167,
+            111.715,
+            -6.150227
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 41,
+            "endDistanceFromShoreKm": 57,
+            "startDistanceFromPortKm": 45.710137,
+            "endDistanceFromPortKm": 20.136889
+          },
+          "vessel": {
+            "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+            "name": "TB NAILA",
+            "ssvid": "525400107",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 223.85824670622893,
+            "averageSpeedKnots": 2.2516348773029917,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        }
+      ]
+    }
+  }
+}

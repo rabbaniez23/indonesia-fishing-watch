@@ -1,0 +1,161 @@
+{
+  "capturedAt": "2026-10-13T11:48:58.394Z",
+  "request": {
+    "query": "NAILA",
+    "limit": 3,
+    "since": "(token dari halaman 1)"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "limit": 3,
+      "since": "(token)",
+      "total": 225,
+      "entries": [
+        {
+          "dataset": "public-global-vessel-identity:v4.0",
+          "registryInfoTotalRecords": 0,
+          "registryInfo": [],
+          "registryOwners": [],
+          "combinedSourcesInfo": [
+            {
+              "vesselId": "54204334a-a70d-ece1-6f2a-fb02b390067d",
+              "geartypes": [
+                {
+                  "name": "OTHER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2020,
+                  "yearTo": 2026
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "OTHER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2020,
+                  "yearTo": 2026
+                }
+              ]
+            }
+          ],
+          "selfReportedInfo": [
+            {
+              "id": "54204334a-a70d-ece1-6f2a-fb02b390067d",
+              "ssvid": "211809930",
+              "shipname": "NAILA",
+              "nShipname": "NAILA",
+              "flag": "DEU",
+              "callsign": null,
+              "imo": null,
+              "messagesCounter": 273713,
+              "positionsCounter": 43866,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "NO_MATCH",
+              "transmissionDateFrom": "2020-08-28T09:11:44Z",
+              "transmissionDateTo": "2026-10-04T15:16:39Z"
+            }
+          ]
+        },
+        {
+          "dataset": "public-global-vessel-identity:v4.0",
+          "registryInfoTotalRecords": 0,
+          "registryInfo": [],
+          "registryOwners": [],
+          "combinedSourcesInfo": [
+            {
+              "vesselId": "283bbc99b-b923-9062-78a2-04c4738f7a1e",
+              "geartypes": [
+                {
+                  "name": "PASSENGER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2021,
+                  "yearTo": 2024
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "PASSENGER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2021,
+                  "yearTo": 2024
+                }
+              ]
+            }
+          ],
+          "selfReportedInfo": [
+            {
+              "id": "283bbc99b-b923-9062-78a2-04c4738f7a1e",
+              "ssvid": "211832780",
+              "shipname": "NAILAH",
+              "nShipname": "NAILAH",
+              "flag": "DEU",
+              "callsign": "DG9710",
+              "imo": null,
+              "messagesCounter": 564878,
+              "positionsCounter": 79456,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "NO_MATCH",
+              "transmissionDateFrom": "2021-08-30T11:36:00Z",
+              "transmissionDateTo": "2024-05-26T05:28:42Z"
+            }
+          ]
+        },
+        {
+          "dataset": "public-global-vessel-identity:v4.0",
+          "registryInfoTotalRecords": 0,
+          "registryInfo": [],
+          "registryOwners": [],
+          "combinedSourcesInfo": [
+            {
+              "vesselId": "3d0dfd7cd-deb7-a090-2a52-4b49ae51f933",
+              "geartypes": [
+                {
+                  "name": "OTHER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2026,
+                  "yearTo": 2026
+                }
+              ],
+              "shiptypes": [
+                {
+                  "name": "OTHER",
+                  "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+                  "yearFrom": 2026,
+                  "yearTo": 2026
+                }
+              ]
+            }
+          ],
+          "selfReportedInfo": [
+            {
+              "id": "3d0dfd7cd-deb7-a090-2a52-4b49ae51f933",
+              "ssvid": "225999790",
+              "shipname": "NAILU",
+              "nShipname": "NAILU",
+              "flag": "ESP",
+              "callsign": null,
+              "imo": null,
+              "messagesCounter": 260604,
+              "positionsCounter": 32920,
+              "sourceCode": [
+                "AIS"
+              ],
+              "matchFields": "NO_MATCH",
+              "transmissionDateFrom": "2026-04-10T09:10:14Z",
+              "transmissionDateTo": "2026-10-02T11:59:34Z"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "query": "NAILA",
+        "normalizedQuery": "NAILA",
+        "didYouMean": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "capturedAt": "2026-10-13T12:02:43.813Z",
+  "request": {
+    "path": "/v3/events/stats",
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "timeseriesInterval": "DAY",
+      "timeFilterMode": "START-DATE",
+      "includes": [
+        "TOTAL_COUNT",
+        "TIME_SERIES"
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "numEvents": 12691,
+      "numFlags": 75,
+      "numVessels": 6012,
+      "flags": [
+        "IDN",
+        "LBR",
+        "SGP",
+        "",
+        "PAN",
+        "USA",
+        "BHS",
+        "BGD",
+        "LBY",
+        "MHL",
+        "CHN",
+        "FRA",
+        "PRT",
+        "MYS",
+        "GBR",
+        "DNK",
+        "GIB",
+        "VNM",
+        "FSM",
+        "JPN",
+        "VUT",
+        "HKG",
+        "TUV",
+        "LIE",
+        "MLT",
+        "ISL",
+        "AUS",
+        "KOR",
+        "PHL",
+        "MLI",
+        "BLZ",
+        "ALB",
+        "POL",
+        "DMA",
+        "SYC",
+        "NZL",
+        "TWN",
+        "SLE",
+        "CYP",
+        "FRO",
+        "KIR",
+        "NCL",
+        "TZA",
+        "THA",
+        "NOR",
+        "KNA",
+        "BEL",
+        "MNG",
+        "AUT",
+        "BRB",
+        "VGB",
+        "CYM",
+        "PAK",
+        "STP",
+        "SAU",
+        "IRQ",
+        "ATG",
+        "SOM",
+        "NLD",
+        "NIU",
+        "SMR",
+        "JAM",
+        "PCN",
+        "CUB",
+        "ERI",
+        "BES",
+        "DEU",
+        "CAN",
+        "SWE",
+        "GRC",
+        "NGA",
+        "MNP",
+        "REU",
+        "RUS",
+        "COK"
+      ],
+      "timeseries": [
+        {
+          "date": "2026-09-26T00:00:00.000Z",
+          "value": 1832
+        },
+        {
+          "date": "2026-09-27T00:00:00.000Z",
+          "value": 1800
+        },
+        {
+          "date": "2026-09-28T00:00:00.000Z",
+          "value": 1822
+        },
+        {
+          "date": "2026-09-29T00:00:00.000Z",
+          "value": 1747
+        },
+        {
+          "date": "2026-09-30T00:00:00.000Z",
+          "value": 1904
+        },
+        {
+          "date": "2026-10-01T00:00:00.000Z",
+          "value": 1827
+        },
+        {
+          "date": "2026-10-02T00:00:00.000Z",
+          "value": 1759
+        }
+      ],
+      "groups": [],
+      "_groupsLength": 0
+    }
+  }
+}

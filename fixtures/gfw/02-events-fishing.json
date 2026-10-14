@@ -1,0 +1,400 @@
+{
+  "capturedAt": "2026-10-13T09:24:21.252Z",
+  "request": {
+    "method": "POST",
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        0
+      ],
+      [
+        "limit",
+        5
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-fishing-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-fishing-events:v4.0"
+        ],
+        "dateRange": {
+          "from": "2026-09-26",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": "lihat region-eez-8492.geojson",
+          "bytes": 526849,
+          "sha256": "4287d368b9cb1713aa28039a092172956e1041517a3a85738bed14ed53241f0c"
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 5,
+      "offset": 0,
+      "nextOffset": 5,
+      "total": 1548,
+      "entries": [
+        {
+          "start": "2026-09-22T19:49:01.000Z",
+          "end": "2026-09-26T13:28:15.000Z",
+          "id": "130c85a99fd61055afe497b148c62c9c",
+          "type": "fishing",
+          "position": {
+            "lat": -2.4801,
+            "lon": 105.4275
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "WCPFC",
+              "APFIC",
+              "ACAP",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            104.927288,
+            -4.291666666666667,
+            107.6,
+            -2.171195
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 43,
+            "startDistanceFromPortKm": 95.58904700000001,
+            "endDistanceFromPortKm": 64.579109
+          },
+          "vessel": {
+            "id": "11934d1ee-edef-e207-c667-11ce3ae21cfa",
+            "name": "TB NAILA",
+            "ssvid": "525400107",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 395.1512402677956,
+            "averageSpeedKnots": 2.456896551724137,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-23T09:53:54.000Z",
+          "end": "2026-09-26T17:47:14.000Z",
+          "id": "ed9dca41432c597c489c81803a8e993c",
+          "type": "fishing",
+          "position": {
+            "lat": -5.8033,
+            "lon": 110.4325
+          },
+          "regions": {
+            "mpa": [
+              "555571236",
+              "8613"
+            ],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "SEAFDEC",
+              "WCPFC",
+              "APFIC",
+              "ACAP",
+              "IWC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            110.432422,
+            -5.803757,
+            110.432985,
+            -5.80239
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 8.895595,
+            "endDistanceFromPortKm": 8.895595
+          },
+          "vessel": {
+            "id": "1a243a1fa-a4c0-7472-4643-e71eb344f673",
+            "name": "SUMBER HARTA MINA.01",
+            "ssvid": "525900659",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 1.7081705102956448,
+            "averageSpeedKnots": 0.28053204353083483,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-23T16:22:16.000Z",
+          "end": "2026-09-26T00:36:44.000Z",
+          "id": "cc46da915b3d7127ebae788e5ce527be",
+          "type": "fishing",
+          "position": {
+            "lat": -1.4842,
+            "lon": 117.0394
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "IWC",
+              "ACAP",
+              "SEAFDEC",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.02510666666667,
+            -1.49156,
+            117.04118333333334,
+            -1.468105
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 29,
+            "endDistanceFromShoreKm": 28,
+            "startDistanceFromPortKm": 3.33472,
+            "endDistanceFromPortKm": 4.971461000000001
+          },
+          "vessel": {
+            "id": "83c2ffb9d-db2b-ca20-b640-803d812b899d",
+            "name": "ETZOMER 503",
+            "ssvid": "525500827",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "WCPFC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 5.5413999357307695,
+            "averageSpeedKnots": 0.3070870919360055,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-23T18:05:13.000Z",
+          "end": "2026-09-27T04:48:37.000Z",
+          "id": "7afa82709ea94295a5f2c1ff3592c7f3",
+          "type": "fishing",
+          "position": {
+            "lat": 4.3934,
+            "lon": 99.0977
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "ACAP",
+              "IWC",
+              "SEAFDEC",
+              "IOTC"
+            ],
+            "fao": [
+              "57",
+              "57.1"
+            ],
+            "majorFao": [
+              "57"
+            ],
+            "eez12Nm": [
+              "8492"
+            ],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            98.921198,
+            4.086277,
+            99.28763,
+            4.53943
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 33,
+            "endDistanceFromShoreKm": 97,
+            "startDistanceFromPortKm": 22.789236000000002,
+            "endDistanceFromPortKm": 87.461422
+          },
+          "vessel": {
+            "id": "4e682cfdf-f8ff-b6c5-409b-e66efc634e96",
+            "name": "HOKI JAYA 8 SRG 46",
+            "ssvid": "525133951",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "IOTC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 417.6001415556054,
+            "averageSpeedKnots": 2.996939313984171,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        },
+        {
+          "start": "2026-09-24T07:56:14.000Z",
+          "end": "2026-09-26T09:16:40.000Z",
+          "id": "36c104f769a25172c3610b5ed571b87d",
+          "type": "fishing",
+          "position": {
+            "lat": 4.4293,
+            "lon": 99.0684
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "IWC",
+              "IOTC",
+              "ACAP",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "57",
+              "57.1"
+            ],
+            "majorFao": [
+              "57"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            98.831018,
+            4.301262,
+            99.182902,
+            4.593402
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 46,
+            "endDistanceFromShoreKm": 94,
+            "startDistanceFromPortKm": 40.412449,
+            "endDistanceFromPortKm": 84.801234
+          },
+          "vessel": {
+            "id": "2c7379be3-3845-a16d-0016-1e365929ed6f",
+            "name": "SAHATA SAROHA 18",
+            "ssvid": "525138181",
+            "flag": "IDN",
+            "type": "fishing",
+            "publicAuthorizations": [
+              {
+                "hasPubliclyListedAuthorization": "pending",
+                "rfmo": "IOTC"
+              }
+            ],
+            "nextPort": null
+          },
+          "fishing": {
+            "totalDistanceKm": 230.12351832531607,
+            "averageSpeedKnots": 2.661522048364151,
+            "averageDurationHours": null,
+            "potentialRisk": false,
+            "vesselPublicAuthorizationStatus": "pending_info"
+          }
+        }
+      ]
+    }
+  }
+}

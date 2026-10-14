@@ -1,0 +1,516 @@
+{
+  "capturedAt": "2026-10-13T09:24:24.538Z",
+  "request": {
+    "method": "POST",
+    "path": "/v3/events",
+    "query": [
+      [
+        "offset",
+        0
+      ],
+      [
+        "limit",
+        5
+      ]
+    ],
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-ratelimit-daily-remaining-requests": "50000",
+      "x-ratelimit-monthly-remaining-requests": "1500000"
+    },
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-port-visits-events:v4.0"
+        ],
+        "dateRange": {
+          "from": "2026-09-26",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": "lihat region-eez-8492.geojson",
+          "bytes": 526849,
+          "sha256": "4287d368b9cb1713aa28039a092172956e1041517a3a85738bed14ed53241f0c"
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 5,
+      "offset": 0,
+      "nextOffset": 5,
+      "total": 19591,
+      "entries": [
+        {
+          "start": "2012-02-25T19:12:31.000Z",
+          "end": "2026-10-01T14:07:29.000Z",
+          "id": "b615a2e8ba7ed22f2d647f691c9baf21",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2482,
+            "lon": 117.6052
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "ACAP",
+              "WCPFC",
+              "APFIC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.60518133769901,
+            3.2482052095955423,
+            117.60518133769901,
+            3.2482052095955423
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "bfa14f2a4-482e-32a8-f8f5-fcf884999635",
+            "name": null,
+            "ssvid": "636014243",
+            "flag": "LBR",
+            "type": "cargo",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "58fcd7cb860a14f0824d3501ffa4c1c1",
+            "confidence": "3",
+            "durationHrs": 127962.91611111112,
+            "startAnchorage": {
+              "anchorageId": "32138b87",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2482052095955423,
+              "lon": 117.60518133769901,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "32138b87",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2482052095955423,
+              "lon": 117.60518133769901,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "32138b87",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2482052095955423,
+              "lon": 117.60518133769901,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            }
+          }
+        },
+        {
+          "start": "2012-08-25T01:52:22.000Z",
+          "end": "2026-10-01T16:16:01.000Z",
+          "id": "a5b744d919b1f58bd938027e05420802",
+          "type": "port_visit",
+          "position": {
+            "lat": -8.1883,
+            "lon": 114.8342
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "NACA",
+              "APFIC",
+              "IOTC"
+            ],
+            "fao": [
+              "57.5",
+              "57.5.1",
+              "57"
+            ],
+            "majorFao": [
+              "57"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            114.83420783195275,
+            -8.1882790490508,
+            114.83420783195275,
+            -8.1882790490508
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "e83eac3ec-c6d7-4c6a-16bf-5248d89d1835",
+            "name": null,
+            "ssvid": "370071000",
+            "flag": "PAN",
+            "type": "cargo",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "8c8405eb18be81eebf80e7155cd21208",
+            "confidence": "4",
+            "durationHrs": 123614.39416666667,
+            "startAnchorage": {
+              "anchorageId": "2dd17761",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-celukanbawang",
+              "lat": -8.1882790490508,
+              "lon": 114.83420783195275,
+              "name": "CELUKAN BAWANG",
+              "topDestination": "CELUKAN BAWANG"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2dd17761",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-celukanbawang",
+              "lat": -8.1882790490508,
+              "lon": 114.83420783195275,
+              "name": "CELUKAN BAWANG",
+              "topDestination": "CELUKAN BAWANG"
+            },
+            "endAnchorage": {
+              "anchorageId": "2dd17761",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-celukanbawang",
+              "lat": -8.1882790490508,
+              "lon": 114.83420783195275,
+              "name": "CELUKAN BAWANG",
+              "topDestination": "CELUKAN BAWANG"
+            }
+          }
+        },
+        {
+          "start": "2012-11-07T07:55:47.000Z",
+          "end": "2026-10-09T15:56:35.000Z",
+          "id": "4aa6a078245ad2fb01b544f6309b274b",
+          "type": "port_visit",
+          "position": {
+            "lat": -0.599,
+            "lon": 117.3828
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "APFIC",
+              "SEAFDEC",
+              "NACA"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.38275916421064,
+            -0.5990331286471621,
+            117.348266405597,
+            -0.5884230403212091
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "a3c5562ac-c93a-db43-3e0a-09516a44ccc1",
+            "name": "ST PEGASUS",
+            "ssvid": "353001579",
+            "flag": "PAN",
+            "type": "passenger",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "628ceba8f15bc22cc13075de4f78601d",
+            "confidence": "3",
+            "durationHrs": 122024.01333333334,
+            "startAnchorage": {
+              "anchorageId": "2df4321f",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-idn-112",
+              "lat": -0.5990331286471621,
+              "lon": 117.38275916421064,
+              "name": null,
+              "topDestination": ""
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2df4321f",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-idn-112",
+              "lat": -0.5990331286471621,
+              "lon": 117.38275916421064,
+              "name": null,
+              "topDestination": ""
+            },
+            "endAnchorage": {
+              "anchorageId": "2df42ded",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-idn-64",
+              "lat": -0.5884230403212091,
+              "lon": 117.348266405597,
+              "name": null,
+              "topDestination": "SAMARINDA"
+            }
+          }
+        },
+        {
+          "start": "2012-11-23T03:28:27.000Z",
+          "end": "2026-09-28T13:26:06.000Z",
+          "id": "3f2a8ba264a04320fd4bf5a99d64c467",
+          "type": "port_visit",
+          "position": {
+            "lat": -0.9998,
+            "lon": 100.3717
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "NACA",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "57.2",
+              "57"
+            ],
+            "majorFao": [
+              "57"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            100.37174751393546,
+            -0.9997737733714409,
+            100.37403750844386,
+            -1.0016757451209413
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 0,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "0a0fce3f9-9b4f-6562-4662-92ef1dafe258",
+            "name": null,
+            "ssvid": "525025049",
+            "flag": "IDN",
+            "type": "cargo",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "27846182c45a8f96a8f325881f616bb8",
+            "confidence": "4",
+            "durationHrs": 121377.96083333333,
+            "startAnchorage": {
+              "anchorageId": "2fd4bb9f",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-padang",
+              "lat": -0.9997737733714409,
+              "lon": 100.37174751393546,
+              "name": "PADANG",
+              "topDestination": "IND"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2fd4bb9f",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-padang",
+              "lat": -0.9997737733714409,
+              "lon": 100.37174751393546,
+              "name": "PADANG",
+              "topDestination": "IND"
+            },
+            "endAnchorage": {
+              "anchorageId": "2fd4bba1",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-padang",
+              "lat": -1.0016757451209413,
+              "lon": 100.37403750844386,
+              "name": "PADANG",
+              "topDestination": "PADANG"
+            }
+          }
+        },
+        {
+          "start": "2013-03-21T08:29:13.000Z",
+          "end": "2026-09-27T17:21:15.000Z",
+          "id": "68e0ca01ce7c138ee11c9208e51f2d41",
+          "type": "port_visit",
+          "position": {
+            "lat": -6.0789,
+            "lon": 106.8865
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "ACAP",
+              "IWC",
+              "WCPFC",
+              "APFIC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            106.88645932282438,
+            -6.078893580300956,
+            106.88645932282438,
+            -6.078893580300956
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "76275224a-a416-a7eb-97c5-e696c247592e",
+            "name": "MM SEJATI",
+            "ssvid": "525016681",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "88c5f204e8a79994621b3162a5ac7395",
+            "confidence": "4",
+            "durationHrs": 118520.86722222222,
+            "startAnchorage": {
+              "anchorageId": "2e6a1f13",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.078893580300956,
+              "lon": 106.88645932282438,
+              "name": "JAKARTA",
+              "topDestination": "TG PRIOK"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "2e6a1f13",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.078893580300956,
+              "lon": 106.88645932282438,
+              "name": "JAKARTA",
+              "topDestination": "TG PRIOK"
+            },
+            "endAnchorage": {
+              "anchorageId": "2e6a1f13",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-jakarta",
+              "lat": -6.078893580300956,
+              "lon": 106.88645932282438,
+              "name": "JAKARTA",
+              "topDestination": "TG PRIOK"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

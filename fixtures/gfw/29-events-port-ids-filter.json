@@ -1,0 +1,503 @@
+{
+  "capturedAt": "2026-10-13T12:03:28.850Z",
+  "request": {
+    "path": "/v3/events",
+    "body": {
+      "datasets": [
+        "public-global-port-visits-events:latest"
+      ],
+      "startDate": "2026-09-26",
+      "endDate": "2026-10-03",
+      "region": {
+        "dataset": "public-eez-areas",
+        "id": 8492
+      },
+      "timeFilterMode": "START-DATE",
+      "portIds": [
+        "idn-tarakan"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "metadata": {
+        "datasets": [
+          "public-global-port-visits-events:v4.0"
+        ],
+        "dateRange": {
+          "from": "2026-09-26",
+          "to": "2026-10-03"
+        },
+        "geometry": {
+          "_omitted": true
+        },
+        "region": {
+          "dataset": "public-eez-areas",
+          "id": 8492
+        }
+      },
+      "limit": 5,
+      "offset": 0,
+      "nextOffset": 5,
+      "total": 91,
+      "entries": [
+        {
+          "start": "2026-09-26T01:14:11.000Z",
+          "end": "2026-09-26T17:33:19.000Z",
+          "id": "197532c4af9de640d9c09e88f936bb25",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2452,
+            "lon": 117.7166
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "SEAFDEC",
+              "APFIC",
+              "WCPFC",
+              "IWC",
+              "ACAP"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.71662977098165,
+            3.2451750449448156,
+            117.5730896,
+            3.30304002762
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 9,
+            "endDistanceFromShoreKm": 0,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "7f2748acb-b418-11b4-2a93-9a0fe3db3692",
+            "name": "TB PRIMA 225",
+            "ssvid": "525501719",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "5082177ac720b87805efee5ee21db0fd",
+            "confidence": "4",
+            "durationHrs": 16.31888888888889,
+            "startAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "32138a95",
+              "atDock": true,
+              "distanceFromShoreKm": "0",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.30304002762,
+              "lon": 117.5730896,
+              "name": "TARAKAN",
+              "topDestination": null
+            }
+          }
+        },
+        {
+          "start": "2026-09-26T01:15:18.000Z",
+          "end": "2026-09-26T14:22:30.000Z",
+          "id": "3ec8459eae1f627a0e7e1608830025c3",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2452,
+            "lon": 117.7166
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "SEAFDEC",
+              "ACAP",
+              "IWC",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.71662977098165,
+            3.2451750449448156,
+            117.58247934320596,
+            3.2760546827100994
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 9,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "6bfa42408-85d4-0e53-1bcd-9bea5a12ee22",
+            "name": "PRIMA 223",
+            "ssvid": "525501111",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "96d5f10a486d8a62a1e60dbe3ceb2126",
+            "confidence": "4",
+            "durationHrs": 13.12,
+            "startAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "32138b1b",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2760546827100994,
+              "lon": 117.58247934320596,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            }
+          }
+        },
+        {
+          "start": "2026-09-26T03:31:00.000Z",
+          "end": "2026-10-03T07:59:02.000Z",
+          "id": "2329e7e1b0a8c2a271c9e542d081c6f0",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2581,
+            "lon": 117.5944
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "IWC",
+              "SEAFDEC",
+              "ACAP",
+              "WCPFC",
+              "APFIC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.59443832446873,
+            3.2580903332513187,
+            117.72846170579703,
+            3.2447280529662232
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 10,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "1eef87cb4-4f5a-b582-3e44-736afdaf82e3",
+            "name": "DOMENICO",
+            "ssvid": "525115074",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "0e5977a107565d09746ce1bd940fbcc7",
+            "confidence": "4",
+            "durationHrs": 172.46722222222223,
+            "startAnchorage": {
+              "anchorageId": "32138b77",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2580903332513187,
+              "lon": 117.59443832446873,
+              "name": "TARAKAN",
+              "topDestination": "ID TRK"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "32138b77",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2580903332513187,
+              "lon": 117.59443832446873,
+              "name": "TARAKAN",
+              "topDestination": "ID TRK"
+            },
+            "endAnchorage": {
+              "anchorageId": "321388ad",
+              "atDock": false,
+              "distanceFromShoreKm": "10",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2447280529662232,
+              "lon": 117.72846170579703,
+              "name": null,
+              "topDestination": "TARAKAN"
+            }
+          }
+        },
+        {
+          "start": "2026-09-26T04:28:29.000Z",
+          "end": "2026-10-03T05:22:08.000Z",
+          "id": "9732c0b2329298bbdf883a798ec19029",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2452,
+            "lon": 117.7166
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "APFIC",
+              "ACAP",
+              "SEAFDEC",
+              "WCPFC",
+              "IWC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.71662977098165,
+            3.2451750449448156,
+            117.60498183024355,
+            3.2389509156330867
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 9,
+            "endDistanceFromShoreKm": 3,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "353dbf8fd-dd64-6335-028e-2e74633a90e2",
+            "name": "PRIMA 16",
+            "ssvid": "525022308",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "8c93f5b54754a534536b87723f13cc0c",
+            "confidence": "4",
+            "durationHrs": 168.89416666666668,
+            "startAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "321388b5",
+              "atDock": false,
+              "distanceFromShoreKm": "9",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2451750449448156,
+              "lon": 117.71662977098165,
+              "name": null,
+              "topDestination": "TARAKAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "32138c7b",
+              "atDock": false,
+              "distanceFromShoreKm": "3",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2389509156330867,
+              "lon": 117.60498183024355,
+              "name": null,
+              "topDestination": "TARAKAN"
+            }
+          }
+        },
+        {
+          "start": "2026-09-26T04:34:07.000Z",
+          "end": "2026-09-27T13:56:40.000Z",
+          "id": "e74c0acdada25cc9b3046176c1623e95",
+          "type": "port_visit",
+          "position": {
+            "lat": 3.2761,
+            "lon": 117.5825
+          },
+          "regions": {
+            "mpa": [],
+            "eez": [
+              "8492"
+            ],
+            "rfmo": [
+              "WCPFC",
+              "ACAP",
+              "APFIC",
+              "IWC",
+              "SEAFDEC"
+            ],
+            "fao": [
+              "71"
+            ],
+            "majorFao": [
+              "71"
+            ],
+            "eez12Nm": [],
+            "highSeas": [],
+            "mpaNoTakePartial": [],
+            "mpaNoTake": []
+          },
+          "boundingBox": [
+            117.58247934320596,
+            3.2760546827100994,
+            117.58247934320596,
+            3.2760546827100994
+          ],
+          "distances": {
+            "startDistanceFromShoreKm": 2,
+            "endDistanceFromShoreKm": 2,
+            "startDistanceFromPortKm": 0,
+            "endDistanceFromPortKm": 0
+          },
+          "vessel": {
+            "id": "d23ad97ce-e3bd-8214-fe9c-28b4b01dd7c9",
+            "name": "TB.TTB-2008",
+            "ssvid": "525400272",
+            "flag": "IDN",
+            "type": "other",
+            "nextPort": null
+          },
+          "port_visit": {
+            "visitId": "b525d9df4c3dd0c21c048d04d4bed90e",
+            "confidence": "3",
+            "durationHrs": 33.37583333333333,
+            "startAnchorage": {
+              "anchorageId": "32138b1b",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2760546827100994,
+              "lon": 117.58247934320596,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            },
+            "intermediateAnchorage": {
+              "anchorageId": "32138b1b",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2760546827100994,
+              "lon": 117.58247934320596,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            },
+            "endAnchorage": {
+              "anchorageId": "32138b1b",
+              "atDock": false,
+              "distanceFromShoreKm": "2",
+              "flag": "IDN",
+              "id": "idn-tarakan",
+              "lat": 3.2760546827100994,
+              "lon": 117.58247934320596,
+              "name": "TARAKAN",
+              "topDestination": "TARAKAN"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

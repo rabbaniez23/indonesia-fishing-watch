@@ -1,0 +1,72 @@
+{
+  "capturedAt": "2026-10-13T11:49:27.232Z",
+  "request": {
+    "path": "/v3/vessels/{id}",
+    "query": [
+      [
+        "dataset",
+        "public-global-vessel-identity:latest"
+      ],
+      [
+        "registries-info-data",
+        "ALL"
+      ]
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-datasets": "public-global-vessel-identity:v4.0",
+      "x-ratelimit-daily-remaining-requests": "49902",
+      "x-ratelimit-monthly-remaining-requests": "1499902"
+    },
+    "body": {
+      "registryInfoTotalRecords": 1,
+      "registryInfo": [],
+      "registryOwners": [],
+      "registryPublicAuthorizations": [],
+      "combinedSourcesInfo": [
+        {
+          "vesselId": "527bc919a-abf0-9f0c-9e5b-a6860d0f3c83",
+          "geartypes": [
+            {
+              "name": "INCONCLUSIVE",
+              "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+              "yearFrom": 2025,
+              "yearTo": 2026
+            }
+          ],
+          "shiptypes": [
+            {
+              "name": "FISHING",
+              "source": "COMBINATION_OF_REGISTRY_AND_AIS_INFERRED_NN_INFO",
+              "yearFrom": 2025,
+              "yearTo": 2026
+            }
+          ]
+        }
+      ],
+      "selfReportedInfo": [
+        {
+          "id": "527bc919a-abf0-9f0c-9e5b-a6860d0f3c83",
+          "ssvid": "525901290",
+          "shipname": "TETAP JAYA 1",
+          "nShipname": "TETAPJAYA1",
+          "flag": "IDN",
+          "callsign": "YDZO3",
+          "imo": "1109425",
+          "messagesCounter": 793819,
+          "positionsCounter": 207931,
+          "sourceCode": [
+            "AIS"
+          ],
+          "matchFields": "SEVERAL_FIELDS",
+          "transmissionDateFrom": "2025-06-24T03:01:23Z",
+          "transmissionDateTo": "2026-10-11T23:59:38Z"
+        }
+      ],
+      "dataset": "public-global-vessel-identity:v4.0"
+    }
+  }
+}
