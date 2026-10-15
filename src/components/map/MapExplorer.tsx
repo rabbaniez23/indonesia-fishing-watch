@@ -19,6 +19,8 @@ import type { Bins } from "@/lib/map/bins";
 import { CELL_HALF_DEG, MAP_LAYER_KEYS, MAP_LAYERS, type MapLayerKey } from "@/lib/map/layers";
 import { cn } from "@/lib/cn";
 import { formatCount, formatDateRangeUTC, formatHours, formatLatLon } from "@/lib/format";
+import type { DensityKey } from "@/lib/viirs/grid";
+import { parseViirsParam, syncViirsToUrl, useViirsOverlay, ViirsLayerControl, VIIRS_PERIOD } from "./ViirsOverlay";
 
 /**
  * Basemap OpenFreeMap (gratis, tanpa API key; atribusi OpenMapTiles & OpenStreetMap ditampilkan MapLibre).
@@ -144,6 +146,8 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
   const [selected, setSelected] = useState<{ lat: number; lon: number } | null>(initialCell);
   const [detailFetch, setDetailFetch] = useState<{ key: string; detail: CellDetail | null; error: boolean } | null>(null);
   const [showTable, setShowTable] = useState(false);
+  // Lapisan tambahan VIIRS (bawaan mati); pilihan kelas disimpan di URL (?viirs=...).
+  const [viirs, setViirs] = useState<DensityKey | null>(() => parseViirsParam(searchParams.get("viirs")));
 
   // Pilihan layer ditampilkan langsung (optimistis) selama server merender ulang.
   const [layerPending, startLayerTransition] = useTransition();
@@ -322,6 +326,12 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
   const data = current?.data ?? null;
   const dataError = current?.error ?? null;
 
+  const viirsOverlay = useViirsOverlay({ mapRef, popupRef, mapReady, theme, selection: viirs });
+  function changeViirs(key: DensityKey | null) {
+    setViirs(key);
+    syncViirsToUrl(key);
+  }
+
   const geojson = useMemo(() => (data ? cellsToGeoJSON(data.cells) : null), [data]);
   const points = useMemo(() => (data ? cellsToPoints(data.cells) : null), [data]);
   const featureIndex = useMemo(() => {
@@ -498,6 +508,8 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
         })}
       </fieldset>
 
+      <ViirsLayerControl selection={viirs} onChange={changeViirs} status={viirsOverlay.status} max={viirsOverlay.max} theme={theme} />
+
       <div className="flex flex-col gap-1">
         <label htmlFor="opacity" className="font-medium">
           Kepekatan warna: {Math.round(opacity * 100)}%
@@ -607,6 +619,9 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
             <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">
               {layerDef.label} · {formatDateRangeUTC(filter.from, filter.to)}
             </span>
+            {viirs ? (
+              <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">+ VIIRS · {VIIRS_PERIOD}</span>
+            ) : null}
           </div>
           <div className="pointer-events-auto max-w-xl">{statusSlot}</div>
           <div className="pointer-events-auto max-w-xl" aria-live="polite">

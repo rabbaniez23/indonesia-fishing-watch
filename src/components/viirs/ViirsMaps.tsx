@@ -10,7 +10,8 @@ import { StateView } from "@/components/ui/StateView";
 import { cn } from "@/lib/cn";
 import { formatCount, formatLatLon } from "@/lib/format";
 import { CLASS_COLOR, CLASS_LABEL, CLASS_RULE, MONTH_LONG, MONTH_SHORT } from "@/lib/viirs/format";
-import type { GridCell, RadianceClass, ViirsDensity, ViirsMonthlyGrid } from "@/lib/viirs/types";
+import { densityFeatures, gridCenter as center, maxOf, type DensityKey } from "@/lib/viirs/grid";
+import type { ViirsDensity, ViirsMonthlyGrid } from "@/lib/viirs/types";
 
 /**
  * Peta VIIRS: basemap gelap OpenFreeMap (atribusi ditampilkan MapLibre) + heatmap kernel dari grid jumlah deteksi.
@@ -32,17 +33,6 @@ const HEAT_COLOR = [
 const HEAT_STOPS = ["#7A4210", "#A3580C", "#CC7008", "#F08A12", "#FFB347", "#FFE9B8"];
 
 type Status = "loading" | "ready" | "error";
-
-/** Nilai maksimum tanpa spread (grid berisi puluhan ribu sel — spread meluapkan call stack). */
-function maxOf(values: Iterable<number>): number {
-  let m = 0;
-  for (const v of values) if (v > m) m = v;
-  return m;
-}
-
-function center(cell: GridCell, grid: { res: number; lon0: number; lat0: number }) {
-  return { lon: grid.lon0 + (cell[0] + 0.5) * grid.res, lat: grid.lat0 + (cell[1] + 0.5) * grid.res };
-}
 
 /** Peta dasar gelap + garis 11 WPP. Dibuat sekali per komponen. */
 function useBaseMap(bounds: [number, number, number, number]) {
@@ -184,7 +174,6 @@ function HeatLegend({ max, label }: { max: number; label: string }) {
   );
 }
 
-type DensityKey = "all" | RadianceClass;
 const DENSITY_OPTIONS: Array<{ key: DensityKey; label: string; hint: string }> = [
   { key: "all", label: "Semua deteksi", hint: "Fig 3" },
   { key: "low", label: `${CLASS_LABEL.low} (${CLASS_RULE.low})`, hint: "Fig 6–7" },
@@ -207,26 +196,10 @@ export function DensityMap() {
   useEffect(() => {
     const map = mapRef.current;
     if (!ready || !map || !data || col < 0) return;
-    const denom = Math.log1p(max) || 1;
-    const cells = data.cells.filter((c) => c[col] > 0);
-    // Kelas padat: bobot dikuadratkan agar kernel tidak jenuh. Kelas jarang (mis. radiansi tinggi): bobot log biasa +
-    // intensitas lebih besar agar konsentrasinya tetap terlihat. Normalisasi tetap per kelas (paper Gambar 7).
-    const sparse = cells.length < 15000;
-    const exponent = sparse ? 1 : 2;
+    // Normalisasi per kelas (paper Gambar 7); kelas jarang diberi intensitas lebih besar agar tetap terlihat.
+    const { fc, sparse } = densityFeatures(data, key);
     const k = sparse ? 3 : 1;
     const intensity = ["interpolate", ["linear"], ["zoom"], 3, 0.3 * k, 6, 0.7 * k, 9, 1.4 * k];
-    const fc = {
-      type: "FeatureCollection" as const,
-      features: cells.map((c, i) => {
-        const { lon, lat } = center(c, data);
-        return {
-          type: "Feature" as const,
-          id: i,
-          geometry: { type: "Point" as const, coordinates: [lon, lat] },
-          properties: { v: c[col], w: (Math.log1p(c[col]) / denom) ** exponent, all: c[2], low: c[3], medium: c[4], high: c[5], lat, lon },
-        };
-      }),
-    };
     const src = map.getSource("density") as GeoJSONSource | undefined;
     if (src) {
       src.setData(fc);
@@ -234,7 +207,8 @@ export function DensityMap() {
       return;
     }
     map.addSource("density", { type: "geojson", data: fc });
-    heatLayers(map, "density", [3, 2.5, 6, 9, 9, 36], intensity.slice(3) as number[]);
+    // Radius ≈ 1,3 × jarak antarsel 0,1° di tiap zoom agar kernel menyatu.
+    heatLayers(map, "density", [3, 2.5, 6, 12, 7, 24, 8, 48, 9, 95, 10, 190], intensity.slice(3) as number[]);
     map.on("mousemove", "density-hit", (e: MapLayerMouseEvent) => {
       const p = e.features?.[0]?.properties as Record<string, number> | undefined;
       if (!p) return;
@@ -251,7 +225,7 @@ export function DensityMap() {
       map.getCanvas().style.cursor = "";
       popupRef.current?.remove();
     });
-  }, [ready, data, col, max, mapRef, popupRef]);
+  }, [ready, data, col, key, mapRef, popupRef]);
 
   return (
     <div className="flex min-w-0 flex-col gap-3">
