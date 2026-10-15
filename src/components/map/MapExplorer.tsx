@@ -19,7 +19,9 @@ import type { Bins } from "@/lib/map/bins";
 import { CELL_HALF_DEG, MAP_LAYER_KEYS, MAP_LAYERS, type MapLayerKey } from "@/lib/map/layers";
 import { cn } from "@/lib/cn";
 import { formatCount, formatDateRangeUTC, formatHours, formatLatLon } from "@/lib/format";
+import type { OceanVarKey } from "@/lib/oseanografi/types";
 import type { DensityKey } from "@/lib/viirs/grid";
+import { OceanLayerControl, parseOceanParam, syncOceanToUrl, useOceanOverlay } from "./OceanOverlay";
 import { parseViirsParam, syncViirsToUrl, useViirsOverlay, ViirsLayerControl, VIIRS_PERIOD } from "./ViirsOverlay";
 
 /**
@@ -148,6 +150,9 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
   const [showTable, setShowTable] = useState(false);
   // Lapisan tambahan VIIRS (bawaan mati); pilihan kelas disimpan di URL (?viirs=...).
   const [viirs, setViirs] = useState<DensityKey | null>(() => parseViirsParam(searchParams.get("viirs")));
+  // Lapisan laut Copernicus (bawaan mati); variabel disimpan di URL (?laut=sst).
+  const [ocean, setOcean] = useState<OceanVarKey | null>(() => parseOceanParam(searchParams.get("laut")));
+  const [oceanOpacity, setOceanOpacity] = useState(0.6);
 
   // Pilihan layer ditampilkan langsung (optimistis) selama server merender ulang.
   const [layerPending, startLayerTransition] = useTransition();
@@ -332,6 +337,12 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
     syncViirsToUrl(key);
   }
 
+  const oceanOverlay = useOceanOverlay({ mapRef, popupRef, mapReady, theme, selection: ocean, filter, opacity: oceanOpacity });
+  function changeOcean(key: OceanVarKey | null) {
+    setOcean(key);
+    syncOceanToUrl(key);
+  }
+
   const geojson = useMemo(() => (data ? cellsToGeoJSON(data.cells) : null), [data]);
   const points = useMemo(() => (data ? cellsToPoints(data.cells) : null), [data]);
   const featureIndex = useMemo(() => {
@@ -509,6 +520,7 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
       </fieldset>
 
       <ViirsLayerControl selection={viirs} onChange={changeViirs} status={viirsOverlay.status} max={viirsOverlay.max} theme={theme} />
+      <OceanLayerControl selection={ocean} onChange={changeOcean} overlay={oceanOverlay} opacity={oceanOpacity} onOpacityChange={setOceanOpacity} />
 
       <div className="flex flex-col gap-1">
         <label htmlFor="opacity" className="font-medium">
@@ -621,6 +633,11 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
             </span>
             {viirs ? (
               <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">+ VIIRS · {VIIRS_PERIOD}</span>
+            ) : null}
+            {ocean && oceanOverlay.meta ? (
+              <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">
+                + Laut · {oceanOverlay.meta.label} · {oceanOverlay.month}
+              </span>
             ) : null}
           </div>
           <div className="pointer-events-auto max-w-xl">{statusSlot}</div>
