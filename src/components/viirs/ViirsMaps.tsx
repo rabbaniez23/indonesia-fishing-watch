@@ -24,7 +24,7 @@ const SEA = "#121416";
 const LAND = "#2A2C2E";
 const WPP_LINE = "#9CA3AF";
 const WPP_CODES = ["571", "572", "573", "711", "712", "713", "714", "715", "716", "717", "718"];
-const INDONESIA_BOUNDS: [number, number, number, number] = [91.5, -14.2, 141.5, 9];
+export const INDONESIA_BOUNDS: [number, number, number, number] = [91.5, -14.2, 141.5, 9];
 /** Ramp kuning-jingga (cahaya malam): satu hue, makin padat makin terang. */
 const HEAT_COLOR = [
   "interpolate", ["linear"], ["heatmap-density"],
@@ -35,7 +35,7 @@ const HEAT_STOPS = ["#7A4210", "#A3580C", "#CC7008", "#F08A12", "#FFB347", "#FFE
 type Status = "loading" | "ready" | "error";
 
 /** Peta dasar gelap + garis 11 WPP. Dibuat sekali per komponen. */
-function useBaseMap(bounds: [number, number, number, number]) {
+export function useBaseMap(bounds: [number, number, number, number]) {
   const node = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const popupRef = useRef<Popup | null>(null);

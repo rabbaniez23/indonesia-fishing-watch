@@ -1,0 +1,9 @@
+# build_ocean_summary.py (Python 3.9+). Butuh akun Copernicus Marine (gratis):
+# COPERNICUSMARINE_SERVICE_USERNAME / COPERNICUSMARINE_SERVICE_PASSWORD di .env.local.
+copernicusmarine>=2.3
+numpy>=1.24
+xarray>=2024.1
+cftime>=1.6
+shapely>=2.0
+pyshp>=2.3
+scipy>=1.11
