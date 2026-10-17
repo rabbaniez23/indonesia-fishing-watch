@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
   // Indikator dev dipindah agar tidak menutupi kontrol sidebar di kiri bawah.
   devIndicators: { position: "bottom-right" },
   cacheComponents: true,
+  // Halaman pengolahan data pindah ke bawah Dokumentasi; tautan lama tetap berfungsi.
+  async redirects() {
+    return [
+      { source: "/data-status", destination: "/dokumentasi/sumber-data", permanent: true },
+      { source: "/preprocessing-viirs", destination: "/dokumentasi/preprocessing-viirs", permanent: true },
+    ];
+  },
   partialPrefetching: true,
   turbopack: {
     rules: {

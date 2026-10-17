@@ -13,14 +13,14 @@ import { requireUser } from "@/lib/auth/session";
 import { getDataStatus, type DatasetStatus } from "@/lib/data-status";
 import { formatCount, formatDateTimeUTC } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Tentang data" };
+export const metadata: Metadata = { title: "Data Global Fishing Watch" };
 
 export default function DataStatusPage() {
   return (
     <PageContainer>
       <PageHeader
-        title="Tentang data"
-        description="Dari mana data berasal, seberapa baru, dan apa batasannya. Baca ini sebelum menarik kesimpulan dari angka di aplikasi."
+        title="Data Global Fishing Watch"
+        description="Dataset GFW yang dipakai menu Ringkasan, Peta, Kapal, Pelabuhan, dan Statistik aktivitas: status koneksi, seberapa baru, dan batasannya. Baca ini sebelum menarik kesimpulan dari angka di aplikasi."
       />
       <Suspense fallback={<StateView state="loading" title="Memuat status sumber…" />}>
         <DataStatusContent />

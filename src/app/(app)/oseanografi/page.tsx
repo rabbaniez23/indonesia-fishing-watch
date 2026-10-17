@@ -6,15 +6,13 @@ import { LearnSection } from "@/components/oseanografi/LearnSection";
 import { OceanMap } from "@/components/oseanografi/OceanMap";
 import { LinkSection, SeasonalSection, TrendSection } from "@/components/oseanografi/OceanSections";
 import { Card, CardHeader } from "@/components/ui/Card";
-import { DataTable } from "@/components/ui/DataTable";
 import { MetricCard } from "@/components/ui/MetricCard";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StateView } from "@/components/ui/StateView";
 import { requireUser } from "@/lib/auth/session";
 import { cn } from "@/lib/cn";
 import { oceanLink, oceanMeta, oceanSeasonal, oceanSeries, oceanTrends } from "@/lib/oseanografi/data";
-import { MONTH_LONG, VAR_STYLE, fmtP, fmtSignedNum, fmtVar, monthLabel } from "@/lib/oseanografi/format";
-import type { OceanVarKey } from "@/lib/oseanografi/types";
+import { MONTH_LONG, fmtP, fmtSignedNum, fmtVar, monthLabel } from "@/lib/oseanografi/format";
 import { WPP_NAMES } from "@/lib/regions";
 
 export const metadata: Metadata = { title: "Oseanografi" };
@@ -148,30 +146,15 @@ async function Ocean({ searchParams }: { searchParams: PageProps<"/oseanografi">
 
       <Card>
         <CardHeader title="Sumber data" description="Semua dataset dari Copernicus Marine Service, diringkas offline untuk halaman ini." />
-        <DataTable
-          caption="Sumber dataset oseanografi"
-          rows={vars}
-          rowKey={(v) => v.key}
-          columns={[
-            { key: "v", header: "Variabel", cell: (v) => <span className="whitespace-nowrap">{v.label}</span> },
-            { key: "u", header: "Satuan", cell: (v) => v.unit || "—" },
-            { key: "g", header: "Jenis", cell: (v) => (VAR_STYLE[v.key as OceanVarKey].group === "biologi" ? "Satelit" : v.key === "wind" ? "Satelit + model" : "Model") },
-            {
-              key: "p",
-              header: "Periode",
-              cell: (v) =>
-                v.kind === "series"
-                  ? `${monthLabel(v.period.start!)} – ${monthLabel(v.period.end!)}`
-                  : v.kind === "year"
-                    ? `${v.period.year} (sampel ${v.period.strideHours} jam)`
-                    : "Klimatologi bulanan",
-            },
-            { key: "d", header: "Dataset", cell: (v) => <code className="font-mono text-caption break-all">{v.dataset}</code> },
-          ]}
-        />
+        <p className="text-ink">
+          {vars.length} variabel dari model reanalisis dan observasi satelit. Daftar dataset, periode, dan cara datanya diringkas ada di{" "}
+          <Link href="/dokumentasi/oseanografi" className="font-medium text-primary underline underline-offset-2">
+            Dokumentasi · Data oseanografi
+          </Link>
+          .
+        </p>
         <p className="mt-3 text-caption text-ink-muted">
-          Generated using E.U. Copernicus Marine Service Information. Ringkasan dibuat {oceanMeta.generatedAt.slice(0, 10)}. Rata-rata wilayah memakai bobot luas;
-          klorofil memakai rata-rata geometrik.
+          Generated using E.U. Copernicus Marine Service Information. Ringkasan dibuat {oceanMeta.generatedAt.slice(0, 10)}.
         </p>
       </Card>
     </>

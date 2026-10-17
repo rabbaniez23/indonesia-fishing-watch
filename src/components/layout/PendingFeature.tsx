@@ -30,8 +30,8 @@ export function PendingFeature({ title, description, reason, gates }: PendingFea
         </ul>
         <p className="mt-3">
           Lihat{" "}
-          <Link href="/data-status" className="font-medium text-primary underline underline-offset-2">
-            Tentang data
+          <Link href="/dokumentasi/sumber-data" className="font-medium text-primary underline underline-offset-2">
+            Dokumentasi data GFW
           </Link>{" "}
           untuk kondisi akses terkini.
         </p>

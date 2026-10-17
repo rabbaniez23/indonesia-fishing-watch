@@ -71,7 +71,7 @@ async function Viirs({ searchParams }: { searchParams: PageProps<"/viirs">["sear
       <Banner tone="info" title={`${formatCount(total.n)} deteksi kapal di 11 WPP · ${period}`}>
         Angka dihitung ulang dari data VIIRS hasil cleaning dengan filter yang sama seperti paper (QF_Detect = 1, bukan daratan, ZEE Indonesia,
         di dalam WPP-RI), sehingga jumlah per WPP dapat berbeda dari Tabel 5 paper.{" "}
-        <Link href="/preprocessing-viirs" className="font-medium text-primary underline underline-offset-2">
+        <Link href="/dokumentasi/preprocessing-viirs" className="font-medium text-primary underline underline-offset-2">
           Lihat preprocessing VIIRS
         </Link>
       </Banner>

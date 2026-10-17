@@ -158,7 +158,7 @@ async function OverviewContent({ searchParams }: { searchParams: PageProps<"/ove
           Global Fishing Watch
         </a>
         . {GLOSSARY.notViolation}{" "}
-        <Link href="/data-status" className="font-medium text-primary underline underline-offset-2">
+        <Link href="/dokumentasi/sumber-data" className="font-medium text-primary underline underline-offset-2">
           Cara membaca data ini
         </Link>
       </p>

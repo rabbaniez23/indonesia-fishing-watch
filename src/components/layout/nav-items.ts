@@ -1,5 +1,6 @@
 import {
   Anchor,
+  BookOpen,
   ChartLine,
   ClipboardList,
   Database,
@@ -10,6 +11,7 @@ import {
   Satellite,
   Settings,
   Ship,
+  ThermometerSun,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
@@ -19,27 +21,144 @@ export type NavItem = {
   label: string;
   /** Judul halaman di topbar. */
   title: string;
+  /** Satu kalimat "untuk apa menu ini" — dipakai di halaman Panduan. */
+  description: string;
   icon: LucideIcon;
-  group: "main" | "footer";
+  group: NavGroupKey;
   adminOnly?: boolean;
 };
 
-/** Menu MVP PRD §7.2. Fitur di luar scope tidak dimasukkan sebagai menu. */
-export const NAV_ITEMS: NavItem[] = [
-  { href: "/overview", label: "Ringkasan", title: "Ringkasan", icon: LayoutDashboard, group: "main" },
-  { href: "/map", label: "Peta", title: "Peta aktivitas", icon: MapIcon, group: "main" },
-  { href: "/vessels", label: "Kapal", title: "Kapal", icon: Ship, group: "main" },
-  { href: "/ports", label: "Pelabuhan", title: "Pelabuhan", icon: Anchor, group: "main" },
-  { href: "/analysis", label: "Analisis", title: "Analisis", icon: ChartLine, group: "main" },
-  { href: "/viirs", label: "VIIRS", title: "VIIRS · Deteksi kapal malam", icon: Satellite, group: "main" },
-  { href: "/preprocessing-viirs", label: "Preprocessing VIIRS", title: "Preprocessing VIIRS", icon: Workflow, group: "main" },
-  { href: "/oseanografi", label: "Oseanografi", title: "Oseanografi", icon: Droplets, group: "main" },
-  { href: "/findings", label: "Temuan", title: "Temuan", icon: ClipboardList, group: "main" },
-  { href: "/reports", label: "Laporan", title: "Laporan", icon: FileDown, group: "main" },
-  { href: "/data-status", label: "Tentang data", title: "Tentang data", icon: Database, group: "footer" },
-  { href: "/settings", label: "Pengaturan", title: "Pengaturan", icon: Settings, group: "footer", adminOnly: true },
+/** Sidebar dikelompokkan menurut kebutuhan pengguna, bukan menurut sumber data. */
+export type NavGroupKey = "pantau" | "analisis" | "kerja" | "dokumentasi" | "footer";
+
+export const NAV_GROUPS: Array<{ key: Exclude<NavGroupKey, "footer">; label: string; description: string }> = [
+  { key: "pantau", label: "Pantau", description: "Lihat aktivitas kapal terbaru di laut Indonesia." },
+  { key: "analisis", label: "Analisis", description: "Gali pola, tren, dan kondisi laut untuk riset." },
+  { key: "kerja", label: "Hasil kerja", description: "Simpan temuan dan unduh data." },
+  { key: "dokumentasi", label: "Dokumentasi", description: "Cara memakai web ini, sumber data, dan cara datanya diolah." },
 ];
 
+export const NAV_ITEMS: NavItem[] = [
+  {
+    href: "/overview",
+    label: "Ringkasan",
+    title: "Ringkasan",
+    description: "Angka utama dan grafik singkat aktivitas kapal untuk wilayah dan tanggal pilihan.",
+    icon: LayoutDashboard,
+    group: "pantau",
+  },
+  {
+    href: "/map",
+    label: "Peta",
+    title: "Peta aktivitas",
+    description: "Peta aktivitas kapal GFW, ditambah lapisan VIIRS dan kondisi laut bila perlu.",
+    icon: MapIcon,
+    group: "pantau",
+  },
+  {
+    href: "/vessels",
+    label: "Kapal",
+    title: "Kapal",
+    description: "Cari kapal, lihat profil, bendera, dan riwayat kegiatannya.",
+    icon: Ship,
+    group: "pantau",
+  },
+  {
+    href: "/ports",
+    label: "Pelabuhan",
+    title: "Pelabuhan",
+    description: "Pelabuhan yang paling sering disinggahi dan kapal yang berkunjung.",
+    icon: Anchor,
+    group: "pantau",
+  },
+  {
+    href: "/analysis",
+    label: "Statistik aktivitas",
+    title: "Statistik aktivitas",
+    description: "Naik-turun harian, armada, lokasi teramai, perbandingan antar-WPP, dan kejadian di laut.",
+    icon: ChartLine,
+    group: "analisis",
+  },
+  {
+    href: "/viirs",
+    label: "VIIRS kapal malam",
+    title: "VIIRS · Deteksi kapal malam",
+    description: "Pola kapal berlampu dari satelit VIIRS: profil WPP, tren, musiman, dan prediksi.",
+    icon: Satellite,
+    group: "analisis",
+  },
+  {
+    href: "/oseanografi",
+    label: "Oseanografi",
+    title: "Oseanografi",
+    description: "Kondisi laut (suhu, klorofil, arus, dll.) per bulan dan per WPP, serta materi belajar.",
+    icon: Droplets,
+    group: "analisis",
+  },
+  {
+    href: "/findings",
+    label: "Temuan",
+    title: "Temuan",
+    description: "Catatan tim tentang aktivitas yang perlu ditinjau.",
+    icon: ClipboardList,
+    group: "kerja",
+  },
+  {
+    href: "/reports",
+    label: "Laporan",
+    title: "Laporan",
+    description: "Unduh data sebagai CSV untuk Excel atau Google Sheets.",
+    icon: FileDown,
+    group: "kerja",
+  },
+  {
+    href: "/dokumentasi",
+    label: "Panduan",
+    title: "Dokumentasi · Panduan",
+    description: "Mulai di sini: isi tiap menu, sumber data, dan kapan data diperbarui.",
+    icon: BookOpen,
+    group: "dokumentasi",
+  },
+  {
+    href: "/dokumentasi/sumber-data",
+    label: "Data GFW",
+    title: "Dokumentasi · Data Global Fishing Watch",
+    description: "Dataset GFW yang dipakai, status koneksi, cakupan wilayah, dan batasannya.",
+    icon: Database,
+    group: "dokumentasi",
+  },
+  {
+    href: "/dokumentasi/preprocessing-viirs",
+    label: "Data VIIRS",
+    title: "Dokumentasi · Preprocessing VIIRS",
+    description: "Alur cleaning dan filter data VIIRS sampai siap dianalisis.",
+    icon: Workflow,
+    group: "dokumentasi",
+  },
+  {
+    href: "/dokumentasi/oseanografi",
+    label: "Data oseanografi",
+    title: "Dokumentasi · Data oseanografi",
+    description: "Dataset Copernicus Marine yang dipakai dan cara diringkas per WPP dan per bulan.",
+    icon: ThermometerSun,
+    group: "dokumentasi",
+  },
+  {
+    href: "/settings",
+    label: "Pengaturan",
+    title: "Pengaturan",
+    description: "Kelola pengguna, batas pemakaian data, dan status sumber. Khusus Admin.",
+    icon: Settings,
+    group: "footer",
+    adminOnly: true,
+  },
+];
+
+/** Item paling spesifik yang cocok (mis. /dokumentasi/oseanografi tidak dianggap /dokumentasi). */
 export function findNavItem(pathname: string): NavItem | undefined {
-  return NAV_ITEMS.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+  let best: NavItem | undefined;
+  for (const item of NAV_ITEMS) {
+    if ((pathname === item.href || pathname.startsWith(`${item.href}/`)) && (!best || item.href.length > best.href.length)) best = item;
+  }
+  return best;
 }

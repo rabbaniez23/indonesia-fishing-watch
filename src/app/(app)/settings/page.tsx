@@ -110,8 +110,8 @@ async function SettingsContent() {
           <dd>{tokenConfigured ? "Terpasang (nilai tidak pernah ditampilkan)" : "Belum dipasang — isi GFW_API_ACCESS_TOKEN di lingkungan server"}</dd>
           <dt className="text-ink-muted">Status dataset</dt>
           <dd>
-            <Link href="/data-status" className="font-medium text-primary underline underline-offset-2">
-              Tentang data
+            <Link href="/dokumentasi/sumber-data" className="font-medium text-primary underline underline-offset-2">
+              Dokumentasi · Data GFW
             </Link>{" "}
             · uji akses ulang dengan <code>npm run contract-check</code>
           </dd>

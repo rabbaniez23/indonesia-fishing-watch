@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Database, Menu, PanelLeftClose, PanelLeftOpen, Waves, X } from "lucide-react";
+import { BookOpen, ChevronDown, Menu, PanelLeftClose, PanelLeftOpen, Waves, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { NAV_ITEMS, findNavItem, type NavItem } from "./nav-items";
+import { NAV_GROUPS, NAV_ITEMS, findNavItem, type NavItem } from "./nav-items";
 
 type SidebarMode = "auto" | "expanded" | "collapsed";
 
@@ -61,6 +61,9 @@ export function AppShell({ children, isAdmin = false, account }: AppShellProps) 
           items={items}
           pathname={pathname}
           labelClass={mode === "auto" ? "hidden xl:inline" : mode === "expanded" ? "inline" : "hidden"}
+          // Lipatan kelompok hanya berlaku saat label terlihat; mode ikon selalu menampilkan semua menu.
+          foldClass={mode === "auto" ? "xl:hidden" : mode === "expanded" ? "hidden" : ""}
+          dividerClass={mode === "auto" ? "block xl:hidden" : mode === "expanded" ? "hidden" : "block"}
           collapsedTooltip={mode !== "expanded"}
           footerSlot={
             <button
@@ -108,12 +111,12 @@ export function AppShell({ children, isAdmin = false, account }: AppShellProps) 
             <p className="truncate text-caption text-ink-muted">Perairan Indonesia</p>
           </div>
           <Link
-            href="/data-status"
+            href="/dokumentasi"
             className="inline-flex h-11 shrink-0 items-center gap-2 rounded-button px-3 text-ink-muted hover:bg-surface-subtle hover:text-ink"
           >
-            <Database className="size-5" aria-hidden />
-            <span className="hidden sm:inline">Tentang data</span>
-            <span className="sr-only sm:hidden">Tentang data</span>
+            <BookOpen className="size-5" aria-hidden />
+            <span className="hidden sm:inline">Dokumentasi</span>
+            <span className="sr-only sm:hidden">Dokumentasi</span>
           </Link>
           {account}
         </header>
@@ -129,6 +132,8 @@ function SidebarContents({
   items,
   pathname,
   labelClass,
+  foldClass,
+  dividerClass,
   collapsedTooltip,
   footerSlot,
   onNavigate,
@@ -136,12 +141,20 @@ function SidebarContents({
   items: NavItem[];
   pathname: string;
   labelClass: string;
+  /** Kelas untuk menyembunyikan isi kelompok yang dilipat. */
+  foldClass: string;
+  /** Kelas garis pemisah pengganti judul kelompok saat hanya ikon. */
+  dividerClass: string;
   collapsedTooltip: boolean;
   footerSlot?: ReactNode;
   onNavigate?: () => void;
 }) {
-  const main = items.filter((item) => item.group === "main");
   const footer = items.filter((item) => item.group === "footer");
+  const activeHref = findNavItem(pathname)?.href;
+  const activeGroup = items.find((item) => item.href === activeHref)?.group;
+  // Bawaan: hanya kelompok halaman aktif yang terbuka agar sidebar ringkas; kelompok lain dibuka dengan klik judulnya
+  // (pilihan bertahan selama sesi).
+  const [opened, setOpened] = useState<Record<string, boolean>>({});
   return (
     <>
       <div className="flex h-16 shrink-0 items-center gap-3 border-b border-border px-4">
@@ -154,14 +167,48 @@ function SidebarContents({
         </span>
       </div>
       <nav aria-label="Navigasi utama" className="flex min-h-0 flex-1 flex-col justify-between gap-4 overflow-y-auto p-3">
-        <ul className="flex flex-col gap-1">
-          {main.map((item) => (
-            <NavLink key={item.href} item={item} pathname={pathname} labelClass={labelClass} tooltip={collapsedTooltip} onNavigate={onNavigate} />
-          ))}
-        </ul>
+        <div className="flex flex-col gap-2">
+          {NAV_GROUPS.map((group, gi) => {
+            const groupItems = items.filter((item) => item.group === group.key);
+            if (!groupItems.length) return null;
+            const open = group.key === activeGroup || !!opened[group.key];
+            const listId = `menu-${group.key}`;
+            return (
+              <div key={group.key} className="flex flex-col gap-1">
+                {gi > 0 ? <span aria-hidden className={cn("mx-2 my-1 border-t border-border", dividerClass)} /> : null}
+                <button
+                  type="button"
+                  aria-expanded={open}
+                  aria-controls={listId}
+                  // Kelompok halaman aktif selalu terbuka; klik judulnya tidak melipat.
+                  onClick={() => group.key !== activeGroup && setOpened((o) => ({ ...o, [group.key]: !open }))}
+                  className={cn(
+                    "h-8 items-center justify-between rounded-nav px-3 text-caption font-semibold tracking-wide text-ink-muted uppercase hover:text-ink",
+                    labelClass === "inline" ? "flex" : labelClass === "hidden" ? "hidden" : "hidden xl:flex",
+                  )}
+                >
+                  {group.label}
+                  <ChevronDown className={cn("size-4 transition-transform duration-150", !open && "-rotate-90")} aria-hidden />
+                </button>
+                <ul id={listId} aria-label={group.label} className={cn("flex flex-col gap-1", !open && foldClass)}>
+                  {groupItems.map((item) => (
+                    <NavLink
+                      key={item.href}
+                      item={item}
+                      active={item.href === activeHref}
+                      labelClass={labelClass}
+                      tooltip={collapsedTooltip}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
         <ul className="flex flex-col gap-1 border-t border-border pt-3">
           {footer.map((item) => (
-            <NavLink key={item.href} item={item} pathname={pathname} labelClass={labelClass} tooltip={collapsedTooltip} onNavigate={onNavigate} />
+            <NavLink key={item.href} item={item} active={item.href === activeHref} labelClass={labelClass} tooltip={collapsedTooltip} onNavigate={onNavigate} />
           ))}
           {footerSlot ? <li>{footerSlot}</li> : null}
         </ul>
@@ -172,18 +219,17 @@ function SidebarContents({
 
 function NavLink({
   item,
-  pathname,
+  active,
   labelClass,
   tooltip,
   onNavigate,
 }: {
   item: NavItem;
-  pathname: string;
+  active: boolean;
   labelClass: string;
   tooltip: boolean;
   onNavigate?: () => void;
 }) {
-  const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
   const Icon = item.icon;
   return (
     <li className="group relative">
@@ -261,7 +307,7 @@ function MobileNav({
       className="m-0 h-dvh max-h-dvh w-[min(300px,calc(100vw-48px))] max-w-none glass-strong border-r p-0 text-ink backdrop:bg-ink/30 backdrop:backdrop-blur-sm lg:hidden"
     >
       <div className="relative flex h-full flex-col">
-        <SidebarContents items={items} pathname={pathname} labelClass="inline" collapsedTooltip={false} onNavigate={onClose} />
+        <SidebarContents items={items} pathname={pathname} labelClass="inline" foldClass="hidden" dividerClass="hidden" collapsedTooltip={false} onNavigate={onClose} />
         <button
           type="button"
           onClick={onClose}

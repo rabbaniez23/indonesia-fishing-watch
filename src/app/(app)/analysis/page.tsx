@@ -29,7 +29,7 @@ import { formatCount, formatDateRangeUTC, formatHours, formatLatLon, formatPerce
 import { isMapLayerKey, MAP_LAYER_KEYS, MAP_LAYERS, type MapLayerKey } from "@/lib/map/layers";
 import { listRegions, regionArea, regionAreaKm2, type RegionSummary } from "@/lib/regions";
 
-export const metadata: Metadata = { title: "Analisis" };
+export const metadata: Metadata = { title: "Statistik aktivitas" };
 
 type Tab = "tren" | "kapal" | "hotspot" | "wpp" | "kejadian" | "perbandingan";
 const TABS: Array<[Tab, string]> = [
@@ -46,7 +46,7 @@ export default function AnalysisPage({ searchParams }: PageProps<"/analysis">) {
   return (
     <PageContainer>
       <PageHeader
-        title="Analisis"
+        title="Statistik aktivitas"
         description="Statistik aktivitas di laut Indonesia: naik-turun harian, armada kapal, lokasi teramai, perbandingan antar-WPP, dan kejadian di laut."
       />
       <Suspense fallback={<StateView state="loading" title="Memuat analisis…" />}>
