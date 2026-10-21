@@ -10,7 +10,9 @@ import {
   createSession,
   createUser,
   findPendingInvite,
+  isLockedOut,
   LOCKOUT_MAX_FAILURES,
+  LOCKOUT_WINDOW_MS,
   revokeSession,
   SESSION_TTL_MS,
   validateSession,
@@ -72,6 +74,17 @@ describe("pengguna & login", () => {
     await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
     for (let i = 0; i < LOCKOUT_MAX_FAILURES; i++) await authenticate("a@contoh.id", "salah-kata-sandi");
     expect(await authenticate("a@contoh.id", PASSWORD)).toEqual({ ok: false, reason: "locked" });
+  });
+
+  it("batas longgar: 9 kali salah belum terkunci; kunci lepas setelah jendela lewat", async () => {
+    expect(LOCKOUT_MAX_FAILURES).toBe(10);
+    expect(LOCKOUT_WINDOW_MS).toBe(5 * 60 * 1000);
+    await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
+    for (let i = 0; i < LOCKOUT_MAX_FAILURES - 1; i++) await authenticate("a@contoh.id", "salah-kata-sandi");
+    expect(isLockedOut("a@contoh.id")).toBe(false);
+    await authenticate("a@contoh.id", "salah-kata-sandi");
+    expect(isLockedOut("a@contoh.id")).toBe(true);
+    expect(isLockedOut("a@contoh.id", new Date(Date.now() + LOCKOUT_WINDOW_MS + 1000))).toBe(false);
   });
 });
 

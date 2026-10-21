@@ -12,8 +12,9 @@ import { generateToken, hashToken } from "./tokens";
 
 export const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 export const INVITE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
-export const LOCKOUT_WINDOW_MS = 15 * 60 * 1000;
-export const LOCKOUT_MAX_FAILURES = 5;
+/** Perlindungan tebak-sandi: 10 kegagalan beruntun dalam 5 menit mengunci email itu sampai kegagalan lama lewat 5 menit. */
+export const LOCKOUT_WINDOW_MS = 5 * 60 * 1000;
+export const LOCKOUT_MAX_FAILURES = 10;
 const LAST_SEEN_THROTTLE_MS = 5 * 60 * 1000;
 
 export type SafeUser = {

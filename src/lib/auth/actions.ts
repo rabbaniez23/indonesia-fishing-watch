@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { recordAudit } from "@/lib/audit";
-import { acceptInvite, authenticate, AuthError, createSession, revokeSession, validateSession } from "./service";
+import { acceptInvite, authenticate, AuthError, createSession, LOCKOUT_WINDOW_MS, revokeSession, validateSession } from "./service";
 import { clearSessionCookie, safeNextPath, SESSION_COOKIE, setSessionCookie } from "./session";
 
 export type FormState = { error: string | null };
@@ -23,7 +23,7 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
     return {
       error:
         result.reason === "locked"
-          ? "Terlalu banyak percobaan gagal. Coba lagi dalam 15 menit."
+          ? `Terlalu banyak percobaan gagal. Coba lagi dalam ${LOCKOUT_WINDOW_MS / 60_000} menit.`
           : "Email atau kata sandi salah.",
     };
   }
