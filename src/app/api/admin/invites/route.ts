@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { apiError, authorize } from "@/lib/api/guard";
+import { publicOrigin } from "@/lib/api/public-url";
 import { ROLES } from "@/lib/auth/roles";
 import { AuthError, createInvite } from "@/lib/auth/service";
 
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         ok: true,
-        data: { invite, inviteUrl: `${request.nextUrl.origin}/invite/${token}` },
+        data: { invite, inviteUrl: `${publicOrigin(request)}/invite/${token}` },
       },
       { status: 201, headers: { "Cache-Control": "private, no-store" } },
     );

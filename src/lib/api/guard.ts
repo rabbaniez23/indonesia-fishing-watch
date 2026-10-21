@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { can, type Permission } from "@/lib/auth/roles";
 import { validateSession, type SafeUser } from "@/lib/auth/service";
 import { SESSION_COOKIE } from "@/lib/auth/session";
+import { publicHost } from "./public-url";
 
 /** Kode error internal (PRD §12); body upstream mentah tidak pernah diteruskan. */
 export type ApiErrorCode =
@@ -35,15 +36,6 @@ export function isSameOrigin(request: NextRequest): boolean {
     return originHost === host || originHost === publicHost();
   } catch {
     return false;
-  }
-}
-
-/** Host publik dari APP_BASE_URL (mis. di balik tunnel HTTPS yang mengubah header Host). */
-function publicHost(): string | null {
-  try {
-    return process.env.APP_BASE_URL ? new URL(process.env.APP_BASE_URL).host : null;
-  } catch {
-    return null;
   }
 }
 
