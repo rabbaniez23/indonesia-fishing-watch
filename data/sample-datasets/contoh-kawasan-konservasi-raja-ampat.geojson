@@ -1,0 +1,86 @@
+{
+  "type": "FeatureCollection",
+  "name": "Kawasan Konservasi Perairan Kepulauan Raja Ampat",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kkp-ra-01",
+        "nama_kawasan": "KKPD Selat Dampier Raja Ampat",
+        "kategori": "Kawasan Konservasi Perairan",
+        "zona": "Zona Inti & Perlindungan Penuh",
+        "luas_ha": 336600,
+        "provinsi": "Papua Barat Daya",
+        "wpp_nri": "WPP-NRI 715"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [130.25, -0.45],
+            [130.85, -0.45],
+            [131.05, -0.75],
+            [130.65, -0.95],
+            [130.20, -0.80],
+            [130.25, -0.45]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kkp-ra-02",
+        "nama_kawasan": "KKPD Kepulauan Misool Selatan",
+        "kategori": "Kawasan Konservasi Perairan",
+        "zona": "Zona Pemanfaatan Terbatas",
+        "luas_ha": 366000,
+        "provinsi": "Papua Barat Daya",
+        "wpp_nri": "WPP-NRI 715"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [129.80, -1.80],
+            [130.60, -1.80],
+            [130.70, -2.35],
+            [130.10, -2.40],
+            [129.75, -2.15],
+            [129.80, -1.80]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kkp-ra-03",
+        "nama_kawasan": "KKPD Kepulauan Ayau-Asia",
+        "kategori": "Suaka Perikanan Tradisional",
+        "zona": "Perlindungan Habitat & Terumbu Karang",
+        "luas_ha": 101440,
+        "provinsi": "Papua Barat Daya",
+        "wpp_nri": "WPP-NRI 717"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [130.90, 0.40],
+            [131.30, 0.40],
+            [131.35, 0.15],
+            [130.95, 0.10],
+            [130.90, 0.40]
+          ]
+        ]
+      }
+    }
+  ]
+}

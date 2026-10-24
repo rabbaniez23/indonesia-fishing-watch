@@ -1,0 +1,21 @@
+nama_pelabuhan,tipe_pelabuhan,provinsi,wpp_nri,latitude,longitude,kapasitas_gt_maks,status_operasional
+Pelabuhan Perikanan Samudera (PPS) Nizam Zachman Jakarta,PPS,DKI Jakarta,WPP-NRI 712,-6.1042,106.8015,1000,Aktif
+Pelabuhan Perikanan Samudera (PPS) Belawan,PPS,Sumatera Utara,WPP-NRI 571,3.7845,98.6923,600,Aktif
+Pelabuhan Perikanan Samudera (PPS) Cilacap,PPS,Jawa Tengah,WPP-NRI 573,-7.7381,109.0145,500,Aktif
+Pelabuhan Perikanan Samudera (PPS) Kendari,PPS,Sulawesi Tenggara,WPP-NRI 714,-3.9745,122.5632,600,Aktif
+Pelabuhan Perikanan Samudera (PPS) Bitung,PPS,Sulawesi Utara,WPP-NRI 716,1.4421,125.1912,800,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Sibolga,PPN,Sumatera Utara,WPP-NRI 572,1.7391,98.7845,300,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Kejawanan Cirebon,PPN,Jawa Barat,WPP-NRI 712,-6.7412,108.5831,200,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Pekalongan,PPN,Jawa Tengah,WPP-NRI 712,-6.8712,109.6845,300,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Brondong Lamongan,PPN,Jawa Timur,WPP-NRI 712,-6.8821,112.2845,200,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Pengambengan Jembrana,PPN,Bali,WPP-NRI 573,-8.3745,114.5821,200,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Tual,PPN,Maluku,WPP-NRI 718,-5.6321,132.7412,500,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Ambon,PPN,Maluku,WPP-NRI 715,-3.6921,128.1845,400,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Ternate,PPN,Maluku Utara,WPP-NRI 715,0.7845,127.3821,300,Aktif
+Pelabuhan Perikanan Nusantara (PPN) Merauke,PPN,Papua Selatan,WPP-NRI 718,-8.4821,140.3845,400,Aktif
+Pelabuhan Perikanan Pantai (PPP) Labuan Bajo,PPP,Nusa Tenggara Timur,WPP-NRI 713,-8.4921,119.8845,100,Aktif
+Pelabuhan Perikanan Pantai (PPP) Sadeng Gunungkidul,PPP,DI Yogyakarta,WPP-NRI 573,-8.1895,110.7984,100,Aktif
+Pelabuhan Perikanan Pantai (PPP) Bajomulyo Juwana Pati,PPP,Jawa Tengah,WPP-NRI 712,-6.7084,111.1542,150,Aktif
+Pelabuhan Perikanan Pantai (PPP) Mayangan Probolinggo,PPP,Jawa Timur,WPP-NRI 712,-7.7384,113.2214,150,Aktif
+Pelabuhan Perikanan Pantai (PPP) Teluk Batang Kayong Utara,PPP,Kalimantan Barat,WPP-NRI 711,-1.2045,109.8412,100,Aktif
+Pelabuhan Perikanan Pantai (PPP) Muara Baru Pontianak,PPP,Kalimantan Barat,WPP-NRI 711,-0.0412,109.3245,120,Aktif

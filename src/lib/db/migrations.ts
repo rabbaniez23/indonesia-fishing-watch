@@ -324,4 +324,96 @@ export const MIGRATIONS: Migration[] = [
       );
     `,
   },
+  {
+    version: 9,
+    name: "research_datasets_and_layers",
+    sql: `
+      -- Dataset riset mandiri yang diunggah oleh peneliti (analyst/admin).
+      CREATE TABLE research_datasets (
+        id            TEXT PRIMARY KEY,
+        name          TEXT NOT NULL,
+        category      TEXT NOT NULL CHECK (category IN ('vessel_sightings', 'viirs_update', 'ocean_survey', 'custom_layer', 'other')),
+        description   TEXT,
+        file_name     TEXT NOT NULL,
+        file_type     TEXT NOT NULL CHECK (file_type IN ('csv', 'geojson', 'json')),
+        file_size     INTEGER NOT NULL,
+        row_count     INTEGER NOT NULL DEFAULT 0,
+        columns_json  TEXT NOT NULL,
+        preview_json  TEXT NOT NULL,
+        summary_json  TEXT,
+        status        TEXT NOT NULL DEFAULT 'ready' CHECK (status IN ('validating', 'ready', 'failed', 'archived')),
+        error_message TEXT,
+        storage_path  TEXT NOT NULL,
+        uploaded_by   TEXT NOT NULL REFERENCES users(id),
+        created_at    TEXT NOT NULL,
+        updated_at    TEXT NOT NULL
+      );
+      CREATE INDEX research_datasets_created_idx ON research_datasets(created_at);
+
+      -- Lapisan peta kustom yang dibuat peneliti dari dataset spasial.
+      CREATE TABLE custom_map_layers (
+        id           TEXT PRIMARY KEY,
+        dataset_id   TEXT REFERENCES research_datasets(id) ON DELETE CASCADE,
+        name         TEXT NOT NULL,
+        description  TEXT,
+        layer_type   TEXT NOT NULL CHECK (layer_type IN ('point', 'line', 'polygon')),
+        color        TEXT NOT NULL DEFAULT '#166534',
+        stroke_color TEXT,
+        opacity      REAL NOT NULL DEFAULT 0.8,
+        is_visible   INTEGER NOT NULL DEFAULT 1 CHECK (is_visible IN (0, 1)),
+        geojson_path TEXT NOT NULL,
+        created_by   TEXT NOT NULL REFERENCES users(id),
+        created_at   TEXT NOT NULL,
+        updated_at   TEXT NOT NULL
+      );
+    `,
+  },
+  {
+    version: 10,
+    name: "cms_articles",
+    sql: `
+      -- Artikel riset, panduan metodologi, dan buletin berkala yang ditulis peneliti.
+      CREATE TABLE cms_articles (
+        id           TEXT PRIMARY KEY,
+        title        TEXT NOT NULL,
+        slug         TEXT NOT NULL UNIQUE,
+        category     TEXT NOT NULL CHECK (category IN ('panduan', 'analisis', 'oseanografi', 'metodologi', 'buletin', 'lainnya')),
+        excerpt      TEXT,
+        content_html TEXT NOT NULL,
+        cover_image  TEXT,
+        status       TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'archived')),
+        author_id    TEXT NOT NULL REFERENCES users(id),
+        published_at TEXT,
+        created_at   TEXT NOT NULL,
+        updated_at   TEXT NOT NULL
+      );
+      CREATE INDEX cms_articles_slug_idx ON cms_articles(slug);
+      CREATE INDEX cms_articles_status_idx ON cms_articles(status, published_at);
+    `,
+  },
+  {
+    version: 11,
+    name: "analysis_insights",
+    sql: `
+      -- Catatan interpretasi, temuan lapangan, dan insight peneliti untuk halaman /analysis.
+      CREATE TABLE analysis_insights (
+        id           TEXT PRIMARY KEY,
+        title        TEXT NOT NULL,
+        content      TEXT NOT NULL,
+        kind         TEXT NOT NULL CHECK (kind IN ('interpretasi', 'temuan', 'peringatan', 'rekomendasi')),
+        tab          TEXT NOT NULL CHECK (tab IN ('semua', 'tren', 'kapal', 'hotspot', 'wpp', 'kejadian', 'perbandingan')),
+        region_id    TEXT REFERENCES regions(id),
+        metric       TEXT NOT NULL DEFAULT 'semua' CHECK (metric IN ('semua', 'fishingEffort', 'presence', 'viirs', 'sar')),
+        period_start TEXT,
+        period_end   TEXT,
+        is_active    INTEGER NOT NULL DEFAULT 1 CHECK (is_active IN (0, 1)),
+        author_id    TEXT NOT NULL REFERENCES users(id),
+        created_at   TEXT NOT NULL,
+        updated_at   TEXT NOT NULL
+      );
+      CREATE INDEX analysis_insights_lookup_idx ON analysis_insights(tab, region_id, is_active);
+    `,
+  },
 ];
+
+

@@ -27,6 +27,8 @@ export const PERMISSIONS = {
   "finding:note": "analyst",
   "finding:update": "analyst",
   "report:create": "analyst",
+  "dataset:import": "analyst",
+  "cms:manage": "analyst",
   "user:manage": "admin",
   "dataset:manage": "admin",
 } as const satisfies Record<string, Role>;

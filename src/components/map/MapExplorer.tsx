@@ -23,6 +23,7 @@ import type { OceanVarKey } from "@/lib/oseanografi/types";
 import type { DensityKey } from "@/lib/viirs/grid";
 import { OceanLayerControl, parseOceanParam, syncOceanToUrl, useOceanOverlay } from "./OceanOverlay";
 import { parseViirsParam, syncViirsToUrl, useViirsOverlay, ViirsLayerControl, VIIRS_PERIOD } from "./ViirsOverlay";
+import { CustomLayersControl, useCustomLayersOverlay } from "./CustomLayersOverlay";
 
 /**
  * Basemap OpenFreeMap (gratis, tanpa API key; atribusi OpenMapTiles & OpenStreetMap ditampilkan MapLibre).
@@ -343,6 +344,8 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
     syncOceanToUrl(key);
   }
 
+  const customLayersOverlay = useCustomLayersOverlay({ mapRef, popupRef, mapReady, theme });
+
   const geojson = useMemo(() => (data ? cellsToGeoJSON(data.cells) : null), [data]);
   const points = useMemo(() => (data ? cellsToPoints(data.cells) : null), [data]);
   const featureIndex = useMemo(() => {
@@ -521,6 +524,11 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
 
       <ViirsLayerControl selection={viirs} onChange={changeViirs} status={viirsOverlay.status} max={viirsOverlay.max} theme={theme} />
       <OceanLayerControl selection={ocean} onChange={changeOcean} overlay={oceanOverlay} opacity={oceanOpacity} onOpacityChange={setOceanOpacity} />
+      <CustomLayersControl
+        layers={customLayersOverlay.availableLayers}
+        selectedIds={customLayersOverlay.selectedLayerIds}
+        onToggle={customLayersOverlay.toggleLayer}
+      />
 
       <div className="flex flex-col gap-1">
         <label htmlFor="opacity" className="font-medium">
@@ -637,6 +645,11 @@ export function MapExplorer({ region, filter, regions, defaults, maxDate, layers
             {ocean && oceanOverlay.meta ? (
               <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">
                 + Laut · {oceanOverlay.meta.label} · {oceanOverlay.month}
+              </span>
+            ) : null}
+            {customLayersOverlay.selectedLayerIds.size > 0 ? (
+              <span className="glass-strong rounded-full border px-3 py-1 text-caption text-ink">
+                + {customLayersOverlay.selectedLayerIds.size} Layer Kustom
               </span>
             ) : null}
           </div>

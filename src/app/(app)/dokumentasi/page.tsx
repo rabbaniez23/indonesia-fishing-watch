@@ -4,11 +4,15 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { NAV_GROUPS, NAV_ITEMS } from "@/components/layout/nav-items";
 import { PageContainer } from "@/components/layout/PageContainer";
+import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { DataTable } from "@/components/ui/DataTable";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StateView } from "@/components/ui/StateView";
 import { requireUser } from "@/lib/auth/session";
+import { formatDateTimeUTC } from "@/lib/format";
+import { listArticles } from "@/lib/cms/articles";
+import { ARTICLE_CATEGORY_LABELS } from "@/lib/cms/types";
 import { oceanMeta } from "@/lib/oseanografi/data";
 import { viirsMeta } from "@/lib/viirs/data";
 import { longDate, monthLabel } from "@/lib/viirs/format";
@@ -41,6 +45,7 @@ const TERMS: Array<[string, string]> = [
 
 async function Content() {
   await requireUser();
+  const publishedArticles = listArticles({ status: "published" });
   const viirsPeriod = `${monthLabel(viirsMeta.dateRange.start.slice(0, 7))} – ${monthLabel(viirsMeta.dateRange.end.slice(0, 7))}`;
   const sources: SourceRow[] = [
     {
@@ -132,6 +137,45 @@ async function Content() {
           ]}
         />
       </Card>
+
+      {publishedArticles.length > 0 && (
+        <Card>
+          <CardHeader
+            title="Artikel Riset & Panduan Tambahan"
+            description="Tulisan analisis berkala, metodologi data, dan catatan edukasi maritim yang diterbitkan oleh peneliti."
+          />
+          <div className="grid grid-cols-1 gap-4 p-6 pt-0 sm:grid-cols-2">
+            {publishedArticles.map((a) => (
+              <Link
+                key={a.id}
+                href={`/dokumentasi/artikel/${a.slug}`}
+                className="group flex flex-col justify-between gap-3 rounded-card border border-border bg-neutral-bg/30 p-4 transition-all hover:border-primary hover:bg-surface"
+              >
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex items-center gap-2">
+                    <Badge tone="neutral">{ARTICLE_CATEGORY_LABELS[a.category] || a.category}</Badge>
+                    <span className="text-[11px] text-ink-muted">
+                      · {a.publishedAt ? formatDateTimeUTC(a.publishedAt).slice(0, 10) : ""}
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-ink group-hover:text-primary transition-colors">
+                    {a.title}
+                  </h3>
+                  {a.excerpt && (
+                    <p className="text-caption text-ink-muted line-clamp-2 leading-relaxed">{a.excerpt}</p>
+                  )}
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-border/50 text-caption text-ink-muted">
+                  <span>Oleh {a.author.name}</span>
+                  <span className="font-semibold text-primary group-hover:translate-x-0.5 transition-transform">
+                    Baca Selengkapnya →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Card>
+      )}
 
       <Card>
         <CardHeader title="Istilah singkat" />

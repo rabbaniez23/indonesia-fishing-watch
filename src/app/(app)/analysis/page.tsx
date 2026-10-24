@@ -6,7 +6,16 @@ import { CompareForm } from "@/components/analysis/CompareForm";
 import { RegionNotice } from "@/components/layout/RegionNotice";
 import { ProvenanceDetails } from "@/components/analysis/ProvenanceDetails";
 import { ReportLoader } from "@/components/analysis/ReportLoader";
-import { EventsSection, FleetSection, HotspotStats, TrendStats, WppRanking, type WppRow } from "@/components/analysis/StatsSections";
+import { getActiveInsightsForAnalysis } from "@/lib/cms/analysis-insights";
+import { ResearcherInsightBox } from "@/components/analysis/ResearcherInsightBox";
+import {
+  EventsSection,
+  FleetSection,
+  HotspotStats,
+  TrendStats,
+  WppRanking,
+  type WppRow,
+} from "@/components/analysis/StatsSections";
 import { TrendChart, type TrendSeries } from "@/components/charts/TrendChart";
 import { FilterBar } from "@/components/filters/FilterBar";
 import { PageContainer } from "@/components/layout/PageContainer";
@@ -112,6 +121,12 @@ async function Analysis({ searchParams }: { searchParams: PageProps<"/analysis">
     return `/analysis?${q}`;
   };
 
+  const insights = getActiveInsightsForAnalysis({
+    tab,
+    regionId: region.id,
+    metric,
+  });
+
   return (
     <>
       <FilterBar
@@ -122,6 +137,7 @@ async function Analysis({ searchParams }: { searchParams: PageProps<"/analysis">
       />
       {error ? <Banner tone="warning" title={error} /> : null}
       <RegionNotice region={region} />
+      <ResearcherInsightBox insights={insights} />
 
       <div className="flex flex-col gap-3">
         <nav aria-label="Jenis analisis" className="glass inline-flex w-fit max-w-full flex-wrap gap-1 rounded-button p-1">
