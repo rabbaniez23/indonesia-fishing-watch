@@ -52,37 +52,37 @@ export function migrate(db: Db): number[] {
   const ran: number[] = [];
   for (const migration of MIGRATIONS) {
     if (applied.has(migration.version)) continue;
-    transaction(db, () => {
-      db.exec(migration.sql);
-      db.prepare("INSERT INTO schema_migrations (version, name, applied_at) VALUES (?, ?, ?)").run(
-        migration.version,
-        migration.name,
-        nowIso(),
-      );
-    });
+    // PRAGMA foreign_keys tidak berlaku di dalam transaksi, jadi diatur sebelum BEGIN.
+    if (migration.foreignKeysOff) db.exec("PRAGMA foreign_keys = OFF");
+    try {
+      transaction(db, () => {
+        db.exec(migration.sql);
+        if (migration.foreignKeysOff) {
+          const broken = db.prepare("PRAGMA foreign_key_check").all();
+          if (broken.length) throw new Error(`Migrasi ${migration.version} merusak ${broken.length} foreign key.`);
+        }
+        db.prepare("INSERT INTO schema_migrations (version, name, applied_at) VALUES (?, ?, ?)").run(
+          migration.version,
+          migration.name,
+          nowIso(),
+        );
+      });
+    } finally {
+      if (migration.foreignKeysOff) db.exec("PRAGMA foreign_keys = ON");
+    }
     ran.push(migration.version);
   }
   return ran;
 }
 
 let savepointSeq = 0;
-const activeTransactions = new WeakSet<Db>();
-
-if (!("isTransaction" in DatabaseSync.prototype)) {
-  Object.defineProperty(DatabaseSync.prototype, "isTransaction", {
-    get() {
-      return activeTransactions.has(this as Db);
-    },
-    configurable: true,
-  });
-}
 
 /**
  * Jalankan fn dalam satu transaksi; rollback bila melempar error.
  * Dapat dipanggil bersarang: di dalam transaksi aktif dipakai SAVEPOINT (rollback hanya bagian dalam).
  */
 export function transaction<T>(db: Db, fn: () => T): T {
-  if (activeTransactions.has(db)) {
+  if (db.isTransaction) {
     const name = `sp_${++savepointSeq}`;
     db.exec(`SAVEPOINT ${name}`);
     try {
@@ -95,7 +95,6 @@ export function transaction<T>(db: Db, fn: () => T): T {
       throw error;
     }
   }
-  activeTransactions.add(db);
   db.exec("BEGIN IMMEDIATE");
   try {
     const result = fn();
@@ -104,8 +103,6 @@ export function transaction<T>(db: Db, fn: () => T): T {
   } catch (error) {
     db.exec("ROLLBACK");
     throw error;
-  } finally {
-    activeTransactions.delete(db);
   }
 }
 

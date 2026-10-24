@@ -1,5 +1,6 @@
 import { getDb, newId, nowIso, transaction } from "@/lib/db";
 import type { ArticleCategory, ArticleStatus, CmsArticle } from "./types";
+import { sanitizeArticleHtml, sanitizeImageUrl } from "./sanitize";
 
 export function slugify(text: string): string {
   return text
@@ -87,8 +88,8 @@ export function createArticle(input: CreateArticleInput): CmsArticle {
       uniqueSlug,
       input.category,
       input.excerpt || null,
-      input.contentHtml,
-      input.coverImage || null,
+      sanitizeArticleHtml(input.contentHtml),
+      sanitizeImageUrl(input.coverImage),
       status,
       input.userId,
       publishedAt,
@@ -206,8 +207,8 @@ export function updateArticle(
 
   const category = input.category !== undefined ? input.category : existing.category;
   const excerpt = input.excerpt !== undefined ? input.excerpt : existing.excerpt;
-  const contentHtml = input.contentHtml !== undefined ? input.contentHtml : existing.contentHtml;
-  const coverImage = input.coverImage !== undefined ? input.coverImage : existing.coverImage;
+  const contentHtml = sanitizeArticleHtml(input.contentHtml !== undefined ? input.contentHtml : existing.contentHtml);
+  const coverImage = sanitizeImageUrl(input.coverImage !== undefined ? input.coverImage : existing.coverImage);
   const status = input.status !== undefined ? input.status : existing.status;
 
   let publishedAt = existing.publishedAt;

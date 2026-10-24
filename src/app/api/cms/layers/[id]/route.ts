@@ -17,7 +17,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/api/cms/laye
 }
 
 export async function PATCH(request: NextRequest, ctx: RouteContext<"/api/cms/layers/[id]">) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   const { id } = await ctx.params;
@@ -37,7 +37,7 @@ export async function PATCH(request: NextRequest, ctx: RouteContext<"/api/cms/la
 }
 
 export async function DELETE(request: NextRequest, ctx: RouteContext<"/api/cms/layers/[id]">) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   const { id } = await ctx.params;

@@ -16,13 +16,28 @@ describe("cms articles service", () => {
     setDbForTesting(db);
     db.prepare(`
       INSERT INTO users (id, email, name, role, password_hash, status, created_at, updated_at)
-      VALUES ('u1', 'peneliti@kkp.go.id', 'Peneliti Maritim', 'analyst', 'hash', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
+      VALUES ('u1', 'peneliti@kkp.go.id', 'Peneliti Maritim', 'admin', 'hash', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
     `).run();
   });
 
   it("slugifies titles correctly", () => {
     expect(slugify("Analisis Armada WPP-711 & Musim Barat!")).toBe("analisis-armada-wpp-711-musim-barat");
     expect(slugify("  Panduan   Sistem   ")).toBe("panduan-sistem");
+  });
+
+  it("membersihkan HTML & URL sampul berbahaya saat disimpan dan diubah", () => {
+    const a = createArticle({
+      title: "Uji XSS",
+      category: "panduan",
+      contentHtml: '<p>Aman</p><img src="x" onerror="alert(1)"><script>alert(1)</script>',
+      coverImage: "javascript:alert(1)",
+      status: "draft",
+      userId: "u1",
+    });
+    expect(a.contentHtml).toBe('<p>Aman</p><img src="x" />');
+    expect(a.coverImage).toBeNull();
+    const b = updateArticle(a.id, { contentHtml: '<a href="javascript:alert(1)" onclick="x()">t</a>' }, "u1");
+    expect(b?.contentHtml).not.toMatch(/javascript:|onclick/);
   });
 
   it("creates an article and generates unique slugs", () => {

@@ -32,7 +32,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/api/cms/data
 }
 
 export async function DELETE(request: NextRequest, ctx: RouteContext<"/api/cms/datasets/[id]">) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   const { id } = await ctx.params;

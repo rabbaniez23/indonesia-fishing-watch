@@ -1,4 +1,5 @@
 import { getDb, newId, nowIso, transaction } from "@/lib/db";
+import type { SQLInputValue } from "node:sqlite";
 import type {
   AnalysisInsight,
   CreateInsightInput,
@@ -252,7 +253,7 @@ export function listAnalysisInsights(filter?: {
 
   query += " ORDER BY i.updated_at DESC";
 
-  const rows = db.prepare(query).all(...(params as any[])) as InsightRow[];
+  const rows = db.prepare(query).all(...(params as SQLInputValue[])) as InsightRow[];
   return rows.map(rowToInsight);
 }
 

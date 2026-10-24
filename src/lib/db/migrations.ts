@@ -5,7 +5,16 @@
  * PostgreSQL + PostGIS (PRD §11.1). Tabel data GFW ditambahkan pada tahap masing-masing,
  * setelah bentuk respons nyata diperiksa — bukan ditebak di sini.
  */
-export type Migration = { version: number; name: string; sql: string };
+export type Migration = {
+  version: number;
+  name: string;
+  sql: string;
+  /**
+   * Untuk membangun ulang tabel yang dirujuk foreign key (prosedur resmi SQLite "12 langkah"): foreign key dimatikan
+   * selama migrasi lalu diperiksa dengan `PRAGMA foreign_key_check` sebelum dinyalakan lagi.
+   */
+  foreignKeysOff?: boolean;
+};
 
 export const MIGRATIONS: Migration[] = [
   {
@@ -412,6 +421,49 @@ export const MIGRATIONS: Migration[] = [
         updated_at   TEXT NOT NULL
       );
       CREATE INDEX analysis_insights_lookup_idx ON analysis_insights(tab, region_id, is_active);
+    `,
+  },
+  {
+    version: 12,
+    name: "roles_user_admin",
+    foreignKeysOff: true,
+    sql: `
+      -- Peran disederhanakan menjadi Pengguna ('user') dan Admin ('admin'); Viewer & Analyst lama → 'user'.
+      CREATE TABLE users_new (
+        id            TEXT PRIMARY KEY,
+        email         TEXT NOT NULL UNIQUE,
+        name          TEXT NOT NULL,
+        role          TEXT NOT NULL CHECK (role IN ('user', 'admin')),
+        password_hash TEXT NOT NULL,
+        status        TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'disabled')),
+        created_at    TEXT NOT NULL,
+        updated_at    TEXT NOT NULL
+      );
+      INSERT INTO users_new (id, email, name, role, password_hash, status, created_at, updated_at)
+        SELECT id, email, name, CASE WHEN role = 'admin' THEN 'admin' ELSE 'user' END, password_hash, status, created_at, updated_at
+        FROM users;
+      DROP TABLE users;
+      ALTER TABLE users_new RENAME TO users;
+
+      CREATE TABLE invites_new (
+        id               TEXT PRIMARY KEY,
+        email            TEXT NOT NULL,
+        role             TEXT NOT NULL CHECK (role IN ('user', 'admin')),
+        token_hash       TEXT NOT NULL UNIQUE,
+        invited_by       TEXT REFERENCES users(id),
+        created_at       TEXT NOT NULL,
+        expires_at       TEXT NOT NULL,
+        accepted_at      TEXT,
+        accepted_user_id TEXT REFERENCES users(id),
+        revoked_at       TEXT
+      );
+      INSERT INTO invites_new (id, email, role, token_hash, invited_by, created_at, expires_at, accepted_at, accepted_user_id, revoked_at)
+        SELECT id, email, CASE WHEN role = 'admin' THEN 'admin' ELSE 'user' END, token_hash, invited_by, created_at, expires_at,
+               accepted_at, accepted_user_id, revoked_at
+        FROM invites;
+      DROP TABLE invites;
+      ALTER TABLE invites_new RENAME TO invites;
+      CREATE INDEX invites_email_idx ON invites(email);
     `,
   },
 ];

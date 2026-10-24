@@ -17,7 +17,7 @@ describe("CMS Analysis Insights Service", () => {
     setDbForTesting(db);
     db.prepare(`
       INSERT INTO users (id, email, name, role, password_hash, status, created_at, updated_at)
-      VALUES ('u1', 'peneliti@kkp.go.id', 'Dr. Peneliti Maritim', 'analyst', 'hash123', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
+      VALUES ('u1', 'peneliti@kkp.go.id', 'Dr. Peneliti Maritim', 'admin', 'hash123', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
     `).run();
   });
 

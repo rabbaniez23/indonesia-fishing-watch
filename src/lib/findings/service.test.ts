@@ -27,8 +27,8 @@ const base = {
 
 beforeEach(async () => {
   setDbForTesting(openDatabase(":memory:"));
-  analyst = (await createUser({ email: "a@uji.local", name: "Analis", role: "analyst", password: "kata-sandi-panjang-1" })).id;
-  other = (await createUser({ email: "b@uji.local", name: "Analis Lain", role: "analyst", password: "kata-sandi-panjang-1" })).id;
+  analyst = (await createUser({ email: "a@uji.local", name: "Analis", role: "user", password: "kata-sandi-panjang-1" })).id;
+  other = (await createUser({ email: "b@uji.local", name: "Analis Lain", role: "user", password: "kata-sandi-panjang-1" })).id;
 });
 
 describe("temuan", () => {

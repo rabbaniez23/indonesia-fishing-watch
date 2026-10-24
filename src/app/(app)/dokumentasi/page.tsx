@@ -44,7 +44,10 @@ const TERMS: Array<[string, string]> = [
 ];
 
 async function Content() {
-  await requireUser();
+  const user = await requireUser();
+  // Kelompok "Kelola" (CMS) hanya untuk Admin, sama seperti sidebar.
+  const visibleItems = NAV_ITEMS.filter((item) => !item.adminOnly || user.role === "admin");
+  const visibleGroups = NAV_GROUPS.filter((group) => visibleItems.some((item) => item.group === group.key));
   const publishedArticles = listArticles({ status: "published" });
   const viirsPeriod = `${monthLabel(viirsMeta.dateRange.start.slice(0, 7))} – ${monthLabel(viirsMeta.dateRange.end.slice(0, 7))}`;
   const sources: SourceRow[] = [
@@ -82,11 +85,11 @@ async function Content() {
           Mau apa? Buka menu ini
         </h2>
         <div className="grid gap-4 md:grid-cols-2">
-          {NAV_GROUPS.map((group) => (
+          {visibleGroups.map((group) => (
             <Card key={group.key}>
               <CardHeader title={group.label} description={group.description} />
               <ul className="flex flex-col gap-1">
-                {NAV_ITEMS.filter((item) => item.group === group.key).map((item) => {
+                {visibleItems.filter((item) => item.group === group.key).map((item) => {
                   const Icon = item.icon;
                   return (
                     <li key={item.href}>
@@ -144,7 +147,7 @@ async function Content() {
             title="Artikel Riset & Panduan Tambahan"
             description="Tulisan analisis berkala, metodologi data, dan catatan edukasi maritim yang diterbitkan oleh peneliti."
           />
-          <div className="grid grid-cols-1 gap-4 p-6 pt-0 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {publishedArticles.map((a) => (
               <Link
                 key={a.id}

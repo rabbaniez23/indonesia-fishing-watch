@@ -38,12 +38,14 @@ describe("password", () => {
 
 describe("peran", () => {
   it("mengikuti hierarki viewer < analyst < admin", () => {
-    expect(hasRole("admin", "analyst")).toBe(true);
-    expect(hasRole("viewer", "analyst")).toBe(false);
-    expect(can("viewer", "data:read")).toBe(true);
-    expect(can("viewer", "finding:create")).toBe(false);
-    expect(can("analyst", "finding:create")).toBe(true);
-    expect(can("analyst", "user:manage")).toBe(false);
+    expect(hasRole("admin", "user")).toBe(true);
+    expect(hasRole("user", "admin")).toBe(false);
+    expect(can("user", "data:read")).toBe(true);
+    expect(can("user", "finding:create")).toBe(true);
+    expect(can("user", "report:create")).toBe(true);
+    expect(can("user", "cms:manage")).toBe(false);
+    expect(can("user", "user:manage")).toBe(false);
+    expect(can("admin", "cms:manage")).toBe(true);
     expect(can("admin", "user:manage")).toBe(true);
   });
 });
@@ -52,26 +54,26 @@ describe("pengguna & login", () => {
   it("menormalkan email dan menolak duplikat", async () => {
     await createUser({ email: " Admin@Contoh.ID ", name: "Admin", role: "admin", password: PASSWORD });
     await expect(
-      createUser({ email: "admin@contoh.id", name: "Lain", role: "viewer", password: PASSWORD }),
+      createUser({ email: "admin@contoh.id", name: "Lain", role: "user", password: PASSWORD }),
     ).rejects.toMatchObject({ code: "EMAIL_TAKEN" });
   });
 
   it("menolak kata sandi pendek", async () => {
     await expect(
-      createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: "pendek" }),
+      createUser({ email: "a@contoh.id", name: "A", role: "user", password: "pendek" }),
     ).rejects.toBeInstanceOf(AuthError);
   });
 
   it("login sukses dengan kredensial benar, gagal generik bila salah", async () => {
-    await createUser({ email: "a@contoh.id", name: "A", role: "analyst", password: PASSWORD });
+    await createUser({ email: "a@contoh.id", name: "A", role: "user", password: PASSWORD });
     const ok = await authenticate("A@contoh.id", PASSWORD);
-    expect(ok.ok && ok.user.role).toBe("analyst");
+    expect(ok.ok && ok.user.role).toBe("user");
     expect(await authenticate("a@contoh.id", "salah-kata-sandi")).toEqual({ ok: false, reason: "invalid" });
     expect(await authenticate("tidakada@contoh.id", PASSWORD)).toEqual({ ok: false, reason: "invalid" });
   });
 
   it("mengunci setelah kegagalan beruntun, bahkan dengan kata sandi benar", async () => {
-    await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
+    await createUser({ email: "a@contoh.id", name: "A", role: "user", password: PASSWORD });
     for (let i = 0; i < LOCKOUT_MAX_FAILURES; i++) await authenticate("a@contoh.id", "salah-kata-sandi");
     expect(await authenticate("a@contoh.id", PASSWORD)).toEqual({ ok: false, reason: "locked" });
   });
@@ -79,7 +81,7 @@ describe("pengguna & login", () => {
   it("batas longgar: 9 kali salah belum terkunci; kunci lepas setelah jendela lewat", async () => {
     expect(LOCKOUT_MAX_FAILURES).toBe(10);
     expect(LOCKOUT_WINDOW_MS).toBe(5 * 60 * 1000);
-    await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
+    await createUser({ email: "a@contoh.id", name: "A", role: "user", password: PASSWORD });
     for (let i = 0; i < LOCKOUT_MAX_FAILURES - 1; i++) await authenticate("a@contoh.id", "salah-kata-sandi");
     expect(isLockedOut("a@contoh.id")).toBe(false);
     await authenticate("a@contoh.id", "salah-kata-sandi");
@@ -90,7 +92,7 @@ describe("pengguna & login", () => {
 
 describe("sesi", () => {
   it("token valid mengembalikan pengguna; database hanya menyimpan hash", async () => {
-    const user = await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
+    const user = await createUser({ email: "a@contoh.id", name: "A", role: "user", password: PASSWORD });
     const { token } = createSession(user.id);
     expect(validateSession(token)?.id).toBe(user.id);
     const stored = getDb().prepare("SELECT token_hash FROM sessions").get() as { token_hash: string };
@@ -99,7 +101,7 @@ describe("sesi", () => {
   });
 
   it("sesi kedaluwarsa, dicabut, atau pengguna nonaktif ditolak", async () => {
-    const user = await createUser({ email: "a@contoh.id", name: "A", role: "viewer", password: PASSWORD });
+    const user = await createUser({ email: "a@contoh.id", name: "A", role: "user", password: PASSWORD });
     const start = new Date("2026-10-01T00:00:00Z");
     const { token } = createSession(user.id, start);
     expect(validateSession(token, new Date(start.getTime() + SESSION_TTL_MS + 1))).toBeNull();
@@ -126,9 +128,9 @@ describe("undangan", () => {
 
   it("undangan dipakai sekali dan membuat pengguna dengan peran undangan", async () => {
     const a = await admin();
-    const { token } = createInvite({ email: "baru@contoh.id", role: "analyst", invitedBy: a.id });
+    const { token } = createInvite({ email: "baru@contoh.id", role: "user", invitedBy: a.id });
     const user = await acceptInvite(token, { name: "Baru", password: PASSWORD });
-    expect(user).toMatchObject({ email: "baru@contoh.id", role: "analyst" });
+    expect(user).toMatchObject({ email: "baru@contoh.id", role: "user" });
     expect(findPendingInvite(token)).toBeNull();
     await expect(acceptInvite(token, { name: "Lagi", password: PASSWORD })).rejects.toMatchObject({
       code: "INVITE_INVALID",
@@ -137,8 +139,8 @@ describe("undangan", () => {
 
   it("undangan baru mencabut undangan lama untuk email yang sama", async () => {
     const a = await admin();
-    const first = createInvite({ email: "x@contoh.id", role: "viewer", invitedBy: a.id });
-    const second = createInvite({ email: "x@contoh.id", role: "viewer", invitedBy: a.id });
+    const first = createInvite({ email: "x@contoh.id", role: "user", invitedBy: a.id });
+    const second = createInvite({ email: "x@contoh.id", role: "user", invitedBy: a.id });
     expect(findPendingInvite(first.token)).toBeNull();
     expect(findPendingInvite(second.token)?.email).toBe("x@contoh.id");
   });
@@ -146,21 +148,21 @@ describe("undangan", () => {
   it("undangan kedaluwarsa tidak berlaku dan email terdaftar tidak bisa diundang", async () => {
     const a = await admin();
     const past = new Date("2020-01-01T00:00:00Z");
-    const { token } = createInvite({ email: "lama@contoh.id", role: "viewer", invitedBy: a.id }, past);
+    const { token } = createInvite({ email: "lama@contoh.id", role: "user", invitedBy: a.id }, past);
     expect(findPendingInvite(token)).toBeNull();
-    expect(() => createInvite({ email: "admin@contoh.id", role: "viewer", invitedBy: a.id })).toThrow(AuthError);
+    expect(() => createInvite({ email: "admin@contoh.id", role: "user", invitedBy: a.id })).toThrow(AuthError);
   });
 
   it("kata sandi tidak valid tidak menghabiskan undangan", async () => {
     const a = await admin();
-    const { token } = createInvite({ email: "y@contoh.id", role: "viewer", invitedBy: a.id });
+    const { token } = createInvite({ email: "y@contoh.id", role: "user", invitedBy: a.id });
     await expect(acceptInvite(token, { name: "Y", password: "pendek" })).rejects.toBeInstanceOf(AuthError);
     expect(findPendingInvite(token)).not.toBeNull();
   });
 
   it("audit tidak menyimpan token atau kata sandi", async () => {
     const a = await admin();
-    const { token } = createInvite({ email: "z@contoh.id", role: "viewer", invitedBy: a.id });
+    const { token } = createInvite({ email: "z@contoh.id", role: "user", invitedBy: a.id });
     await acceptInvite(token, { name: "Z", password: PASSWORD });
     const dump = JSON.stringify(getDb().prepare("SELECT * FROM audit_entries").all());
     expect(dump).not.toContain(token);

@@ -20,7 +20,7 @@ describe("readZip", () => {
     const files = readZip(readFileSync(zipPath));
     expect(files.get("data.json")?.toString("utf8")).toBe(json);
     expect(files.get("README.txt")?.toString("utf8")).toBe("caveat");
-  }, 30000);
+  });
 
   it("menolak data yang bukan zip", () => {
     expect(() => readZip(new Uint8Array(100))).toThrow(/tidak valid/);

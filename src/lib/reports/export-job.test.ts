@@ -33,7 +33,7 @@ beforeEach(async () => {
   setDbForTesting(openDatabase(":memory:"));
   process.env.REPORTS_DIR = mkdtempSync(path.join(tmpdir(), "laporan-"));
   importEezIndonesia(readFileSync(path.join(process.cwd(), "fixtures", "gfw", "region-eez-8492.geojson"), "utf8"), null);
-  userId = (await createUser({ email: "a@uji.local", name: "Analis", role: "analyst", password: "kata-sandi-panjang-1" })).id;
+  userId = (await createUser({ email: "a@uji.local", name: "Analis", role: "user", password: "kata-sandi-panjang-1" })).id;
   adapters.runRegionReport.mockReset();
   adapters.runRegionReport.mockImplementation(async (p: { dataset: "fishingEffort" | "presence" | "sar" }) => {
     const name = { fishingEffort: "public-global-fishing-effort", presence: "public-global-presence", sar: "public-global-sar-presence" }[p.dataset];

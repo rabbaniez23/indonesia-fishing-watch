@@ -1,11 +1,9 @@
 import {
   AlertTriangle,
   CheckCircle2,
-  HelpCircle,
   Info,
   Lightbulb,
   Search,
-  Sparkles,
   UserCheck,
 } from "lucide-react";
 import { Badge, type StatusTone } from "@/components/ui/Badge";
@@ -23,13 +21,13 @@ export function ResearcherInsightBox({ insights }: Props) {
   function getKindIcon(kind: InsightKind) {
     switch (kind) {
       case "interpretasi":
-        return <Lightbulb className="size-4 text-blue-600" />;
+        return <Lightbulb className="size-4 text-info" />;
       case "temuan":
-        return <Search className="size-4 text-emerald-600" />;
+        return <Search className="size-4 text-success" />;
       case "peringatan":
-        return <AlertTriangle className="size-4 text-amber-600" />;
+        return <AlertTriangle className="size-4 text-warning" />;
       case "rekomendasi":
-        return <CheckCircle2 className="size-4 text-indigo-600" />;
+        return <CheckCircle2 className="size-4 text-primary" />;
       default:
         return <Info className="size-4 text-primary" />;
     }
@@ -38,11 +36,11 @@ export function ResearcherInsightBox({ insights }: Props) {
   function getToneBorder(tone: StatusTone) {
     switch (tone) {
       case "info":
-        return "border-blue-200 bg-blue-50/50 dark:border-blue-900/50 dark:bg-blue-950/20";
+        return "border-info-border bg-info-bg";
       case "success":
-        return "border-emerald-200 bg-emerald-50/50 dark:border-emerald-900/50 dark:bg-emerald-950/20";
+        return "border-success-border bg-success-bg";
       case "warning":
-        return "border-amber-200 bg-amber-50/50 dark:border-amber-900/50 dark:bg-amber-950/20";
+        return "border-warning-border bg-warning-bg";
       default:
         return "border-border bg-surface/80";
     }

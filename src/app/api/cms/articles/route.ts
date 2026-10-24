@@ -30,7 +30,7 @@ export function GET(request: NextRequest) {
 
 /** POST /api/cms/articles — Peneliti/Admin membuat artikel panduan/riset baru */
 export async function POST(request: NextRequest) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   try {

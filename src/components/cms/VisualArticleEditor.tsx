@@ -1,16 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState} from "react";
 import {
   AlertCircle,
   Bold,
   CheckCircle2,
-  Code,
   Eye,
-  Heading1,
   Heading2,
   Heading3,
-  HelpCircle,
   Image as ImageIcon,
   Info,
   Italic,
@@ -19,7 +16,6 @@ import {
   ListOrdered,
   Minus,
   Quote,
-  Sparkles,
   Strikethrough,
   Underline,
 } from "lucide-react";
@@ -42,11 +38,11 @@ type Props = {
 
 export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props) {
   const [title, setTitle] = useState(initialArticle?.title || "");
-  const [slug, setSlug] = useState(initialArticle?.slug || "");
+  const [slug] = useState(initialArticle?.slug || "");
   const [category, setCategory] = useState<ArticleCategory>(initialArticle?.category || "panduan");
   const [excerpt, setExcerpt] = useState(initialArticle?.excerpt || "");
   const [coverImage, setCoverImage] = useState(initialArticle?.coverImage || "");
-  const [status, setStatus] = useState<ArticleStatus>(initialArticle?.status || "draft");
+  const [status] = useState<ArticleStatus>(initialArticle?.status || "draft");
   const [contentHtml, setContentHtml] = useState(initialArticle?.contentHtml || "");
 
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
@@ -83,11 +79,11 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
     const titleText =
       type === "info" ? "Catatan Analisis:" : type === "success" ? "Temuan Lapangan:" : "Perhatian / Keterbatasan:";
     const borderColor =
-      type === "info" ? "border-blue-500 bg-blue-50/70 text-blue-950" : type === "success" ? "border-[#166534] bg-emerald-50/70 text-emerald-950" : "border-amber-500 bg-amber-50/70 text-amber-950";
+      type === "info" ? "border-info bg-info-bg text-ink" : type === "success" ? "border-primary bg-success-bg text-ink" : "border-warning bg-warning-bg text-ink";
 
     const calloutHtml = `
       <div class="my-4 rounded-card border-l-4 p-4 ${borderColor}">
-        <p class="font-bold text-caption uppercase tracking-wider mb-1">${titleText}</p>
+        <p class="font-semibold text-caption uppercase tracking-wider mb-1">${titleText}</p>
         <p>Tuliskan ringkasan temuan atau catatan penting riset di sini…</p>
       </div><p><br></p>
     `;
@@ -186,7 +182,7 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
       </div>
 
       {errorMessage && (
-        <div className="rounded-button border border-red-200 bg-red-50 p-4 text-caption text-error flex items-center gap-2">
+        <div className="rounded-button border border-error-border bg-error-bg p-4 text-caption text-error flex items-center gap-2">
           <AlertCircle className="size-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
@@ -370,7 +366,7 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
                 type="button"
                 onClick={() => insertCallout("info")}
                 title="Sisipkan Kotak Info"
-                className="rounded-button p-1.5 text-blue-700 hover:bg-blue-50"
+                className="rounded-button p-1.5 text-info hover:bg-info-bg"
               >
                 <Info className="size-4" />
               </button>
@@ -378,7 +374,7 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
                 type="button"
                 onClick={() => insertCallout("success")}
                 title="Sisipkan Kotak Temuan"
-                className="rounded-button p-1.5 text-[#166534] hover:bg-emerald-50"
+                className="rounded-button p-1.5 text-primary hover:bg-success-bg"
               >
                 <CheckCircle2 className="size-4" />
               </button>
@@ -418,7 +414,7 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
               contentEditable
               onInput={syncContent}
               onBlur={syncContent}
-              className="min-h-[420px] p-6 text-body text-ink focus:outline-none prose prose-slate max-w-none [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-1 [&_p]:my-2 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_a]:text-primary [&_a]:underline"
+              className="min-h-[420px] p-6 text-body text-ink focus:outline-none prose prose-slate max-w-none [&_h2]:text-section-title [&_h2]:font-semibold [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-section-title [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-1 [&_p]:my-2 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_a]:text-primary [&_a]:underline"
               data-placeholder="Tuliskan isi panduan, analisis data, atau laporan riset maritim Anda di sini…"
             />
           </div>
@@ -427,11 +423,12 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
           <div className="p-8 max-w-3xl mx-auto w-full">
             <div className="flex flex-col gap-3 border-b border-border pb-6 mb-6">
               <Badge tone="neutral">{ARTICLE_CATEGORY_LABELS[category]}</Badge>
-              <h1 className="text-3xl font-bold text-ink leading-tight">{title || "Judul Artikel"}</h1>
-              {excerpt && <p className="text-lg text-ink-muted leading-relaxed italic">{excerpt}</p>}
+              <h1 className="text-[24px] leading-[32px] font-semibold text-ink sm:text-page-title">{title || "Judul Artikel"}</h1>
+              {excerpt && <p className="text-card-title text-ink-muted leading-relaxed italic">{excerpt}</p>}
             </div>
 
             {coverImage && (
+              // eslint-disable-next-line @next/next/no-img-element -- pratinjau URL bebas dari penulis.
               <img
                 src={coverImage}
                 alt={title}
@@ -440,7 +437,7 @@ export function VisualArticleEditor({ initialArticle, onSave, onCancel }: Props)
             )}
 
             <div
-              className="text-body text-ink leading-relaxed prose prose-slate max-w-none [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-1 [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_a]:text-primary [&_a]:underline"
+              className="text-body text-ink leading-relaxed prose prose-slate max-w-none [&_h2]:text-section-title [&_h2]:font-semibold [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-section-title [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-1 [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_a]:text-primary [&_a]:underline"
               dangerouslySetInnerHTML={{ __html: contentHtml || "<p class='text-ink-muted italic'>Belum ada isi konten.</p>" }}
             />
           </div>

@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 import {
-  AlertTriangle,
-  BarChart3,
-  CheckCircle2,
   Edit2,
-  Eye,
   Filter,
   Lightbulb,
   MapPin,
@@ -14,11 +10,10 @@ import {
   Search,
   Sparkles,
   Trash2,
-  TrendingUp,
   UserCheck,
   X,
 } from "lucide-react";
-import { Badge, type StatusTone } from "@/components/ui/Badge";
+import { Badge} from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { formatDateTimeUTC } from "@/lib/format";
@@ -172,8 +167,8 @@ export function AnalysisInsightsManagementClient({
       }
 
       setIsModalOpen(false);
-    } catch (err: any) {
-      setErrorMsg(err.message || "Terjadi kesalahan saat menyimpan catatan.");
+    } catch (err) {
+      setErrorMsg(err instanceof Error && err.message ? err.message : "Terjadi kesalahan saat menyimpan catatan.");
     } finally {
       setIsSubmitting(false);
     }
@@ -201,64 +196,45 @@ export function AnalysisInsightsManagementClient({
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Header Banner */}
-      <div className="glass-card flex flex-col justify-between gap-6 rounded-card border border-border p-6 shadow-xs sm:flex-row sm:items-center">
-        <div className="flex flex-col gap-1.5 max-w-2xl">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-button bg-primary-soft px-2.5 py-1 text-caption font-semibold text-primary">
-              <TrendingUp className="size-3.5" />
-              Interpretasi Halaman /analysis
-            </span>
-          </div>
-          <h1 className="text-page-title font-semibold text-ink">
-            Catatan & Insight Analis (/analysis)
-          </h1>
-          <p className="text-body text-ink-muted leading-relaxed">
-            Kelola narasi temuan lapangan, penjelasan tren musiman, dan catatan kritis yang ditampilkan
-            secara langsung kepada pengguna saat mereka membuka halaman <strong>Statistik Aktivitas (/analysis)</strong>.
-          </p>
-        </div>
-
-        <div className="flex shrink-0 items-center gap-3">
-          <Button
-            variant="primary"
-            onClick={openCreateModal}
-            className="flex items-center gap-2 shadow-xs"
-          >
-            <Plus className="size-4" />
-            <span>Tambah Catatan Baru</span>
-          </Button>
-        </div>
+      <div className="flex flex-wrap justify-end gap-3">
+        <Button
+          variant="primary"
+          onClick={openCreateModal}
+          className="flex items-center gap-2 shadow-xs"
+        >
+          <Plus className="size-4" />
+          <span>Tambah Catatan Baru</span>
+        </Button>
       </div>
 
       {/* Quick Summary Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
             Total Catatan
           </span>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="tabular text-3xl font-bold text-ink">{insights.length}</span>
+            <span className="tabular text-metric font-semibold text-ink">{insights.length}</span>
             <span className="text-caption text-ink-muted">catatan tersimpan</span>
           </div>
         </div>
 
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
             Tampil di /analysis
           </span>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="tabular text-3xl font-bold text-emerald-600">{activeCount}</span>
+            <span className="tabular text-metric font-semibold text-success">{activeCount}</span>
             <span className="text-caption text-ink-muted">aktif dipublikasikan</span>
           </div>
         </div>
 
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
             Draft / Dinonaktifkan
           </span>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="tabular text-3xl font-bold text-ink-muted">
+            <span className="tabular text-metric font-semibold text-ink-muted">
               {insights.length - activeCount}
             </span>
             <span className="text-caption text-ink-muted">hanya terlihat di CMS</span>
@@ -269,7 +245,7 @@ export function AnalysisInsightsManagementClient({
       {/* Catalog & Filter Section */}
       <Card>
         {/* Filter Controls Header */}
-        <div className="border-b border-border p-6 flex flex-col gap-4">
+        <div className="mb-4 flex flex-col gap-4 border-b border-border pb-4">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <div>
               <h2 className="text-section-title font-semibold text-ink">Daftar Insight & Catatan</h2>
@@ -405,7 +381,7 @@ export function AnalysisInsightsManagementClient({
                       onClick={() => handleToggleActive(insight)}
                       className={`rounded-button px-3 py-1.5 text-caption font-semibold transition-colors border ${
                         insight.isActive
-                          ? "bg-emerald-50 text-[#166534] border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:border-emerald-800"
+                          ? "bg-success-bg text-primary border-success-border hover:bg-primary-soft"
                           : "bg-surface text-ink-muted border-border hover:bg-surface-hover"
                       }`}
                     >
@@ -427,7 +403,7 @@ export function AnalysisInsightsManagementClient({
                     <button
                       type="button"
                       onClick={() => handleDelete(insight.id)}
-                      className="rounded-button p-2 text-ink-muted hover:bg-red-50 hover:text-error transition-colors"
+                      className="rounded-button p-2 text-ink-muted hover:bg-error-bg hover:text-error transition-colors"
                       title="Hapus Catatan"
                     >
                       <Trash2 className="size-4" />
@@ -443,9 +419,9 @@ export function AnalysisInsightsManagementClient({
       {/* Modal Dialog Form (Create & Edit) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
-          <div className="glass-card flex max-h-[90vh] w-full max-w-2xl flex-col rounded-card border border-border shadow-xl">
+          <div className="glass flex max-h-[90vh] w-full max-w-2xl flex-col rounded-card border border-border shadow-xl">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-border p-5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="size-5 text-primary" />
                 <h3 className="text-section-title font-semibold text-ink">
@@ -464,7 +440,7 @@ export function AnalysisInsightsManagementClient({
             {/* Modal Form */}
             <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
               {errorMsg && (
-                <div className="rounded-card bg-red-50 p-3 text-caption text-error border border-red-200">
+                <div className="rounded-card bg-error-bg p-3 text-caption text-error border border-error-border">
                   {errorMsg}
                 </div>
               )}
@@ -603,7 +579,7 @@ export function AnalysisInsightsManagementClient({
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-ink-muted block mb-1.5">
                   Pratinjau Tampilan di /analysis:
                 </span>
-                <div className="rounded-button border border-blue-200 bg-blue-50/60 p-3 text-caption dark:border-blue-900/40 dark:bg-blue-950/20">
+                <div className="rounded-button border border-info-border bg-info-bg p-3 text-caption">
                   <div className="flex items-center gap-2 mb-1">
                     <Badge tone={INSIGHT_KIND_LABELS[formKind].tone}>
                       {INSIGHT_KIND_LABELS[formKind].label}

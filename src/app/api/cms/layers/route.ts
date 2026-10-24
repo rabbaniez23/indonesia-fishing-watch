@@ -17,7 +17,7 @@ export function GET(request: NextRequest) {
 
 /** POST /api/cms/layers — Peneliti/Admin membuat lapisan peta baru dari dataset */
 export async function POST(request: NextRequest) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   try {

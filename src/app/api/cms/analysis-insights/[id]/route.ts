@@ -27,7 +27,7 @@ export async function PATCH(
   request: NextRequest,
   ctx: RouteContext<"/api/cms/analysis-insights/[id]">,
 ) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   const { id } = await ctx.params;
@@ -57,7 +57,7 @@ export async function DELETE(
   request: NextRequest,
   ctx: RouteContext<"/api/cms/analysis-insights/[id]">,
 ) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   const { id } = await ctx.params;

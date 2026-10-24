@@ -12,18 +12,18 @@ beforeEach(async () => {
   setDbForTesting(openDatabase(":memory:"));
   delete process.env.GFW_DAILY_BUDGET;
   admin = (await createUser({ email: "admin@uji.local", name: "Admin", role: "admin", password: PW })).id;
-  analyst = (await createUser({ email: "a@uji.local", name: "Analis", role: "analyst", password: PW })).id;
+  analyst = (await createUser({ email: "a@uji.local", name: "Analis", role: "user", password: PW })).id;
 });
 
 describe("pengelolaan pengguna", () => {
   it("Admin mengubah peran pengguna lain", () => {
-    expect(updateUserAccess(admin, analyst, { role: "viewer" }).role).toBe("viewer");
+    expect(updateUserAccess(admin, analyst, { role: "admin" }).role).toBe("admin");
   });
 
   it("tidak dapat mengubah diri sendiri; Admin aktif terakhir dilindungi", async () => {
-    expect(() => updateUserAccess(admin, admin, { role: "viewer" })).toThrow(/akun sendiri/);
+    expect(() => updateUserAccess(admin, admin, { role: "user" })).toThrow(/akun sendiri/);
     const admin2 = (await createUser({ email: "admin2@uji.local", name: "Admin 2", role: "admin", password: PW })).id;
-    updateUserAccess(admin2, admin, { role: "analyst" }); // masih ada admin2
+    updateUserAccess(admin2, admin, { role: "user" }); // masih ada admin2
     expect(() => updateUserAccess(admin, admin2, { status: "disabled" })).toThrow(/minimal satu Admin aktif/);
   });
 

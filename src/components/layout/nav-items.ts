@@ -6,12 +6,17 @@ import {
   Database,
   Droplets,
   FileDown,
+  FileText,
   FolderUp,
+  History,
+  Layers,
   LayoutDashboard,
   Map as MapIcon,
+  NotebookPen,
   Satellite,
   Settings,
   Ship,
+  SlidersHorizontal,
   ThermometerSun,
   Workflow,
   type LucideIcon,
@@ -30,13 +35,14 @@ export type NavItem = {
 };
 
 /** Sidebar dikelompokkan menurut kebutuhan pengguna, bukan menurut sumber data. */
-export type NavGroupKey = "pantau" | "analisis" | "kerja" | "dokumentasi" | "footer";
+export type NavGroupKey = "pantau" | "analisis" | "kerja" | "dokumentasi" | "kelola" | "footer";
 
 export const NAV_GROUPS: Array<{ key: Exclude<NavGroupKey, "footer">; label: string; description: string }> = [
   { key: "pantau", label: "Pantau", description: "Lihat aktivitas kapal terbaru di laut Indonesia." },
   { key: "analisis", label: "Analisis", description: "Gali pola, tren, dan kondisi laut untuk riset." },
   { key: "kerja", label: "Hasil kerja", description: "Simpan temuan dan unduh data." },
   { key: "dokumentasi", label: "Dokumentasi", description: "Cara memakai web ini, sumber data, dan cara datanya diolah." },
+  { key: "kelola", label: "Kelola", description: "CMS dan pengaturan sistem. Khusus Admin." },
 ];
 
 export const NAV_ITEMS: NavItem[] = [
@@ -144,13 +150,68 @@ export const NAV_ITEMS: NavItem[] = [
     icon: ThermometerSun,
     group: "dokumentasi",
   },
+  // Kelola (CMS) — hanya tampil untuk Admin; halaman tetap memeriksa peran di server.
+  {
+    href: "/cms",
+    label: "Ikhtisar CMS",
+    title: "Kelola · Ikhtisar CMS",
+    description: "Ringkasan isi CMS dan aktivitas tim terakhir.",
+    icon: SlidersHorizontal,
+    group: "kelola",
+    adminOnly: true,
+  },
+  {
+    href: "/cms/data",
+    label: "Dataset riset",
+    title: "Kelola · Dataset riset",
+    description: "Unggah dan kelola data pengamatan (CSV) dan lapisan spasial (GeoJSON).",
+    icon: FolderUp,
+    group: "kelola",
+    adminOnly: true,
+  },
+  {
+    href: "/cms/layers",
+    label: "Lapisan peta",
+    title: "Kelola · Lapisan peta kustom",
+    description: "Jadikan dataset spasial lapisan yang bisa dicentang di menu Peta.",
+    icon: Layers,
+    group: "kelola",
+    adminOnly: true,
+  },
+  {
+    href: "/cms/articles",
+    label: "Artikel",
+    title: "Kelola · Artikel",
+    description: "Tulis dan terbitkan panduan atau catatan riset untuk Dokumentasi.",
+    icon: FileText,
+    group: "kelola",
+    adminOnly: true,
+  },
+  {
+    href: "/cms/analysis",
+    label: "Catatan analisis",
+    title: "Kelola · Catatan analisis",
+    description: "Interpretasi dan peringatan yang tampil di menu Statistik aktivitas.",
+    icon: NotebookPen,
+    group: "kelola",
+    adminOnly: true,
+  },
+  {
+    href: "/cms/activity",
+    label: "Log aktivitas",
+    title: "Kelola · Log aktivitas",
+    description: "Riwayat tindakan tim beserta tren, bisa diekspor ke CSV.",
+    icon: History,
+    group: "kelola",
+    adminOnly: true,
+  },
   {
     href: "/settings",
-    label: "Pengaturan",
-    title: "Pengaturan",
-    description: "Kelola pengguna, batas pemakaian data, dan status sumber. Khusus Admin.",
+    label: "Akun & sistem",
+    title: "Kelola · Akun & sistem",
+    description: "Undang dan atur akun (Pengguna/Admin), batas pemakaian data, dan status sumber.",
     icon: Settings,
-    group: "footer",
+    group: "kelola",
     adminOnly: true,
   },
 ];

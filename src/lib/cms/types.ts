@@ -1,3 +1,6 @@
+/** Batas ukuran file dataset yang diunggah (server laptop; seluruh file dibaca ke memori saat validasi). */
+export const MAX_UPLOAD_BYTES = 20 * 1024 * 1024;
+
 export const DATASET_CATEGORIES = [
   "vessel_sightings",
   "viirs_update",

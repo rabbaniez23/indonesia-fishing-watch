@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Activity,
   Calendar,
-  CheckCircle2,
   ChevronLeft,
   ChevronRight,
   Database,
@@ -12,15 +11,12 @@ import {
   Eye,
   FileText,
   Filter,
-  History,
   Info,
   Layers,
   Search,
   Settings,
   Shield,
-  Sparkles,
   UserCheck,
-  Users,
   X,
 } from "lucide-react";
 import { Badge, type StatusTone } from "@/components/ui/Badge";
@@ -146,39 +142,22 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Header Banner */}
-      <div className="glass-card flex flex-col justify-between gap-6 rounded-card border border-border p-6 shadow-xs sm:flex-row sm:items-center">
-        <div className="flex flex-col gap-1.5 max-w-2xl">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-button bg-primary-soft px-2.5 py-1 text-caption font-semibold text-primary">
-              <History className="size-3.5" />
-              Audit & Observabilitas Tim
-            </span>
-          </div>
-          <h1 className="text-page-title font-semibold text-ink">Statistik & Log Aktivitas</h1>
-          <p className="text-body text-ink-muted leading-relaxed">
-            Pantau seluruh aktivitas penambahan dataset riset, pembaruan lapisan peta, publikasi artikel,
-            dan interaksi sistem secara transparan dan terperinci.
-          </p>
-        </div>
-
-        <div className="flex shrink-0 items-center gap-3">
-          <Button
-            variant="secondary"
-            onClick={handleExportCsv}
-            disabled={isExporting}
-            className="flex items-center gap-2"
-          >
-            <Download className="size-4" />
-            <span>{isExporting ? "Mengunduh..." : "Ekspor Log (CSV)"}</span>
-          </Button>
-        </div>
+      <div className="flex flex-wrap justify-end gap-3">
+        <Button
+          variant="secondary"
+          onClick={handleExportCsv}
+          disabled={isExporting}
+          className="flex items-center gap-2"
+        >
+          <Download className="size-4" />
+          <span>{isExporting ? "Mengunduh..." : "Ekspor Log (CSV)"}</span>
+        </Button>
       </div>
 
       {/* 4 Metric Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {/* Card 1: Total 30 Hari */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
               Total Aktivitas (30 Hari)
@@ -188,7 +167,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
             </div>
           </div>
           <div className="mt-4">
-            <span className="tabular text-3xl font-bold text-ink">
+            <span className="tabular text-metric font-semibold text-ink">
               {formatCount(stats.total30Days)}
             </span>
             <p className="mt-1 text-caption text-ink-muted">aksi audit sistem tercatat</p>
@@ -196,17 +175,17 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
         </div>
 
         {/* Card 2: Hari Ini */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
               Aktivitas Hari Ini (UTC)
             </span>
-            <div className="flex size-9 items-center justify-center rounded-button bg-emerald-50 text-[#166534]">
+            <div className="flex size-9 items-center justify-center rounded-button bg-success-bg text-primary">
               <Calendar className="size-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="tabular text-3xl font-bold text-ink">
+            <span className="tabular text-metric font-semibold text-ink">
               {formatCount(stats.totalToday)}
             </span>
             <p className="mt-1 text-caption text-ink-muted">event operasional hari ini</p>
@@ -214,17 +193,17 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
         </div>
 
         {/* Card 3: Aksi Riset & Konten */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
               Aksi Riset & Konten
             </span>
-            <div className="flex size-9 items-center justify-center rounded-button bg-blue-50 text-blue-700">
+            <div className="flex size-9 items-center justify-center rounded-button bg-info-bg text-info">
               <Database className="size-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="tabular text-3xl font-bold text-ink">
+            <span className="tabular text-metric font-semibold text-ink">
               {formatCount(stats.researchActionsCount)}
             </span>
             <p className="mt-1 text-caption text-ink-muted">unggah data, layer & artikel</p>
@@ -232,17 +211,17 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
         </div>
 
         {/* Card 4: Kontributor Teraktif */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-5 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <span className="text-caption font-semibold uppercase tracking-wider text-ink-muted">
               Kontributor Teraktif
             </span>
-            <div className="flex size-9 items-center justify-center rounded-button bg-amber-50 text-amber-700">
+            <div className="flex size-9 items-center justify-center rounded-button bg-warning-bg text-warning">
               <UserCheck className="size-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="truncate text-xl font-bold text-ink block">
+            <span className="truncate text-section-title font-semibold text-ink block">
               {topUser ? topUser.name : "Belum Ada"}
             </span>
             <p className="mt-1 text-caption text-ink-muted">
@@ -255,7 +234,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
       {/* Visual Chart & Distribution Section */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left: 14-day Activity Trend Bar Chart (2 cols) */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-6 shadow-xs lg:col-span-2">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6 lg:col-span-2">
           <div className="flex items-center justify-between border-b border-border pb-4">
             <div>
               <h2 className="text-section-title font-semibold text-ink">Tren Aktivitas 14 Hari Terakhir</h2>
@@ -279,7 +258,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
                 >
                   {/* Tooltip on Hover */}
                   <div className="pointer-events-none absolute -top-10 z-20 hidden rounded-md bg-ink px-2 py-1 text-[11px] font-medium text-inverse shadow-md group-hover:block whitespace-nowrap">
-                    {trend.label}: <span className="font-bold">{trend.count} aksi</span>
+                    {trend.label}: <span className="font-semibold">{trend.count} aksi</span>
                   </div>
 
                   {/* Value Above Bar */}
@@ -310,7 +289,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
         </div>
 
         {/* Right: Category Distribution (1 col) */}
-        <div className="glass-card flex flex-col justify-between rounded-card border border-border p-6 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card p-4 sm:p-6">
           <div>
             <h2 className="text-section-title font-semibold text-ink">Distribusi Kategori</h2>
             <p className="text-caption text-ink-muted">Porsi aktivitas berdasarkan modul</p>
@@ -320,15 +299,15 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
                 const getCategoryIcon = () => {
                   switch (cat.category) {
                     case "dataset":
-                      return <Database className="size-4 text-emerald-600" />;
+                      return <Database className="size-4 text-success" />;
                     case "layer":
-                      return <Layers className="size-4 text-blue-600" />;
+                      return <Layers className="size-4 text-info" />;
                     case "article":
-                      return <FileText className="size-4 text-purple-600" />;
+                      return <FileText className="size-4 text-primary" />;
                     case "auth":
-                      return <Shield className="size-4 text-amber-600" />;
+                      return <Shield className="size-4 text-warning" />;
                     default:
-                      return <Settings className="size-4 text-gray-600" />;
+                      return <Settings className="size-4 text-ink-muted" />;
                   }
                 };
 
@@ -366,7 +345,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
                 {stats.topContributors.slice(0, 3).map((u, i) => (
                   <div key={u.actorId} className="flex items-center justify-between text-caption">
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="flex size-5 items-center justify-center rounded-full bg-primary-soft text-[10px] font-bold text-primary">
+                      <span className="flex size-5 items-center justify-center rounded-full bg-primary-soft text-[10px] font-semibold text-primary">
                         {i + 1}
                       </span>
                       <span className="truncate font-medium text-ink">{u.name}</span>
@@ -385,7 +364,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
       {/* Filter and Table Section */}
       <Card>
         {/* Filter Controls Header */}
-        <div className="border-b border-border p-6 flex flex-col gap-4">
+        <div className="mb-4 flex flex-col gap-4 border-b border-border pb-4">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <div>
               <h2 className="text-section-title font-semibold text-ink">Daftar Log Aktivitas</h2>
@@ -495,7 +474,7 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
                       {/* Actor */}
                       <td className="py-3.5 px-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary-soft text-caption font-bold text-primary">
+                          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary-soft text-caption font-semibold text-primary">
                             {item.actorName.charAt(0).toUpperCase()}
                           </div>
                           <div className="flex flex-col min-w-0">
@@ -594,9 +573,9 @@ export function ActivityManagementClient({ initialData, initialStats }: Props) {
       {/* Modal Detail Perubahan */}
       {detailEntry && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
-          <div className="glass-card flex max-h-[85vh] w-full max-w-xl flex-col rounded-card border border-border shadow-xl">
+          <div className="glass flex max-h-[85vh] w-full max-w-xl flex-col rounded-card border border-border shadow-xl">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-border p-5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-4">
               <div className="flex items-center gap-2">
                 <Info className="size-5 text-primary" />
                 <h3 className="text-section-title font-semibold text-ink">Rincian Perubahan Aksi</h3>

@@ -18,7 +18,7 @@ describe("custom map layers", () => {
     // Masukkan dummy user
     db.prepare(`
       INSERT INTO users (id, email, name, role, password_hash, status, created_at, updated_at)
-      VALUES ('u1', 'peneliti@kkp.go.id', 'Peneliti Maritim', 'analyst', 'hash', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
+      VALUES ('u1', 'peneliti@kkp.go.id', 'Peneliti Maritim', 'admin', 'hash', 'active', '2026-10-01T00:00:00Z', '2026-10-01T00:00:00Z')
     `).run();
   });
 

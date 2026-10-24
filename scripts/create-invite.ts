@@ -1,7 +1,7 @@
 /**
  * Membuat tautan undangan dari CLI (alternatif halaman Pengaturan).
- *   npm run invite -- nama@contoh.id viewer
- * Peran: viewer | analyst | admin. Tautan dicetak sekali; token mentah tidak disimpan.
+ *   npm run invite -- nama@contoh.id user
+ * Peran: user | admin. Tautan dicetak sekali; token mentah tidak disimpan.
  */
 import { loadLocalEnv } from "./load-env";
 
@@ -12,9 +12,9 @@ async function main() {
   const { AuthError, createInvite } = await import("@/lib/auth/service");
   const { isRole } = await import("@/lib/auth/roles");
 
-  const [email, role = "viewer"] = process.argv.slice(2);
+  const [email, role = "user"] = process.argv.slice(2);
   if (!email || !isRole(role)) {
-    console.error("Pemakaian: npm run invite -- <email> <viewer|analyst|admin>");
+    console.error("Pemakaian: npm run invite -- <email> <user|admin>");
     process.exitCode = 1;
     return;
   }

@@ -3,11 +3,8 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import {
-  BookOpen,
-  CheckCircle2,
   Edit,
   Eye,
-  FileText,
   Plus,
   RefreshCw,
   Search,
@@ -15,25 +12,23 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card} from "@/components/ui/Card";
 import { DataTable } from "@/components/ui/DataTable";
-import { Dialog } from "@/components/ui/Dialog";
+import { } from "@/components/ui/Dialog";
 import { StateView } from "@/components/ui/StateView";
 import { formatDateTimeUTC } from "@/lib/format";
 import {
   ARTICLE_CATEGORIES,
   ARTICLE_CATEGORY_LABELS,
-  type ArticleCategory,
   type CmsArticle,
 } from "@/lib/cms/types";
 import { VisualArticleEditor } from "./VisualArticleEditor";
 
 type Props = {
   initialArticles: CmsArticle[];
-  userRole: string;
 };
 
-export function ArticlesManagementClient({ initialArticles, userRole }: Props) {
+export function ArticlesManagementClient({ initialArticles }: Props) {
   const [articles, setArticles] = useState<CmsArticle[]>(initialArticles);
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -139,7 +134,7 @@ export function ArticlesManagementClient({ initialArticles, userRole }: Props) {
   return (
     <div className="flex flex-col gap-6">
       <Card>
-        <div className="flex flex-col gap-4 border-b border-border p-6 md:flex-row md:items-center md:justify-between">
+        <div className="mb-4 flex flex-col gap-4 border-b border-border pb-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-section-title font-semibold text-ink">Konten, Panduan, & Buletin Riset</h2>
             <p className="text-body text-ink-muted">
@@ -147,7 +142,7 @@ export function ArticlesManagementClient({ initialArticles, userRole }: Props) {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button
               variant="secondary"
               size="compact"
@@ -202,6 +197,18 @@ export function ArticlesManagementClient({ initialArticles, userRole }: Props) {
               );
             })}
           </div>
+
+          <select
+            aria-label="Filter status artikel"
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="h-9 rounded-input border border-border-control bg-surface px-3 text-body"
+          >
+            <option value="all">Semua status</option>
+            <option value="published">Diterbitkan</option>
+            <option value="draft">Draf</option>
+            <option value="archived">Diarsipkan</option>
+          </select>
 
           <div className="relative w-full sm:w-64">
             <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink-muted" />
@@ -304,7 +311,7 @@ export function ArticlesManagementClient({ initialArticles, userRole }: Props) {
                       type="button"
                       title="Hapus Artikel"
                       onClick={() => handleDelete(row)}
-                      className="rounded-button p-1.5 text-error hover:bg-red-50 transition-colors"
+                      className="rounded-button p-1.5 text-error hover:bg-error-bg transition-colors"
                     >
                       <Trash2 className="size-4" />
                     </button>

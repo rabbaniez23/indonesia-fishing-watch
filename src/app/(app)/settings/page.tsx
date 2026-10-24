@@ -18,14 +18,14 @@ import { listRegions } from "@/lib/regions";
 import { BUDGET_MAX, BUDGET_MIN } from "@/lib/settings";
 import { formatCount } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Pengaturan" };
+export const metadata: Metadata = { title: "Akun & sistem" };
 
 export default function SettingsPage() {
   return (
     <PageContainer>
       <PageHeader
-        title="Pengaturan"
-        description="Kelola pengguna, batas pemakaian data, dan status sumber. Khusus Admin."
+        title="Akun & sistem"
+        description="Undang dan atur akun (Pengguna atau Admin), batas pemakaian data, dan status sumber. Khusus Admin."
       />
       <Suspense fallback={<StateView state="loading" title="Memuat pengaturan…" />}>
         <SettingsContent />

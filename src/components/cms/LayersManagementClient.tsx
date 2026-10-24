@@ -6,22 +6,15 @@ import {
   CheckCircle2,
   CircleDot,
   Eye,
-  EyeOff,
-  Layers,
-  MapPin,
-  Palette,
   Pentagon,
   Plus,
   RefreshCw,
-  Share2,
-  Sliders,
   Spline,
   Trash2,
-  X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card} from "@/components/ui/Card";
 import { DataTable } from "@/components/ui/DataTable";
 import { Dialog } from "@/components/ui/Dialog";
 import { SelectField, TextField } from "@/components/ui/Field";
@@ -32,7 +25,6 @@ import type { CustomMapLayer, ResearchDataset } from "@/lib/cms/types";
 type Props = {
   initialLayers: CustomMapLayer[];
   availableDatasets: ResearchDataset[];
-  userRole: string;
 };
 
 const COLOR_PRESETS = [
@@ -45,7 +37,7 @@ const COLOR_PRESETS = [
   { name: "Hitam Slate", value: "#1E293B" },
 ];
 
-export function LayersManagementClient({ initialLayers, availableDatasets, userRole }: Props) {
+export function LayersManagementClient({ initialLayers, availableDatasets }: Props) {
   const [layers, setLayers] = useState<CustomMapLayer[]>(initialLayers);
   const [isPending, startTransition] = useTransition();
 
@@ -192,7 +184,7 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
   return (
     <div className="flex flex-col gap-6">
       <Card>
-        <div className="flex flex-col gap-4 border-b border-border p-6 md:flex-row md:items-center md:justify-between">
+        <div className="mb-4 flex flex-col gap-4 border-b border-border pb-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-section-title font-semibold text-ink">Daftar Lapisan Peta Kustom</h2>
             <p className="text-body text-ink-muted">
@@ -200,7 +192,7 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button
               variant="secondary"
               size="compact"
@@ -226,7 +218,7 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
         </div>
 
         {spatialDatasets.length === 0 && (
-          <div className="border-b border-amber-200 bg-amber-50/70 p-4 text-caption text-amber-900 flex items-center justify-between">
+          <div className="border-b border-warning-border bg-warning-bg p-4 text-caption text-ink flex items-center justify-between">
             <span>
               Belum ada file GeoJSON atau CSV berkoordinat. Silakan unggah dataset spasial terlebih dahulu di menu{" "}
               <strong>Data & Dataset Riset</strong>.
@@ -305,8 +297,8 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
                 cell: (row) => (
                   <div className="flex items-center gap-1.5 text-caption font-medium text-ink">
                     {row.layerType === "polygon" && <Pentagon className="size-4 text-primary" />}
-                    {row.layerType === "line" && <Spline className="size-4 text-blue-600" />}
-                    {row.layerType === "point" && <CircleDot className="size-4 text-amber-600" />}
+                    {row.layerType === "line" && <Spline className="size-4 text-info" />}
+                    {row.layerType === "point" && <CircleDot className="size-4 text-warning" />}
                     <span className="capitalize">
                       {row.layerType === "polygon" ? "Area (Poligon)" : row.layerType === "line" ? "Garis (Line)" : "Titik (Point)"}
                     </span>
@@ -362,7 +354,7 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
                       type="button"
                       title="Hapus Lapisan"
                       onClick={() => handleDeleteLayer(row)}
-                      className="rounded-button p-1.5 text-error hover:bg-red-50 transition-colors"
+                      className="rounded-button p-1.5 text-error hover:bg-error-bg transition-colors"
                     >
                       <Trash2 className="size-4" />
                     </button>
@@ -401,9 +393,9 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
           </div>
         }
       >
-        <div className="flex flex-col gap-5 p-6">
+        <div className="flex flex-col gap-5">
           {createError && (
-            <div className="rounded-button border border-red-200 bg-red-50 p-3 text-caption text-error">
+            <div className="rounded-button border border-error-border bg-error-bg p-3 text-caption text-error">
               {createError}
             </div>
           )}
@@ -446,7 +438,7 @@ export function LayersManagementClient({ initialLayers, availableDatasets, userR
                   <button
                     key={item.type}
                     type="button"
-                    onClick={() => setLayerType(item.type as any)}
+                    onClick={() => setLayerType(item.type as typeof layerType)}
                     className={`flex flex-col items-center gap-1.5 rounded-card border p-3 text-center transition-colors ${
                       isSel
                         ? "border-primary bg-primary-soft text-primary font-semibold"

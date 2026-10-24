@@ -10,6 +10,7 @@ import type {
   PaginatedActivities,
 } from "./types";
 import { ACTIVITY_CATEGORY_LABELS } from "./types";
+import type { SQLInputValue } from "node:sqlite";
 
 const ACTION_LABELS: Record<string, { label: string; category: Exclude<ActivityCategory, "all"> }> = {
   // Data Riset
@@ -26,6 +27,9 @@ const ACTION_LABELS: Record<string, { label: string; category: Exclude<ActivityC
   "article:create": { label: "Tulis Artikel Baru", category: "article" },
   "article:update": { label: "Perbarui Konten Artikel", category: "article" },
   "article:delete": { label: "Hapus Artikel", category: "article" },
+  "insight:create": { label: "Tulis Catatan Analisis", category: "article" },
+  "insight:update": { label: "Perbarui Catatan Analisis", category: "article" },
+  "insight:delete": { label: "Hapus Catatan Analisis", category: "article" },
 
   // Temuan Riset & Patroli
   "finding.create": { label: "Buat Temuan Lapangan", category: "finding" },
@@ -34,6 +38,7 @@ const ACTION_LABELS: Record<string, { label: string; category: Exclude<ActivityC
 
   // Laporan
   "report.create": { label: "Buat Laporan Ekspor", category: "report" },
+  "report.download": { label: "Unduh Laporan", category: "report" },
 
   // Sesi & Akun Pengguna
   "session.login": { label: "Masuk Akun (Login)", category: "auth" },
@@ -210,7 +215,7 @@ export function listActivities(params: ActivityFilterParams = {}): PaginatedActi
        LEFT JOIN users u ON u.id = a.actor_id
        ${where}`,
     )
-    .get(...(args as any[])) as { total: number };
+    .get(...(args as SQLInputValue[])) as { total: number };
 
   const total = countRow?.total || 0;
   const totalPages = Math.ceil(total / pageSize) || 1;
@@ -226,7 +231,7 @@ export function listActivities(params: ActivityFilterParams = {}): PaginatedActi
        ORDER BY a.occurred_at DESC
        LIMIT ? OFFSET ?`,
     )
-    .all(...(args as any[]), pageSize, offset) as RawAuditRow[];
+    .all(...(args as SQLInputValue[]), pageSize, offset) as RawAuditRow[];
 
   const items: ActivityEntry[] = rows.map((r) => {
     const meta = resolveActionMeta(r.action);
@@ -268,7 +273,6 @@ export function listActivities(params: ActivityFilterParams = {}): PaginatedActi
 export function getActivityStats(): ActivityStats {
   const db = getDb();
   const now = new Date();
-  const nowIso = now.toISOString();
 
   // Waktu 30 hari lalu dan awal hari ini UTC
   const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
@@ -418,7 +422,7 @@ export function exportActivitiesCsv(params: ActivityFilterParams = {}): string {
        ORDER BY a.occurred_at DESC
        LIMIT 5000`,
     )
-    .all(...(args as any[])) as RawAuditRow[];
+    .all(...(args as SQLInputValue[])) as RawAuditRow[];
 
   function escapeCsv(val: string | null | undefined): string {
     if (!val) return '""';

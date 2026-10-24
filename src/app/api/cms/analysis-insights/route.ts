@@ -23,7 +23,7 @@ export function GET(request: NextRequest) {
 
 /** POST /api/cms/analysis-insights — Buat catatan analisis baru */
 export async function POST(request: NextRequest) {
-  const auth = authorize(request, "dataset:import");
+  const auth = authorize(request, "cms:manage");
   if (!auth.ok) return auth.response;
 
   try {
@@ -64,9 +64,10 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ ok: true, data: insight }, { status: 201, headers: noStore });
-  } catch (err: any) {
+  } catch {
+    // Detail error internal tidak dikirim ke browser.
     return NextResponse.json(
-      { ok: false, error: { code: "SERVER_ERROR", message: err.message || "Gagal menyimpan insight." } },
+      { ok: false, error: { code: "SERVER_ERROR", message: "Gagal menyimpan catatan." } },
       { status: 500, headers: noStore },
     );
   }

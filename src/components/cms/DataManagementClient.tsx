@@ -15,12 +15,10 @@ import {
   RefreshCw,
   Search,
   Trash2,
-  Upload,
-  X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card} from "@/components/ui/Card";
 import { DataTable } from "@/components/ui/DataTable";
 import { Dialog } from "@/components/ui/Dialog";
 import { SelectField, TextField } from "@/components/ui/Field";
@@ -29,6 +27,7 @@ import { formatCount, formatDateTimeUTC } from "@/lib/format";
 import {
   CATEGORY_LABELS,
   DATASET_CATEGORIES,
+  MAX_UPLOAD_BYTES,
   type DatasetCategory,
   type ResearchDataset,
   type ValidationResult,
@@ -36,10 +35,9 @@ import {
 
 type Props = {
   initialDatasets: ResearchDataset[];
-  userRole: string;
 };
 
-export function DataManagementClient({ initialDatasets, userRole }: Props) {
+export function DataManagementClient({ initialDatasets }: Props) {
   const [datasets, setDatasets] = useState<ResearchDataset[]>(initialDatasets);
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -84,6 +82,10 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
     setSelectedFile(file);
     setUploadError(null);
     setValidationResult(null);
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setUploadError(`Ukuran file ${(file.size / 1024 / 1024).toFixed(1)} MB melebihi batas ${MAX_UPLOAD_BYTES / 1024 / 1024} MB.`);
+      return;
+    }
 
     // Defaultkan nama jika masih kosong
     if (!datasetName) {
@@ -218,7 +220,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
     <div className="flex flex-col gap-6">
       {/* 3 Kotak Statistik Cepat */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="glass-card flex flex-col justify-between rounded-card border p-4 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card border p-4 shadow-xs">
           <div className="flex items-center justify-between">
             <span className="text-caption font-medium text-ink-muted">Total Dataset Riset</span>
             <Database className="h-5 w-5 text-primary" />
@@ -229,7 +231,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
           </div>
         </div>
 
-        <div className="glass-card flex flex-col justify-between rounded-card border p-4 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card border p-4 shadow-xs">
           <div className="flex items-center justify-between">
             <span className="text-caption font-medium text-ink-muted">Dataset Spasial / Koordinat</span>
             <MapPin className="h-5 w-5 text-chart-accent" />
@@ -240,7 +242,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
           </div>
         </div>
 
-        <div className="glass-card flex flex-col justify-between rounded-card border p-4 shadow-xs">
+        <div className="glass flex flex-col justify-between rounded-card border p-4 shadow-xs">
           <div className="flex items-center justify-between">
             <span className="text-caption font-medium text-ink-muted">Total Baris / Titik Observasi</span>
             <FileSpreadsheet className="h-5 w-5 text-primary" />
@@ -254,14 +256,14 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
 
       {/* Bagian Aksi & Tabel Dataset */}
       <Card>
-        <div className="flex flex-col gap-4 border-b border-border p-6 md:flex-row md:items-center md:justify-between">
+        <div className="mb-4 flex flex-col gap-4 border-b border-border pb-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-section-title font-semibold text-ink">Katalog Dataset Mandiri</h2>
             <p className="text-body text-ink-muted">
               Kelola data pengamatan lapangan, pembaruan satelit VIIRS, dan lapisan peta yang diunggah peneliti.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button
               variant="secondary"
               size="compact"
@@ -391,7 +393,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
                   <div className="flex flex-col text-caption">
                     <span className="tabular font-medium text-ink">{formatCount(row.rowCount)} baris</span>
                     {row.summary.hasCoordinates ? (
-                      <span className="flex items-center gap-1 text-[#166534]">
+                      <span className="flex items-center gap-1 text-primary">
                         <MapPin className="h-3.5 w-3.5" /> Spasial ({row.summary.coordColumns?.lat || "lat"})
                       </span>
                     ) : (
@@ -446,7 +448,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
                       type="button"
                       title="Hapus Dataset"
                       onClick={() => handleDeleteDataset(row.id, row.name)}
-                      className="rounded-button p-1.5 text-error hover:bg-red-50 transition-colors"
+                      className="rounded-button p-1.5 text-error hover:bg-error-bg transition-colors"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -489,7 +491,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
           </div>
         }
       >
-        <div className="flex flex-col gap-5 p-6">
+        <div className="flex flex-col gap-5">
           {/* Drag & Drop Area */}
           <div
             onDrop={onDrop}
@@ -500,7 +502,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
               isDragging
                 ? "border-primary bg-primary-soft/50"
                 : selectedFile
-                  ? "border-[#166534] bg-emerald-50/40"
+                  ? "border-primary bg-success-bg"
                   : "border-border-control hover:border-primary hover:bg-neutral-bg/50"
             }`}
           >
@@ -524,7 +526,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
                 <FolderUp className="h-10 w-10 text-primary" />
                 <span className="font-semibold text-ink">Tarik & lepas file data ke sini</span>
                 <span className="text-caption text-ink-muted">
-                  Format didukung: <strong>.CSV</strong> (tabel pengamatan) atau <strong>.GeoJSON</strong> (lapisan peta). Maks. 25 MB.
+                  Format didukung: <strong>.CSV</strong> (tabel pengamatan) atau <strong>.GeoJSON</strong> (lapisan peta). Maks. {MAX_UPLOAD_BYTES / 1024 / 1024} MB.
                 </span>
               </div>
             )}
@@ -570,7 +572,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
           )}
 
           {uploadError && (
-            <div className="flex items-start gap-3 rounded-button border border-red-200 bg-red-50 p-4 text-caption text-error">
+            <div className="flex items-start gap-3 rounded-button border border-error-border bg-error-bg p-4 text-caption text-error">
               <AlertTriangle className="h-5 w-5 shrink-0" />
               <div>
                 <span className="font-semibold">Validasi Gagal: </span>
@@ -580,9 +582,9 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
           )}
 
           {validationResult && validationResult.valid && (
-            <div className="flex flex-col gap-3 rounded-card border border-emerald-200 bg-emerald-50/50 p-4">
+            <div className="flex flex-col gap-3 rounded-card border border-success-border bg-success-bg p-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-caption font-semibold text-[#166534]">
+                <div className="flex items-center gap-2 text-caption font-semibold text-primary">
                   <CheckCircle2 className="h-4 w-4" />
                   <span>Validasi Berhasil: File Siap Digunakan</span>
                 </div>
@@ -593,7 +595,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
 
               {/* Peringatan (bila ada koordinat kosong) */}
               {validationResult.warnings.map((w, idx) => (
-                <p key={idx} className="text-caption text-amber-800 flex items-center gap-1.5">
+                <p key={idx} className="text-caption text-ink flex items-center gap-1.5">
                   <AlertTriangle className="h-3.5 w-3.5 shrink-0" /> {w}
                 </p>
               ))}
@@ -644,7 +646,7 @@ export function DataManagementClient({ initialDatasets, userRole }: Props) {
         }
       >
         {previewDataset && (
-          <div className="flex flex-col gap-4 p-6 max-h-[70vh] overflow-y-auto">
+          <div className="flex max-h-[70vh] flex-col gap-4 overflow-y-auto">
             {/* Kartu Ringkasan */}
             <div className="flex flex-col gap-2 rounded-card border border-border bg-neutral-bg/40 p-4">
               <span className="text-caption font-semibold text-ink">Ringkasan Validasi</span>

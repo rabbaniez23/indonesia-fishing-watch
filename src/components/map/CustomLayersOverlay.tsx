@@ -15,6 +15,11 @@ export type CustomLayersOverlayArgs = {
   theme: Theme;
 };
 
+/** Teks dari file unggahan wajib di-escape sebelum masuk popup HTML. */
+function escapeHtml(value: unknown): string {
+  return String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+}
+
 export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLayersOverlayArgs) {
   const [availableLayers, setAvailableLayers] = useState<CustomMapLayer[]>([]);
   const [selectedLayerIds, setSelectedLayerIds] = useState<Set<string>>(new Set());
@@ -60,6 +65,9 @@ export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLay
       }
     });
 
+    // Area & garis di bawah titik kapal GFW (seperti lapisan VIIRS/laut); titik kustom di atasnya.
+    const below = map.getLayer("cells-fill") ? "cells-fill" : undefined;
+
     // Pasang layer yang dipilih
     availableLayers.forEach((layer) => {
       if (!selectedLayerIds.has(layer.id)) return;
@@ -88,7 +96,7 @@ export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLay
               "fill-color": layer.color,
               "fill-opacity": layer.opacity * 0.5,
             },
-          });
+          }, below);
         }
         if (!map.getLayer(lineId)) {
           map.addLayer({
@@ -100,7 +108,7 @@ export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLay
               "line-width": 2,
               "line-opacity": layer.opacity,
             },
-          });
+          }, below);
         }
       } else if (layer.layerType === "line") {
         if (!map.getLayer(lineId)) {
@@ -113,7 +121,7 @@ export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLay
               "line-width": 2.5,
               "line-opacity": layer.opacity,
             },
-          });
+          }, below);
         }
       } else if (layer.layerType === "point") {
         if (!map.getLayer(pointId)) {
@@ -148,6 +156,46 @@ export function useCustomLayersOverlay({ mapRef, popupRef, mapReady }: CustomLay
     };
   }, [availableLayers, selectedLayerIds, mapReady, mapRef]);
 
+  // Tooltip properti fitur (maks. 6 kolom) saat kursor di atas lapisan kustom; tooltip sel GFW tetap diutamakan.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady) return;
+    const shown = availableLayers.filter((l) => selectedLayerIds.has(l.id));
+    const ids = shown.flatMap((l) => [`custom-fill-${l.id}`, `custom-line-${l.id}`, `custom-point-${l.id}`]).filter((id) => map.getLayer(id));
+    if (!ids.length) return;
+    let showing = false;
+    const onMove = (e: MapLayerMouseEvent) => {
+      if (map.getLayer("cells-fill") && map.queryRenderedFeatures(e.point, { layers: ["cells-fill"] }).length > 0) return;
+      const f = e.features?.[0];
+      if (!f) return;
+      const layer = shown.find((l) => f.layer.id.endsWith(l.id));
+      const rows = Object.entries(f.properties ?? {})
+        .slice(0, 6)
+        .map(([k, v]) => `<span>${escapeHtml(k)}: ${escapeHtml(v)}</span>`)
+        .join("<br/>");
+      showing = true;
+      popupRef.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(`<strong>${escapeHtml(layer?.name ?? "Lapisan kustom")}</strong>${rows ? `<br/>${rows}` : ""}`)
+        .addTo(map);
+    };
+    const onLeave = () => {
+      if (!showing) return;
+      showing = false;
+      popupRef.current?.remove();
+    };
+    for (const id of ids) {
+      map.on("mousemove", id, onMove);
+      map.on("mouseleave", id, onLeave);
+    }
+    return () => {
+      for (const id of ids) {
+        map.off("mousemove", id, onMove);
+        map.off("mouseleave", id, onLeave);
+      }
+    };
+  }, [availableLayers, selectedLayerIds, mapReady, mapRef, popupRef]);
+
   function toggleLayer(id: string) {
     setSelectedLayerIds((prev) => {
       const next = new Set(prev);
@@ -180,7 +228,7 @@ export function CustomLayersControl({ layers, selectedIds, onToggle }: ControlPr
           <Layers className="size-3.5 text-primary" />
           <span>Lapisan Riset Kustom</span>
         </span>
-        <span className="rounded-full bg-primary-soft px-1.5 py-0.2 text-[10px] font-bold text-primary">
+        <span className="rounded-full bg-primary-soft px-1.5 py-0.2 text-[10px] font-semibold text-primary">
           {layers.length}
         </span>
       </div>

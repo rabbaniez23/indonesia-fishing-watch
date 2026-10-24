@@ -48,7 +48,7 @@ export function InviteForm() {
     <div className="flex flex-col gap-4">
       <form onSubmit={onSubmit} className="grid grid-cols-1 items-end gap-4 md:grid-cols-[minmax(0,1fr)_200px_auto]">
         <TextField label="Email" name="email" type="email" required maxLength={254} autoComplete="off" />
-        <SelectField label="Peran" name="role" defaultValue="viewer">
+        <SelectField label="Peran" name="role" defaultValue="user">
           {ROLES.map((role) => (
             <option key={role} value={role}>
               {ROLE_LABELS[role]}

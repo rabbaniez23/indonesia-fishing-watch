@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, FileText, User } from "lucide-react";
+import { ArrowLeft, Calendar, User } from "lucide-react";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { formatDateTimeUTC } from "@/lib/format";
 import { getArticleBySlug } from "@/lib/cms/articles";
 import { ARTICLE_CATEGORY_LABELS } from "@/lib/cms/types";
+import { sanitizeArticleHtml, sanitizeImageUrl } from "@/lib/cms/sanitize";
 
 export async function generateMetadata({
   params,
@@ -52,10 +53,10 @@ export default async function DynamicArticlePage({
             <span className="text-caption text-ink-muted">· Catatan Riset Terverifikasi</span>
           </div>
 
-          <h1 className="text-3xl font-bold text-ink leading-tight sm:text-4xl">{article.title}</h1>
+          <h1 className="text-[24px] leading-[32px] font-semibold text-ink sm:text-page-title">{article.title}</h1>
 
           {article.excerpt && (
-            <p className="text-lg text-ink-muted leading-relaxed italic">{article.excerpt}</p>
+            <p className="text-card-title text-ink-muted leading-relaxed italic">{article.excerpt}</p>
           )}
 
           <div className="flex flex-wrap items-center gap-4 pt-2 text-caption text-ink-muted">
@@ -72,10 +73,11 @@ export default async function DynamicArticlePage({
         </div>
 
         {/* Cover Image */}
-        {article.coverImage && (
+        {sanitizeImageUrl(article.coverImage) && (
           <div className="overflow-hidden rounded-card border border-border bg-surface shadow-xs">
+            {/* eslint-disable-next-line @next/next/no-img-element -- URL bebas dari penulis; next/image butuh domain terdaftar. */}
             <img
-              src={article.coverImage}
+              src={sanitizeImageUrl(article.coverImage)!}
               alt={article.title}
               className="w-full max-h-[420px] object-cover"
             />
@@ -86,8 +88,8 @@ export default async function DynamicArticlePage({
         <Card>
           <div className="p-6 sm:p-10">
             <div
-              className="text-body text-ink leading-relaxed prose prose-slate max-w-none [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:my-4 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_a]:text-primary [&_a]:underline"
-              dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+              className="text-body text-ink leading-relaxed prose prose-slate max-w-none [&_h2]:text-section-title [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-3 [&_h3]:text-section-title [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:my-4 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_a]:text-primary [&_a]:underline"
+              dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(article.contentHtml) }}
             />
           </div>
         </Card>
