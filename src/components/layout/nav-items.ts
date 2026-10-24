@@ -6,6 +6,7 @@ import {
   Database,
   Droplets,
   FileDown,
+  FolderUp,
   LayoutDashboard,
   Map as MapIcon,
   Satellite,

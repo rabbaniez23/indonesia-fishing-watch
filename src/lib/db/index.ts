@@ -66,13 +66,23 @@ export function migrate(db: Db): number[] {
 }
 
 let savepointSeq = 0;
+const activeTransactions = new WeakSet<Db>();
+
+if (!("isTransaction" in DatabaseSync.prototype)) {
+  Object.defineProperty(DatabaseSync.prototype, "isTransaction", {
+    get() {
+      return activeTransactions.has(this as Db);
+    },
+    configurable: true,
+  });
+}
 
 /**
  * Jalankan fn dalam satu transaksi; rollback bila melempar error.
  * Dapat dipanggil bersarang: di dalam transaksi aktif dipakai SAVEPOINT (rollback hanya bagian dalam).
  */
 export function transaction<T>(db: Db, fn: () => T): T {
-  if (db.isTransaction) {
+  if (activeTransactions.has(db)) {
     const name = `sp_${++savepointSeq}`;
     db.exec(`SAVEPOINT ${name}`);
     try {
@@ -85,6 +95,7 @@ export function transaction<T>(db: Db, fn: () => T): T {
       throw error;
     }
   }
+  activeTransactions.add(db);
   db.exec("BEGIN IMMEDIATE");
   try {
     const result = fn();
@@ -93,6 +104,8 @@ export function transaction<T>(db: Db, fn: () => T): T {
   } catch (error) {
     db.exec("ROLLBACK");
     throw error;
+  } finally {
+    activeTransactions.delete(db);
   }
 }
 

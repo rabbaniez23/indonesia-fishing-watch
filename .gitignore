@@ -42,7 +42,8 @@ next-env.d.ts
 !.env.example
 
 # data lokal (SQLite, file laporan)
-/data/
+/data/*
+!/data/sample-datasets/
 /storage/
 *.db
 *.db-shm
