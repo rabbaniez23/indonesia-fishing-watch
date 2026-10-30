@@ -384,7 +384,7 @@ export function LandingHero({ user }: { user: SafeUser | null }) {
                     <ArrowRight className="size-3.5" />
                   </Link>
                   <p className="text-[10px] text-center text-emerald-400/60 mt-2">
-                    Data contoh agregasi riil berdasarkan integrasi GFW v3 & VIIRS NOAA.
+                    Data agregasi berkala berdasarkan integrasi satelit GFW v3 & VIIRS NOAA.
                   </p>
                 </div>
               </div>

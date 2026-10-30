@@ -108,13 +108,9 @@ function TeamCard({ member }: { member: TeamMember }) {
 
             {/* Fallback Graphic Avatar */}
             {imageError && (
-              <div className="flex flex-col items-center justify-center text-center p-2 select-none">
-                <span className="text-2xl font-black tracking-wider text-primary mb-1">
+              <div className="flex items-center justify-center text-center p-2 select-none">
+                <span className="text-3xl font-black tracking-wider text-primary">
                   {member.initials}
-                </span>
-                <span className="text-[10px] font-semibold text-ink-muted uppercase tracking-wider flex items-center gap-1">
-                  <Icon className="size-3 text-primary" />
-                  <span>Foto</span>
                 </span>
               </div>
             )}
@@ -174,13 +170,6 @@ export function LandingTeam() {
           {TEAM_MEMBERS.map((member) => (
             <TeamCard key={member.name} member={member} />
           ))}
-        </div>
-
-        {/* Note on Images placement */}
-        <div className="mt-12 p-4 rounded-xl bg-white border border-border text-center max-w-2xl mx-auto shadow-2xs">
-          <p className="text-xs text-ink-muted">
-            <strong className="text-ink">Info Foto:</strong> Foto profil dapat diperbarui kapan saja dengan memasukkan file foto ke folder <code className="px-1.5 py-0.5 rounded bg-surface-subtle border border-border font-mono text-[11px] text-primary">public/team/</code>.
-          </p>
         </div>
       </div>
     </section>
