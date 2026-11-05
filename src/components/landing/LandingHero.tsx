@@ -54,7 +54,8 @@ export function LandingHero({ user }: { user: SafeUser | null }) {
 
     const set = window.matchMedia("(max-aspect-ratio: 1/1)").matches ? "m" : "d";
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    const slow = Boolean(connection?.saveData) || /2g|3g/.test(connection?.effectiveType ?? "");
+    // Hanya untuk penghemat data atau 2G: pada koneksi lain gambar tetap dimuat bertahap, jadi tidak perlu dibatasi.
+    const slow = Boolean(connection?.saveData) || /2g/.test(connection?.effectiveType ?? "");
     const images: Array<HTMLImageElement | undefined> = new Array(FRAME_COUNT);
 
     let cancelled = false;
