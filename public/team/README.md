@@ -20,4 +20,4 @@ Format yang disarankan:
 - Ukuran yang disarankan: 400x400 px hingga 800x800 px
 - Format: JPG, PNG, atau WebP
 
-*Catatan:* Jika foto belum dimasukkan, website akan secara otomatis menampilkan avatar inisial modern dengan warna aksen peran masing-masing tanpa error!
+*Catatan:* Setelah file foto dimasukkan, isi kolom `photo` anggota tersebut di `src/components/landing/LandingTeam.tsx`. Tanpa `photo`, kartu menampilkan inisial.

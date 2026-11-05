@@ -1,92 +1,51 @@
-"use client";
+import { ChevronDown } from "lucide-react";
+import { Reveal } from "./landing-motion";
+import { FOCUS, SectionIntro, WRAP } from "./landing-ui";
 
-import { useState } from "react";
-import { HelpCircle, ChevronDown } from "lucide-react";
-
-interface FaqItem {
-  q: string;
-  a: string;
-}
-
-const FAQS: FaqItem[] = [
+const FAQS = [
   {
-    q: "Bagaimana cara mendapatkan akses masuk ke platform Indonesia Fishing Watch?",
-    a: "Platform ini saat ini beroperasi dalam fase pilot riset maritim internal dengan akses berbasis undangan. Tidak ada formulir pendaftaran akun publik terbuka. Akses diberikan oleh Administrator kepada peneliti, analis kelautan, dan stakeholder terkait melalui tautan undangan terenkripsi.",
+    q: "Bagaimana cara mendapatkan akses?",
+    a: "Akun dibuat lewat undangan dari Admin. Saat ini belum ada pendaftaran terbuka untuk publik.",
   },
   {
-    q: "Apakah seluruh kapal nelayan di Indonesia terlacak di dalam sistem ini?",
-    a: "Tidak semua kapal nelayan memancarkan sinyal AIS (Automatic Identification System), terutama kapal tradisional berukuran kecil di bawah 30 GT. Untuk mengisi kesenjangan data tersebut, platform mengintegrasikan sensor satelit VIIRS (Day/Night Band) yang mampu mendeteksi keberadaan kapal-kapal berlampu malam (seperti penangkap cumi dan bagan) meskipun tidak mengaktifkan AIS.",
+    q: "Apakah semua kapal terpantau?",
+    a: "Tidak. Banyak kapal, terutama kapal kecil, tidak mengirim sinyal AIS. Data VIIRS membantu melihat kapal berlampu pada malam hari, tetapi tidak menunjukkan identitas kapalnya.",
   },
   {
-    q: "Apa perbedaan antara Apparent Fishing Hours dan Vessel Presence Hours?",
-    a: "Vessel Presence Hours mengukur total waktu kapal berada di suatu sel grid perairan berdasarkan sinyal transponder. Sedangkan Apparent Fishing Hours dihitung menggunakan algoritma machine learning Global Fishing Watch yang menganalisis perubahan kecepatan, belokan, dan pola lintasan manuver khas saat kapal menurunkan jaring atau alat tangkap aktif.",
+    q: "Apa beda jam penangkapan dan jam keberadaan?",
+    a: "Jam keberadaan adalah lama kapal berada di suatu area. Jam penangkapan adalah perkiraan Global Fishing Watch berapa lama kapal tampak menangkap ikan, dibaca dari pola geraknya.",
   },
   {
-    q: "Dapatkah data maritim dan grafik diekspor untuk analisis mandiri?",
-    a: "Ya. Platform menyediakan modul Laporan khusus bagi pengguna terdaftar untuk mengekspor data teragregasi dalam format file CSV/ZIP. Setiap paket unduhan menyertakan metadata lengkap, rentang waktu pengamatan, serta hash verifikasi untuk keperluan publikasi jurnal dan riset akademik.",
+    q: "Apakah datanya bisa diunduh?",
+    a: "Ya. Pengguna terdaftar dapat mengunduh laporan lewat menu Laporan, berupa paket ZIP berisi data CSV dan metadatanya.",
   },
   {
-    q: "Apakah platform ini terafiliasi resmi dengan Global Fishing Watch?",
-    a: "Indonesia Fishing Watch adalah platform inisiatif riset independen yang memanfaatkan API dan dataset terbuka dari Global Fishing Watch. Platform ini tidak berafiliasi secara korporat, tidak mewakili, dan tidak didanai secara langsung oleh Global Fishing Watch.",
-  },
-  {
-    q: "Bagaimana sistem memetakan batas 11 WPP-NRI?",
-    a: "Batas 11 Wilayah Pengelolaan Perikanan diimpor langsung dari Shapefile geospasial resmi Kementerian Kelautan dan Perikanan (KKP) Republik Indonesia. Hal ini menjamin keselarasan data spasial dengan regulasi kelautan nasional.",
+    q: "Apakah platform ini bagian dari Global Fishing Watch?",
+    a: "Bukan. Indonesia Fishing Watch adalah inisiatif riset independen yang memakai data terbuka Global Fishing Watch.",
   },
 ];
 
 export function LandingFaq() {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
-
-  const toggle = (idx: number) => {
-    setOpenIdx(openIdx === idx ? null : idx);
-  };
-
   return (
-    <section id="faq" className="py-24 bg-white border-t border-border/70">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-soft text-primary text-xs font-semibold mb-3">
-            <HelpCircle className="size-3.5" />
-            <span>Tanya Jawab</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight mb-4">
-            Pertanyaan yang Sering Diajukan
-          </h2>
-          <p className="text-base text-ink-muted">
-            Informasi penting seputar akses platform, batasan metodologi, dan sumber data pemantauan.
-          </p>
+    <section id="faq" className="scroll-mt-20 bg-black py-24 md:py-32">
+      <div className={`${WRAP} grid items-start gap-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]`}>
+        <div className="lg:sticky lg:top-28">
+          <SectionIntro title="FAQ">Jawaban singkat soal akses, cakupan, dan sumber data.</SectionIntro>
         </div>
-
-        <div className="space-y-4">
-          {FAQS.map((faq, idx) => {
-            const isOpen = openIdx === idx;
-            return (
-              <div
-                key={faq.q}
-                className="rounded-2xl border border-border/80 bg-surface-subtle/30 overflow-hidden transition-colors"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-ink hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  aria-expanded={isOpen}
+        <div className="border-t border-white/25">
+          {FAQS.map((faq, index) => (
+            <Reveal key={faq.q} delay={index * 70}>
+              <details name="faq-landing" className="group border-b border-white/25">
+                <summary
+                  className={`flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-lg font-bold tracking-wide uppercase transition-colors hover:text-[#D08A3E] [&::-webkit-details-marker]:hidden ${FOCUS}`}
                 >
-                  <span className="text-base sm:text-lg pr-4">{faq.q}</span>
-                  <ChevronDown
-                    className={`size-5 text-ink-muted shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-primary" : ""
-                    }`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-ink-muted leading-relaxed border-t border-border/50 animate-in fade-in duration-150">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  {faq.q}
+                  <ChevronDown className="size-5 shrink-0 transition-transform duration-300 group-open:rotate-180" strokeWidth={1.5} aria-hidden />
+                </summary>
+                <p className="max-w-[68ch] pb-6 leading-relaxed font-light text-white/85">{faq.a}</p>
+              </details>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

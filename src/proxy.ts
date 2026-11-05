@@ -8,8 +8,17 @@ import { NextResponse, type NextRequest } from "next/server";
 const SESSION_COOKIE = "ifw_session";
 const PUBLIC_PREFIXES = ["/login", "/invite"];
 
+/** Landing page publik di "/" hanya tampil bila LANDING_PAGE=on di .env.local server; bawaan: nonaktif. */
+function landingEnabled(): boolean {
+  return process.env.LANDING_PAGE === "on";
+}
+
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
+  // Landing nonaktif: "/" langsung ke halaman login (atau Ringkasan bila sudah masuk).
+  if (pathname === "/" && !landingEnabled()) {
+    return NextResponse.redirect(new URL(request.cookies.has(SESSION_COOKIE) ? "/overview" : "/login", request.url));
+  }
   if (pathname === "/" || PUBLIC_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
   }

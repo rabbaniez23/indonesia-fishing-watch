@@ -1,0 +1,32 @@
+/* Gerak latar foto mengikuti scroll, tanpa JavaScript. Browser tanpa dukungan cukup menampilkan foto diam. */
+@keyframes landing-drift {
+  from {
+    transform: translateY(-7%) scale(1.16);
+  }
+  to {
+    transform: translateY(7%) scale(1.16);
+  }
+}
+
+@keyframes landing-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .landing-drift {
+      animation: landing-drift linear both;
+      animation-timeline: view();
+    }
+  }
+
+  .landing-pulse {
+    animation: landing-pulse 2.6s ease-in-out infinite;
+  }
+}
